@@ -5,7 +5,8 @@ from astred.aligner import Aligner
 from astred.utils import load_parser
 import json
 
-
+nlp_en = load_parser("en", "stanza", is_tokenized=False, verbose=True)
+nlp_es = load_parser("es", "stanza", is_tokenized=False, verbose=True)
 
 
 #1. Declare application
@@ -20,6 +21,7 @@ class DataStore():
 data=DataStore()
 
 
+
 @application.route("/main",methods=["GET","POST"])
 
 #3. Define main code
@@ -30,9 +32,6 @@ def homepage():
 
     srcsents = text.split('\n')
     tgtsents = translation.split('\n')
-
-    nlp_en = load_parser("en", "stanza", is_tokenized=False, verbose=True)
-    nlp_es = load_parser("es", "stanza", is_tokenized=False, verbose=True)
     aligner = Aligner()
 
     your_data = zip(srcsents, tgtsents)
