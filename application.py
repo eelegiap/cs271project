@@ -1,6 +1,8 @@
 from flask import Flask, flash, redirect, render_template, request, session, abort,send_from_directory,send_file,jsonify
-import pandas as pd
-
+from astred import AlignedSentences, Sentence
+from astred.aligned import AlignedSentences, Sentence
+from astred.aligner import Aligner
+from astred.utils import load_parser
 import json
 
 
@@ -23,110 +25,46 @@ data=DataStore()
 #3. Define main code
 @application.route("/",methods=["GET","POST"])
 def homepage():
-    CountryName = request.form.get('Country_field','India')
-    Year = request.form.get('Year_field', 2013)
-    
-    data.CountryName=CountryName
-    data.Year=Year
-    
-    df = pd.read_csv('CropsFull.csv')
-    # dfP=dfP
-    
-    
-    # print(CountryName)
-    #Year = data.Year
-    #data.Year = Year
+    text = request.form.get('text_field','In his A History of the World War (page 212), Captain Liddell Hart reports that a planned offensive by thirteen British divisions, supported by fourteen hundred artillery pieces, against the German line at Serre-Montauban, scheduled for July 24, 1916, had to be postponed until the morning of the 29th.')
+    translation = request.form.get('translation_field', 'En la página 22 de la Historia de la Guerra Europea, de Liddell Hart, se lee que una ofensiva de trece divisiones británicas (apoyadas por mil cuatrocientas piezas de artillería) contra la línea Serre Montauban había sido planeada para el veinticuatro de julio de 1916 y debió postergarse hasta la mañana del día veintinueve.')
 
-    # choose columns to keep, in the desired nested json hierarchical order
-    df = df[df.Country == CountryName]
-    df = df[df.Year == int(Year)]
-    print(df.head())
-    # df = df.drop(
-    # ['Country', 'Item Code', 'Flag', 'Unit', 'Year Code', 'Element', 'Element Code', 'Code', 'Item'], axis=1)
-    df = df[["Category", "Cat", "value"]]
+    srcsents = text.split('\n')
+    tgtsents = translation.split('\n')
 
-    # order in the groupby here matters, it determines the json nesting
-    # the groupby call makes a pandas series by grouping 'the_parent' and 'the_child', while summing the numerical column 'child_size'
-    df1 = df.groupby(['Category', 'Cat'])['value'].sum()
-    df1 = df1.reset_index()
+    nlp_en = load_parser("en", "stanza", is_tokenized=False, verbose=True)
+    nlp_es = load_parser("es", "stanza", is_tokenized=False, verbose=True)
+    aligner = Aligner()
 
-    # start a new flare.json document
-    flare = dict()
-    d = {"name": "flare", "children": []}
+    your_data = zip(srcsents, tgtsents)
 
-    for line in df1.values:
-        Category = line[0]
-        Cat = line[1]
-        value = line[2]
-
-        # make a list of keys
-        keys_list = []
-        for item in d['children']:
-            keys_list.append(item['name'])
-
-        # if 'the_parent' is NOT a key in the flare.json yet, append it
-        if not Category in keys_list:
-            d['children'].append({"name": Category, "children": [{"name": Cat, "size": value}]})
-
-        # if 'the_parent' IS a key in the flare.json, add a new child to it
-        else:
-            d['children'][keys_list.index(Category)]['children'].append({"name": Cat, "size": value})
-
-    flare = d
-    e = json.dumps(flare)
-    data.Prod = json.loads(e)
-    Prod=data.Prod
-
-    
-    #Define code for loss data
-    df = pd.read_csv('Losses.csv')
-    #CountryName = data.CountryName
-    #print(CountryName)
-    #Year = data.Year
-
-    # choose columns to keep, in the desired nested json hierarchical order
-    df = df[df.Country == CountryName]
-    df = df[df.Year == int(Year)]
-    print(df.head())
-    # df = df.drop(
-    # ['Country', 'Item Code', 'Flag', 'Unit', 'Year Code', 'Element', 'Element Code', 'Code', 'Item'], axis=1)
-    df = df[["Category", "Cat", "value"]]
-
-    # order in the groupby here matters, it determines the json nesting
-    # the groupby call makes a pandas series by grouping 'the_parent' and 'the_child', while summing the numerical column 'child_size'
-    df1 = df.groupby(['Category', 'Cat'])['value'].sum()
-    df1 = df1.reset_index()
-
-    # start a new flare.json document
-    flare = dict()
-    d = {"name": "flare", "children": []}
-
-    for line in df1.values:
-        Category = line[0]
-        Cat = line[1]
-        value = line[2]
-
-        # make a list of keys
-        keys_list = []
-        for item in d['children']:
-            keys_list.append(item['name'])
-
-        # if 'the_parent' is NOT a key in the flare.json yet, append it
-        if not Category in keys_list:
-            d['children'].append({"name": Category, "children": [{"name": Cat, "size": value}]})
-
-        # if 'the_parent' IS a key in the flare.json, add a new child to it
-        else:
-            d['children'][keys_list.index(Category)]['children'].append({"name": Cat, "size": value})
-
-    flare = d
-    e = json.dumps(flare)
-    data.Loss = json.loads(e)
-    Loss = data.Loss
-
-
-
-    return render_template("index.html",CountryName=CountryName,Year=Year,Prod=Prod,Loss=Loss)
+    alignmentList = []
+    i = 0
+    success = 0
+    for sent_es_str, sent_en_str in your_data:
+        if i % 10 == 0:
+            print(f'{i}/{len(srcsents)} sentences parsed.')
+        try:
+            sent_en = Sentence.from_text(sent_en_str, nlp_en)
+            sent_es = Sentence.from_text(sent_es_str, nlp_es)
+            aligned = AlignedSentences(sent_es, sent_en, aligner=aligner)
+            alignmentList.append({
+                'spanish_text' : sent_es_str,
+                'english_text' : sent_en_str,
+                'spanish_nlp' : sent_es,
+                'english_nlp' : sent_en,
+                'alignment' : aligned
+            })
+            success += 1
+        except:
+            alignmentList.append({
+                'spanish_text' : sent_es_str,
+                'english_text' : sent_en_str,
+                'spanish_nlp' : 'Error',
+                'english_nlp' : 'Error',
+                'alignment' : 'Error'
+            })
+        i += 1
+    return render_template("index.html", text=text, translation=translation, aligned=alignmentList)
 
 
 @application.route("/get-data",methods=["GET","POST"])
@@ -143,7 +81,7 @@ def returnLossData():
     return jsonify(g)
 
 if(__name__ == "main"):
-	application.run(host = 'localhost', debug=True)
+	application.run(threaded=True)
 	
 
 
