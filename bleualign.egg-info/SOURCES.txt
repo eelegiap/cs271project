@@ -9,7 +9,9 @@ bleualign/utils.py
 bleualign.egg-info/PKG-INFO
 bleualign.egg-info/SOURCES.txt
 bleualign.egg-info/dependency_links.txt
+bleualign.egg-info/sourcetranslation.txt
 bleualign.egg-info/top_level.txt
+bleualign.egg-info/.ipynb_checkpoints/sourcetranslation-checkpoint.txt
 test/test_by_eval.py
 test/test_by_eval_filter.py
 test/test_galechurch.py
