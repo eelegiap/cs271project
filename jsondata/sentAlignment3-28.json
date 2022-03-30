@@ -41,26 +41,6 @@
     },
     {
         "alignedsentindices": [
-            4,
-            4
-        ],
-        "alignedsents": [
-            "«... y colgué el tubo.",
-            "\n. . ."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            4,
-            5
-        ],
-        "alignedsents": [
-            "«... y colgué el tubo.",
-            "and I hung up the phone."
-        ]
-    },
-    {
-        "alignedsentindices": [
             5,
             6
         ],
@@ -131,36 +111,6 @@
     },
     {
         "alignedsentindices": [
-            12,
-            13
-        ],
-        "alignedsents": [
-            "Subí a mi cuarto; absurdamente cerré la puerta con llave y me tiré de espaldas en la estrecha cama de hierro.",
-            "I went up to my bedroom."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            12,
-            14
-        ],
-        "alignedsents": [
-            "Subí a mi cuarto; absurdamente cerré la puerta con llave y me tiré de espaldas en la estrecha cama de hierro.",
-            "Absurd though the gesture was, I closed and locked the door."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            12,
-            15
-        ],
-        "alignedsents": [
-            "Subí a mi cuarto; absurdamente cerré la puerta con llave y me tiré de espaldas en la estrecha cama de hierro.",
-            "I threw myself down on my narrow iron bed, and waited on my back."
-        ]
-    },
-    {
-        "alignedsentindices": [
             13,
             16
         ],
@@ -221,6 +171,16 @@
     },
     {
         "alignedsentindices": [
+            20,
+            23
+        ],
+        "alignedsents": [
+            "El nombre del preciso lugar del nuevo parque de artillería británico sobre el Ancre.",
+            "In the midst of my hatred and terror (now that it no longer matters to me to speak of terror, now that I have outwitted Richard Madden, now that my neck hankers for the hangman's noose), I knew that the fast-moving and doubtless happy soldier did not suspect that I possessed the Secret - the name of the exact site of the new British artillery park on the Ancre."
+        ]
+    },
+    {
+        "alignedsentindices": [
             19,
             23
         ],
@@ -241,52 +201,12 @@
     },
     {
         "alignedsentindices": [
-            22,
-            25
-        ],
-        "alignedsents": [
-            "Si mi boca, antes que la deshiciera un balazo, pudiera gritar ese nombre de modo que lo oyeran en Alemania... Mi voz humana era muy pobre.",
-            "If only my mouth, before it should be silenced by a bullet, could shout this name in such a way that it could be heard in Germany . . ."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            22,
-            26
-        ],
-        "alignedsents": [
-            "Si mi boca, antes que la deshiciera un balazo, pudiera gritar ese nombre de modo que lo oyeran en Alemania... Mi voz humana era muy pobre.",
-            "My voice, my human voice, was weak."
-        ]
-    },
-    {
-        "alignedsentindices": [
             23,
             27
         ],
         "alignedsents": [
             "¿Cómo hacerla llegar al oído del Jefe?",
             "How could it reach the ear of the Chief?"
-        ]
-    },
-    {
-        "alignedsentindices": [
-            24,
-            28
-        ],
-        "alignedsents": [
-            "Al oído de aquel hombre enfermo y odioso, que no sabía de Runeberg y de mí sino que estábamos en Staffordshire y que en vano esperaba noticias nuestras en su árida oficina de Berlín, examinando infinitamente periódicos...",
-            "The ear of that sick and hateful man who knew nothing of Runeberg or of me except that we were in Staffordshire."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            24,
-            29
-        ],
-        "alignedsents": [
-            "Al oído de aquel hombre enfermo y odioso, que no sabía de Runeberg y de mí sino que estábamos en Staffordshire y que en vano esperaba noticias nuestras en su árida oficina de Berlín, examinando infinitamente periódicos...",
-            "A man who, sitting in his 2 arid Berlin office, leafed infinitely through newspapers, looking in vain for news from us."
         ]
     },
     {
@@ -321,26 +241,6 @@
     },
     {
         "alignedsentindices": [
-            28,
-            33
-        ],
-        "alignedsents": [
-            "Encontré lo que sabía que iba a encontrar: el reloj norteamericano, la cadena de níquel y la moneda cuadrangular, el llavero con las comprometedoras llaves inútiles del departamento de Runeberg, la libreta, una carta que resolví destruir inmediatamente (y que no destruí), una corona, dos chelines y unos Pêniques, el lápiz rojo-azul, el pañuelo, el revólver con una bala.",
-            "I found just what I knew I was going to find."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            28,
-            34
-        ],
-        "alignedsents": [
-            "Encontré lo que sabía que iba a encontrar: el reloj norteamericano, la cadena de níquel y la moneda cuadrangular, el llavero con las comprometedoras llaves inútiles del departamento de Runeberg, la libreta, una carta que resolví destruir inmediatamente (y que no destruí), una corona, dos chelines y unos Pêniques, el lápiz rojo-azul, el pañuelo, el revólver con una bala.",
-            "The American watch, the nickel-plated chain and the square coin, the key ring with the useless but compromising keys to Runeberg's office, the notebook, a letter which I decided to destroy at once (and which I did not destroy), a five shilling piece, two single shillings and some pennies, a red and blue pencil, a handkerchief - and a revolver with a single bullet."
-        ]
-    },
-    {
-        "alignedsentindices": [
             29,
             35
         ],
@@ -367,26 +267,6 @@
         "alignedsents": [
             "En diez minutos mi plan estaba maduro.",
             "In ten minutes I had developed my plan."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            32,
-            38
-        ],
-        "alignedsents": [
-            "La guía telefónica me dio el nombre de la única persona capaz de transmitir la noticia: vivía en un suburbio de Fenton, a menos de media hora de tren.",
-            "The telephone directory gave me the name of the one person capable of passing on the information."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            32,
-            39
-        ],
-        "alignedsents": [
-            "La guía telefónica me dio el nombre de la única persona capaz de transmitir la noticia: vivía en un suburbio de Fenton, a menos de media hora de tren.",
-            "He lived in a suburb of Fenton, less than half an hour away by train."
         ]
     },
     {
@@ -521,52 +401,12 @@
     },
     {
         "alignedsentindices": [
-            46,
-            53
-        ],
-        "alignedsents": [
-            "Argüí que así corría menos peligro de ser reconocido; el hecho es que en la calle desierta me sentía visible y vulnerable, infinitamente.",
-            "I told myself that I thus ran less chance of being recognized."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            46,
-            54
-        ],
-        "alignedsents": [
-            "Argüí que así corría menos peligro de ser reconocido; el hecho es que en la calle desierta me sentía visible y vulnerable, infinitamente.",
-            "The truth is that, in the deserted street, I felt infinitely visible and vulnerable."
-        ]
-    },
-    {
-        "alignedsentindices": [
             47,
             55
         ],
         "alignedsents": [
             "Recuerdo que le dije al cochero que se detuviera un poco antes de la entrada central.",
             "I recall that I told the driver to stop short of the main entrance."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            48,
-            56
-        ],
-        "alignedsents": [
-            "Bajé con lentitud voluntaria y casi penosa; iba a la aldea de Ashgrove, pero saqué un pasaje para una estación más lejana.",
-            "I got out with a painful and deliberate slowness."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            48,
-            57
-        ],
-        "alignedsents": [
-            "Bajé con lentitud voluntaria y casi penosa; iba a la aldea de Ashgrove, pero saqué un pasaje para una estación más lejana.",
-            "I was going to the village of Ashgrove, but took a ticket for a station further on."
         ]
     },
     {
@@ -597,26 +437,6 @@
         "alignedsents": [
             "No había casi nadie en el andén.",
             "There was almost no one on the platform."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            52,
-            61
-        ],
-        "alignedsents": [
-            "Recorrí los coches: recuerdo unos labradores, una enlutada, un joven que leía con fervor los Anales de Tácito, un soldado herido y feliz.",
-            "I walked through the carriages."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            52,
-            62
-        ],
-        "alignedsents": [
-            "Recorrí los coches: recuerdo unos labradores, una enlutada, un joven que leía con fervor los Anales de Tácito, un soldado herido y feliz.",
-            "I remember some farmers, a woman dressed in mourning, a youth deep in Tacitus' Annals and a wounded, happy soldier."
         ]
     },
     {
@@ -721,26 +541,6 @@
     },
     {
         "alignedsentindices": [
-            63,
-            73
-        ],
-        "alignedsents": [
-            "Preveo que el hombre se resignará cada día a empresas más atroces; pronto no habrá sino guerreros y bandoleros; les doy este consejo: \"El ejecutor de una empresa atroz debe imaginar que ya la ha cumplido, debe imponerse un porvenir que sea irrevocable como el pasado\".",
-            "I foresee that man will resign himself each day to new abominations, that soon only soldiers and bandits will be left."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            63,
-            74
-        ],
-        "alignedsents": [
-            "Preveo que el hombre se resignará cada día a empresas más atroces; pronto no habrá sino guerreros y bandoleros; les doy este consejo: \"El ejecutor de una empresa atroz debe imaginar que ya la ha cumplido, debe imponerse un porvenir que sea irrevocable como el pasado\".",
-            "To them I offer this advice: Whosoever would undertake some atrocious enterprise should act as if it were already accomplished, should impose upon himself a future as irrevocable as the past."
-        ]
-    },
-    {
-        "alignedsentindices": [
             64,
             75
         ],
@@ -781,72 +581,12 @@
     },
     {
         "alignedsentindices": [
-            68,
-            79
-        ],
-        "alignedsents": [
-            "\"¿Ashgrove?\", les pregunté a unos chicos en el andén.",
-            "\"Ashgrove?\""
-        ]
-    },
-    {
-        "alignedsentindices": [
-            68,
-            80
-        ],
-        "alignedsents": [
-            "\"¿Ashgrove?\", les pregunté a unos chicos en el andén.",
-            "I asked some children on the platform."
-        ]
-    },
-    {
-        "alignedsentindices": [
             69,
             81
         ],
         "alignedsents": [
             "\"Ashgrove\", contestaron.",
             "\"Ashgrove,\" they replied."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            71,
-            82
-        ],
-        "alignedsents": [
-            "»Una lámpara ilustraba el andén, pero las caras de los niños quedaban en la zona de sombra.",
-            "I got out."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            71,
-            83
-        ],
-        "alignedsents": [
-            "»Una lámpara ilustraba el andén, pero las caras de los niños quedaban en la zona de sombra.",
-            "A lamp lit the platform, but the children's faces remained in a shadow."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            72,
-            84
-        ],
-        "alignedsents": [
-            "Uno me interrogó: \"¿Usted va a. casa del doctor Stephen Albert?\" Sin aguardar contestación, otro dijo: \"La casa queda lejos de aquí, pero usted no se perderá si toma ese camino a la izquierda y en cada encrucijada del camino dobla a la izquierda”.",
-            "One of them asked me: \"Are you going to Dr. Stephen Albert's house?\""
-        ]
-    },
-    {
-        "alignedsentindices": [
-            72,
-            85
-        ],
-        "alignedsents": [
-            "Uno me interrogó: \"¿Usted va a. casa del doctor Stephen Albert?\" Sin aguardar contestación, otro dijo: \"La casa queda lejos de aquí, pero usted no se perderá si toma ese camino a la izquierda y en cada encrucijada del camino dobla a la izquierda”.",
-            "Without waiting for my answer, another said: \"The house is a good distance away but you won't get lost if you take the road to the left and bear to the left at every crossroad.\""
         ]
     },
     {
@@ -911,76 +651,6 @@
     },
     {
         "alignedsentindices": [
-            79,
-            93
-        ],
-        "alignedsents": [
-            "Algo entiendo de laberintos; no en vano soy bisnieto de aquel Ts'ui Pên, que fue gobernador de Yunnan y que renunció al poder temporal para escribir una novela que fuera todavía más populosa que el Hung Lu Meng y para edificar un laberinto en el que se perdieran todos los hombres.",
-            "Not for nothing am I the greatgrandson of Ts'ui Pen."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            79,
-            94
-        ],
-        "alignedsents": [
-            "Algo entiendo de laberintos; no en vano soy bisnieto de aquel Ts'ui Pên, que fue gobernador de Yunnan y que renunció al poder temporal para escribir una novela que fuera todavía más populosa que el Hung Lu Meng y para edificar un laberinto en el que se perdieran todos los hombres.",
-            "He was Governor of Yunnan and gave up temporal power to write a novel with more characters than there are in the Hung Lou Meng, and to create a maze in which all men would lose themselves."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            80,
-            95
-        ],
-        "alignedsents": [
-            "Trece años dedicó a esas heterogéneas fatigas, pero la mano de un forastero lo asesinó y su novela era insensata y nadie encontró el laberinto.",
-            "He spent thirteen years on these oddly assorted tasks before he was assassinated by a stranger."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            80,
-            96
-        ],
-        "alignedsents": [
-            "Trece años dedicó a esas heterogéneas fatigas, pero la mano de un forastero lo asesinó y su novela era insensata y nadie encontró el laberinto.",
-            "His novel had no sense to it and nobody ever found his labyrinth."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            81,
-            97
-        ],
-        "alignedsents": [
-            "Bajo los árboles ingleses medité en ese laberinto perdido: lo imaginé inviolado y perfecto en la cumbre secreta de una montaña, lo imaginé borrado por arrozales o debajo del agua, lo imaginé infinito, no ya de quioscos ochavados y de sendas que vuelven, sino de ríos y provincias y reinos... Pensé en un laberinto de laberintos, en un sinuoso laberinto creciente que abarcara el pasado y el porvenir y que implicara de algún modo los astros.",
-            "Under the trees of England I meditated on this lost and perhaps mythical labyrinth."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            81,
-            98
-        ],
-        "alignedsents": [
-            "Bajo los árboles ingleses medité en ese laberinto perdido: lo imaginé inviolado y perfecto en la cumbre secreta de una montaña, lo imaginé borrado por arrozales o debajo del agua, lo imaginé infinito, no ya de quioscos ochavados y de sendas que vuelven, sino de ríos y provincias y reinos... Pensé en un laberinto de laberintos, en un sinuoso laberinto creciente que abarcara el pasado y el porvenir y que implicara de algún modo los astros.",
-            "I imagined it untouched and perfect on the secret summit of some mountain; I imagined it drowned under rice paddies or beneath the sea; I imagined it infinite, made not only of eight-sided pavilions and of twisting paths but also of rivers, provinces and kingdoms . . ."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            81,
-            99
-        ],
-        "alignedsents": [
-            "Bajo los árboles ingleses medité en ese laberinto perdido: lo imaginé inviolado y perfecto en la cumbre secreta de una montaña, lo imaginé borrado por arrozales o debajo del agua, lo imaginé infinito, no ya de quioscos ochavados y de sendas que vuelven, sino de ríos y provincias y reinos... Pensé en un laberinto de laberintos, en un sinuoso laberinto creciente que abarcara el pasado y el porvenir y que implicara de algún modo los astros.",
-            "I thought of a maze of mazes, of a sinuous, ever growing maze which would take in both past and future and would somehow involve the stars."
-        ]
-    },
-    {
-        "alignedsentindices": [
             82,
             100
         ],
@@ -997,26 +667,6 @@
         "alignedsents": [
             "Me sentí, por un tiempo indeterminado, percibidor abstracto del mundo.",
             "For an undetermined period of time I felt myself cut off from the world, an abstract spectator."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            84,
-            102
-        ],
-        "alignedsents": [
-            "El vago y vivo campo, la luna, los restos de la tarde, obraron en mí; asimismo el declive que eliminaba cualquier posibilidad de cansancio.",
-            "The hazy and murmuring countryside, the moon, the decline of the evening, stirred within me."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            84,
-            103
-        ],
-        "alignedsents": [
-            "El vago y vivo campo, la luna, los restos de la tarde, obraron en mí; asimismo el declive que eliminaba cualquier posibilidad de cansancio.",
-            "Going down the gently sloping road I could not feel fatigue."
         ]
     },
     {
@@ -1151,26 +801,6 @@
     },
     {
         "alignedsentindices": [
-            98,
-            118
-        ],
-        "alignedsents": [
-            "Abrió el portón y dijo lentamente en mi idioma: »-Veo que el piadoso Hsi Pêng se empeña en corregir mi soledad.",
-            "He opened the gate and spoke slowly in my language."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            98,
-            119
-        ],
-        "alignedsents": [
-            "Abrió el portón y dijo lentamente en mi idioma: »-Veo que el piadoso Hsi Pêng se empeña en corregir mi soledad.",
-            "\"I see that the worthy Hsi P'eng has troubled himself to see to relieving my solitude."
-        ]
-    },
-    {
-        "alignedsentindices": [
             99,
             120
         ],
@@ -1261,26 +891,6 @@
     },
     {
         "alignedsentindices": [
-            108,
-            130
-        ],
-        "alignedsents": [
-            "Reconocí, encuadernados en seda amarilla, algunos tomos manuscritos de la Enciclopedia Perdida que dirigió el Tercer Emperador de la Dinastía Luminosa y que no se dio nunca a la imprenta.",
-            "I recognized some large volumes bound in yellow silk-manuscripts of the Lost Encyclopedia which was edited by the Third Emperor of the Luminous Dynasty."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            108,
-            131
-        ],
-        "alignedsents": [
-            "Reconocí, encuadernados en seda amarilla, algunos tomos manuscritos de la Enciclopedia Perdida que dirigió el Tercer Emperador de la Dinastía Luminosa y que no se dio nunca a la imprenta.",
-            "They had never been printed."
-        ]
-    },
-    {
-        "alignedsentindices": [
             109,
             132
         ],
@@ -1297,26 +907,6 @@
         "alignedsents": [
             "Recuerdo también un jarrón de la familia rosa y otro, anterior de muchos siglos, de ese color azul que nuestros artífices copiaron de los alfareros de Persia...",
             "I remember also a rose-glazed jar and yet another, older by many centuries, of that blue color which our potters copied from the Persians . . ."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            111,
-            135
-        ],
-        "alignedsents": [
-            "» Stephen Albert me observaba, sonriente.",
-            "He was, as I have said, remarkably tall."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            111,
-            136
-        ],
-        "alignedsents": [
-            "» Stephen Albert me observaba, sonriente.",
-            "His face was deeply lined and he had gray eyes and a gray beard."
         ]
     },
     {
@@ -1357,6 +947,16 @@
         "alignedsents": [
             "Mi determinación irrevocable podía esperar.",
             "My irrevocable decision could wait."
+        ]
+    },
+    {
+        "alignedsentindices": [
+            118,
+            142
+        ],
+        "alignedsents": [
+            "Gobernador de su provincia natal, docto en astronomía, en astrología y en la interpretación infatigable de los libros canónicos, ajedrecista, famoso poeta y calígrafo: todo lo abandonó para componer un libro y un laberinto.",
+            "\"A strange destiny,\" said Stephen Albert, \"that of Ts'ui Pen - Governor of his native province, learned in astronomy, in astrology and tireless in the interpretation of the canonical books, a chess player, a famous poet and a calligrapher."
         ]
     },
     {
@@ -1441,36 +1041,6 @@
     },
     {
         "alignedsentindices": [
-            126,
-            152
-        ],
-        "alignedsents": [
-            "En cuanto a la otra empresa de Ts'ui Pên, a su Laberinto... »-Aquí está el Laberinto -dijo indicándome un alto escritorio laqueado.",
-            "his Labyrinth . . .\""
-        ]
-    },
-    {
-        "alignedsentindices": [
-            126,
-            153
-        ],
-        "alignedsents": [
-            "En cuanto a la otra empresa de Ts'ui Pên, a su Laberinto... »-Aquí está el Laberinto -dijo indicándome un alto escritorio laqueado.",
-            "\"Here is the Labyrinth,\" Albert said, pointing to a tall, laquered writing cabinet."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            126,
-            154
-        ],
-        "alignedsents": [
-            "En cuanto a la otra empresa de Ts'ui Pên, a su Laberinto... »-Aquí está el Laberinto -dijo indicándome un alto escritorio laqueado.",
-            "\"An ivory labyrinth?\""
-        ]
-    },
-    {
-        "alignedsentindices": [
             127,
             155
         ],
@@ -1521,6 +1091,16 @@
     },
     {
         "alignedsentindices": [
+            133,
+            161
+        ],
+        "alignedsents": [
+            "Y otra: \"Me retiro a construir un laberinto\".",
+            "At one time, Ts'ui Pen must have said; 'I am going into seclusion to write a book,' and at another, 'I am retiring to construct a maze.'"
+        ]
+    },
+    {
+        "alignedsentindices": [
             132,
             161
         ],
@@ -1541,56 +1121,6 @@
     },
     {
         "alignedsentindices": [
-            135,
-            164
-        ],
-        "alignedsents": [
-            "El Pabellón de la Límpida Soledad se erguía en el 6 centro de un jardín tal vez intrincado; el hecho puede haber sugerido a los hombres un laberinto físico.",
-            "The Pavilion of the Limpid Sun was set in the middle of an intricate garden."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            135,
-            165
-        ],
-        "alignedsents": [
-            "El Pabellón de la Límpida Soledad se erguía en el 6 centro de un jardín tal vez intrincado; el hecho puede haber sugerido a los hombres un laberinto físico.",
-            "This may have suggested the idea of a physical maze."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            136,
-            166
-        ],
-        "alignedsents": [
-            "Ts’ui Pên murió; nadie, en las dilatadas tierras que fueron suyas, dio con el laberinto; la confusión de la novela me sugirió que ése era el laberinto.",
-            "\"Ts'ui Pen died."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            136,
-            167
-        ],
-        "alignedsents": [
-            "Ts’ui Pên murió; nadie, en las dilatadas tierras que fueron suyas, dio con el laberinto; la confusión de la novela me sugirió que ése era el laberinto.",
-            "In all the vast lands which once belonged to your family, no one could find the labyrinth."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            136,
-            168
-        ],
-        "alignedsents": [
-            "Ts’ui Pên murió; nadie, en las dilatadas tierras que fueron suyas, dio con el laberinto; la confusión de la novela me sugirió que ése era el laberinto.",
-            "The novel's confusion suggested that it was the labyrinth."
-        ]
-    },
-    {
-        "alignedsentindices": [
             137,
             169
         ],
@@ -1601,32 +1131,22 @@
     },
     {
         "alignedsentindices": [
+            139,
+            170
+        ],
+        "alignedsents": [
+            "Otra: un fragmento de una carta que descubrí.",
+            "First, the curious legend that Ts'ui Pen had proposed to create an infinite maze, second, a fragment of a letter which I discovered.\""
+        ]
+    },
+    {
+        "alignedsentindices": [
             138,
             170
         ],
         "alignedsents": [
             "Una: la curiosa leyenda de que Ts’ui Pên se había propuesto un laberinto que fuera estrictamente infinito.",
             "First, the curious legend that Ts'ui Pen had proposed to create an infinite maze, second, a fragment of a letter which I discovered.\""
-        ]
-    },
-    {
-        "alignedsentindices": [
-            141,
-            171
-        ],
-        "alignedsents": [
-            "Me dio, por unos instantes, la espalda; abrió un cajón del áureo y renegrido escritorio.",
-            "Albert rose."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            141,
-            172
-        ],
-        "alignedsents": [
-            "Me dio, por unos instantes, la espalda; abrió un cajón del áureo y renegrido escritorio.",
-            "For a few moments he turned his back to me."
         ]
     },
     {
@@ -1751,52 +1271,12 @@
     },
     {
         "alignedsentindices": [
-            154,
-            186
-        ],
-        "alignedsents": [
-            "Casi en el acto comprendí; El jardín de senderos que se bifurcan era la novela caótica; la frase \"varios porvenires (no a todos)\" me sugirió la imagen de la bifurcación en el tiempo, no en el espacio.",
-            "The Garden of Forking Paths was the chaotic novel itself."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            154,
-            187
-        ],
-        "alignedsents": [
-            "Casi en el acto comprendí; El jardín de senderos que se bifurcan era la novela caótica; la frase \"varios porvenires (no a todos)\" me sugirió la imagen de la bifurcación en el tiempo, no en el espacio.",
-            "The phrase 'to various future times, but not to all' suggested the image of bifurcating in time, not in space."
-        ]
-    },
-    {
-        "alignedsentindices": [
             155,
             188
         ],
         "alignedsents": [
             "La relectura general de la obra confirmó esa teoría.",
             "Rereading the whole work confirmed this theory."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            156,
-            189
-        ],
-        "alignedsents": [
-            "En todas las ficciones, cada vez que un hombre se enfrenta con diversas alternativas, opta por una y elimina las otras; en la del casi inextricable Ts'ui Pên, opta - simultáneamente- por todas.",
-            "In all fiction, when a man is faced with alternatives he chooses one at the expense of the others."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            156,
-            190
-        ],
-        "alignedsents": [
-            "En todas las ficciones, cada vez que un hombre se enfrenta con diversas alternativas, opta por una y elimina las otras; en la del casi inextricable Ts'ui Pên, opta - simultáneamente- por todas.",
-            "In the almost unfathomable Ts'ui Pen, he chooses - simultaneously - all of them."
         ]
     },
     {
@@ -1821,72 +1301,12 @@
     },
     {
         "alignedsentindices": [
-            159,
-            193
-        ],
-        "alignedsents": [
-            "Fang, digamos, tiene un secreto; un desconocido llama a su puerta; Fang resuelve matarlo.",
-            "\"Fang, let us say, has a secret."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            159,
-            194
-        ],
-        "alignedsents": [
-            "Fang, digamos, tiene un secreto; un desconocido llama a su puerta; Fang resuelve matarlo.",
-            "A stranger knocks at his door."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            160,
-            196
-        ],
-        "alignedsents": [
-            "Naturalmente, hay varios desenlaces posibles: Fang puede matar al intruso, el intruso puede matar a Fang, ambos pueden salvarse, ambos pueden morir, etcétera.",
-            "Naturally there are various possible outcomes."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            160,
-            197
-        ],
-        "alignedsents": [
-            "Naturalmente, hay varios desenlaces posibles: Fang puede matar al intruso, el intruso puede matar a Fang, ambos pueden salvarse, ambos pueden morir, etcétera.",
-            "Fang can kill the intruder, the intruder can kill Fang, both can be saved, both can die and so on and so on."
-        ]
-    },
-    {
-        "alignedsentindices": [
             161,
             198
         ],
         "alignedsents": [
             "En la obra de Ts'ui Pên, todos los desenlaces ocurren; cada uno es el punto de partida de otras bifurcaciones.",
             "In Ts'ui Pen's work, all the possible solutions occur, each one being the point of departure for other bifurcations."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            162,
-            199
-        ],
-        "alignedsents": [
-            "Alguna vez, los senderos de ese laberinto convergen: por ejemplo, usted llega a esta casa, pero en uno de los pasados posibles 7 usted es mi enemigo, en otro mi amigo.",
-            "Sometimes the pathways of this labyrinth converge."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            162,
-            200
-        ],
-        "alignedsents": [
-            "Alguna vez, los senderos de ese laberinto convergen: por ejemplo, usted llega a esta casa, pero en uno de los pasados posibles 7 usted es mi enemigo, en otro mi amigo.",
-            "For example, you come to this house; but in other possible pasts you are my enemy; in others my friend."
         ]
     },
     {
@@ -1927,26 +1347,6 @@
         "alignedsents": [
             "Yo oía con decente veneración esas viejas ficciones, acaso menos admirables que el hecho de que las hubiera ideado mi sangre y de que un hombre de un imperio remoto me las restituyera, en el curso de una desesperada aventura, en una isla occidental.",
             "With proper veneration I listened to these old tales, although perhaps with less admiration for them in themselves than for the fact that they had been thought out by one of my own blood, and that a man of a distant empire had given them back to 7 me, in the last stage of a desperate adventure, on a Western island."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            168,
-            209
-        ],
-        "alignedsents": [
-            "Recuerdo las palabras finales, repetidas en cada redacción como un mandamiento secreto: \"Así combatieron los héroes, tranquilo el admirable corazón, violenta la espada, resignados a matar y a morir\".",
-            "I remember the final words, repeated at the end of each version like a secret command: \"Thus the heroes fought, with tranquil heart and bloody sword."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            168,
-            210
-        ],
-        "alignedsents": [
-            "Recuerdo las palabras finales, repetidas en cada redacción como un mandamiento secreto: \"Así combatieron los héroes, tranquilo el admirable corazón, violenta la espada, resignados a matar y a morir\".",
-            "They were resigned to killing and to dying.\""
         ]
     },
     {
@@ -1997,26 +1397,6 @@
         "alignedsents": [
             "En su país, la novela es un género subalterno; en aquel tiempo era un género despreciable.",
             "In your country the novel is an inferior genre; in Ts'ui Pen's period, it was a despised one."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            174,
-            216
-        ],
-        "alignedsents": [
-            "Ts’ui Pên fue un novelista genial, pero también fue un hombre de letras que sin duda no se consideró un mero novelista.",
-            "Ts'ui Pen was a fine novelist"
-        ]
-    },
-    {
-        "alignedsentindices": [
-            174,
-            217
-        ],
-        "alignedsents": [
-            "Ts’ui Pên fue un novelista genial, pero también fue un hombre de letras que sin duda no se consideró un mero novelista.",
-            "but he was also a man of letters who, doubtless, considered himself more than a mere novelist."
         ]
     },
     {
@@ -2091,52 +1471,12 @@
     },
     {
         "alignedsentindices": [
-            182,
-            225
-        ],
-        "alignedsents": [
-            "Las discutimos; al fin, Stepheri Albert me dijo: »-En una adivinanza cuyo tema es el ajedrez ¿cuál es la única palabra prohibida?",
-            "We discussed them."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            182,
-            226
-        ],
-        "alignedsents": [
-            "Las discutimos; al fin, Stepheri Albert me dijo: »-En una adivinanza cuyo tema es el ajedrez ¿cuál es la única palabra prohibida?",
-            "Finally Stephen Albert said: \"In a guessing game to which the answer is chess, which word is the only one prohibited?\""
-        ]
-    },
-    {
-        "alignedsentindices": [
             183,
             227
         ],
         "alignedsents": [
             "»Reflexioné un momento y repuse: »-La palabra ajedrez.",
             "I thought for a moment and then replied: \"The word is chess.\""
-        ]
-    },
-    {
-        "alignedsentindices": [
-            184,
-            228
-        ],
-        "alignedsents": [
-            "8 »-Precisamente -dijo Albert-, El jardín de senderos que se bifurcan es una enorme adivinanza, o parábola, cuyo tema es el tiempo; esa causa recóndita le prohíbe la mención de su nombre.",
-            "\"Precisely,\" said Albert."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            184,
-            229
-        ],
-        "alignedsents": [
-            "8 »-Precisamente -dijo Albert-, El jardín de senderos que se bifurcan es una enorme adivinanza, o parábola, cuyo tema es el tiempo; esa causa recóndita le prohíbe la mención de su nombre.",
-            "\"The Garden of Forking Paths is an enormous guessing game, or parable, in which the subject is time."
         ]
     },
     {
@@ -2157,46 +1497,6 @@
         "alignedsents": [
             "Es el modo tortuoso que prefirió, en cada uno de los meandros de su infatigable novela, el oblicuo Ts'ui Pên.",
             "This, then, is the tortuous method of approach preferred by the oblique Ts'ui Pen in every meandering of his interminable novel."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            187,
-            233
-        ],
-        "alignedsents": [
-            "He confrontado centenares de manuscritos, he corregido los errores que la negligencia de los copistas ha introducido, he conjeturado el plan de ese caos, he restablecido, he creído restablecer el orden primordial, he traducido la obra entera: me consta que no emplea una sola vez la palabra tiempo.",
-            "I have gone over hundreds of manuscripts, I have corrected errors introduced by careless copyists, I have worked out the plan from this chaos, I have restored, or believe I have restored, the original."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            187,
-            234
-        ],
-        "alignedsents": [
-            "He confrontado centenares de manuscritos, he corregido los errores que la negligencia de los copistas ha introducido, he conjeturado el plan de ese caos, he restablecido, he creído restablecer el orden primordial, he traducido la obra entera: me consta que no emplea una sola vez la palabra tiempo.",
-            "I have translated the whole work."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            188,
-            236
-        ],
-        "alignedsents": [
-            "La explicación es obvia: El jardín de senderos que se bifurcan es una imagen incompleta, pero no falsa, del universo tal como lo concebía Ts'ui Pên.",
-            "\"The explanation is obvious."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            188,
-            237
-        ],
-        "alignedsents": [
-            "La explicación es obvia: El jardín de senderos que se bifurcan es una imagen incompleta, pero no falsa, del universo tal como lo concebía Ts'ui Pên.",
-            "The Garden of Forking Paths is a picture, incomplete yet not false, of the universe such as Ts'ui Pen conceived it to be."
         ]
     },
     {
@@ -2231,82 +1531,22 @@
     },
     {
         "alignedsentindices": [
-            192,
-            241
-        ],
-        "alignedsents": [
-            "No existimos en la mayoría de esos tiempos; en algunos existe usted y no yo; en otros, yo, no usted; en otros, los dos.",
-            "We do not exist in most of them."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            192,
-            242
-        ],
-        "alignedsents": [
-            "No existimos en la mayoría de esos tiempos; en algunos existe usted y no yo; en otros, yo, no usted; en otros, los dos.",
-            "In some you exist and not I, while in others I do, and you do not, and in yet others both of us exist."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            193,
-            243
-        ],
-        "alignedsents": [
-            "En éste, que un favorable azar me depara, usted ha llegado a mi casa; en otro, usted, al atravesar el jardín, me ha encontrado muerto; en otro, yo digo estas mismas palabras, pero soy un error, un fantasma.",
-            "In this one, in which chance has favored me, you have come to my gate."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            193,
-            244
-        ],
-        "alignedsents": [
-            "En éste, que un favorable azar me depara, usted ha llegado a mi casa; en otro, usted, al atravesar el jardín, me ha encontrado muerto; en otro, yo digo estas mismas palabras, pero soy un error, un fantasma.",
-            "In another, you, crossing the garden, have found me dead."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            193,
-            245
-        ],
-        "alignedsents": [
-            "En éste, que un favorable azar me depara, usted ha llegado a mi casa; en otro, usted, al atravesar el jardín, me ha encontrado muerto; en otro, yo digo estas mismas palabras, pero soy un error, un fantasma.",
-            "In yet another, I say these very same words, but am an error, a phantom.\""
-        ]
-    },
-    {
-        "alignedsentindices": [
-            194,
-            248
-        ],
-        "alignedsents": [
-            "»-En todos -articulé no sin un temblor- yo agradezco y venero su recreación del jardín de Ts'ui Pên.",
-            "\"I deeply appreciate and am grateful to you for the restoration of Ts'ui Pen's garden.\""
-        ]
-    },
-    {
-        "alignedsentindices": [
-            194,
-            249
-        ],
-        "alignedsents": [
-            "»-En todos -articulé no sin un temblor- yo agradezco y venero su recreación del jardín de Ts'ui Pên.",
-            "\"Not in all,\" he murmured with a smile."
-        ]
-    },
-    {
-        "alignedsentindices": [
             195,
             249
         ],
         "alignedsents": [
             "»-No en todos -murmuró con una sonrisa-.",
             "\"Not in all,\" he murmured with a smile."
+        ]
+    },
+    {
+        "alignedsentindices": [
+            197,
+            250
+        ],
+        "alignedsents": [
+            "En uno de ellos soy su enemigo.",
+            "\"Time is forever dividing itself toward innumerable futures and in one of them I am your enemy.\""
         ]
     },
     {
@@ -2371,52 +1611,12 @@
     },
     {
         "alignedsentindices": [
-            203,
-            256
-        ],
-        "alignedsents": [
-            "»-El porvenir ya existe -respondí-, pero yo soy su amigo.",
-            "\"The future exists now,\" I replied."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            203,
-            257
-        ],
-        "alignedsents": [
-            "»-El porvenir ya existe -respondí-, pero yo soy su amigo.",
-            "\"But I am your friend."
-        ]
-    },
-    {
-        "alignedsentindices": [
             204,
             258
         ],
         "alignedsents": [
             "¿Puedo examinar de nuevo la carta?",
             "Can I take another look at the letter?\""
-        ]
-    },
-    {
-        "alignedsentindices": [
-            205,
-            260
-        ],
-        "alignedsents": [
-            "»Albert se levantó.",
-            "He stood up tall as he opened the top drawer of the high writing cabinet."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            205,
-            261
-        ],
-        "alignedsents": [
-            "»Albert se levantó.",
-            "For a moment his back was again turned to me."
         ]
     },
     {
@@ -2481,42 +1681,12 @@
     },
     {
         "alignedsentindices": [
-            213,
-            268
+            216,
+            273
         ],
         "alignedsents": [
-            "Abominablemente he vencido: he comunicado a Berlín el 9 secreto nombre de la ciudad que deben atacar.",
-            "Abominably, I have yet triumphed!"
-        ]
-    },
-    {
-        "alignedsentindices": [
-            213,
-            269
-        ],
-        "alignedsents": [
-            "Abominablemente he vencido: he comunicado a Berlín el 9 secreto nombre de la ciudad que deben atacar.",
-            "The secret name of the city to be attacked got through to Berlin."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            214,
-            270
-        ],
-        "alignedsents": [
-            "Ayer la bombardearon; lo leí en los mismos periódicos que propusieron a Inglaterra el enigma de que el sabio sinólogo Stephen Albert muriera asesinado por un desconocido, Yá Tsun.",
-            "Yesterday it was bombed."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            214,
-            271
-        ],
-        "alignedsents": [
-            "Ayer la bombardearon; lo leí en los mismos periódicos que propusieron a Inglaterra el enigma de que el sabio sinólogo Stephen Albert muriera asesinado por un desconocido, Yá Tsun.",
-            "I read the news in the same English newspapers which were trying to solve the riddle of the murder of the learned Sinologist Stephen Albert by the unknown Yu Tsun."
+            "Sabe que mi problema era indicar (a través del estrépito de la guerra) la ciudad que se llama Albert y que no hallé otro medio que matar a una persona de ese nombre.",
+            "He knew that my problem was to shout, with my feeble voice, above the tumult of war, the name of the city called Albert, and that I had no other course open to me than to kill someone of that name."
         ]
     },
     {
@@ -2541,32 +1711,32 @@
     },
     {
         "alignedsentindices": [
-            218,
-            275
-        ],
-        "alignedsents": [
-            "» \n1 Hipótesis odiosa y estrafalaria.",
-            "1."
-        ]
-    },
-    {
-        "alignedsentindices": [
-            219,
-            276
-        ],
-        "alignedsents": [
-            "El espía prusiano Hans Rabener alias Viktor Runeberg agredió con una pistola automática al portador de la orden de arresto, capitán Richard Madden.",
-            "A malicious and outlandish statement."
-        ]
-    },
-    {
-        "alignedsentindices": [
             220,
             277
         ],
         "alignedsents": [
             "Éste, en defensa propia, le causó heridas que determinaron su muerte.",
             "In point of fact, Captain Richard Madden had been attacked by the Prussian spy Hans Rabener, alias Viktor Runeberg, who drew an automatic pistol when Madden appeared with orders for the spy's arrest."
+        ]
+    },
+    {
+        "alignedsentindices": [
+            219,
+            277
+        ],
+        "alignedsents": [
+            "El espía prusiano Hans Rabener alias Viktor Runeberg agredió con una pistola automática al portador de la orden de arresto, capitán Richard Madden.",
+            "In point of fact, Captain Richard Madden had been attacked by the Prussian spy Hans Rabener, alias Viktor Runeberg, who drew an automatic pistol when Madden appeared with orders for the spy's arrest."
+        ]
+    },
+    {
+        "alignedsentindices": [
+            222,
+            279
+        ],
+        "alignedsents": [
+            ")",
+            "- Note by the manuscript editor."
         ]
     },
     {
