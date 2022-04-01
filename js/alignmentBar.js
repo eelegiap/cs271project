@@ -18,7 +18,7 @@ class AlignmentBar {
 
     initVis() {
         let vis = this;
-        vis.margin = {top: 20, right: 40, bottom: 20, left: 20};
+        vis.margin = {top: 5, right: 40, bottom: 5, left: 20};
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
 
