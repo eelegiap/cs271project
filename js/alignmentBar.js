@@ -10,8 +10,8 @@ class AlignmentBar {
         this.parentElement = parentElement;
         this.source_align = source_align;
         this.translation_align = translation_align;
-        this.cur_source_align = "mi";
-        this.cur_translation_align = "my";
+        this.cur_source_align = "leer";
+        this.cur_translation_align = "read";
         this.sent_order = sent_order;
         this.initVis()
     }
@@ -35,6 +35,8 @@ class AlignmentBar {
         vis.colors = ["lightgrey", "darkgrey","grey",];
 
         vis.updateVis(vis.cur_source_align, vis.cur_translation_align);
+
+        vis.cur_sent_idx = 0;
     }
 
 
@@ -89,23 +91,27 @@ class AlignmentBar {
                     .html(``);
             })
             .on('click', function (event, d){
-                let pairs_to_print = [];
+                vis.pairs_to_print = [];
                 for (let i = 0; i < d[3].length; i++) {
-                    pairs_to_print.push(vis.sent_order["srcSentsInOrder"]["text"][d[3][i]] + '<br>' + vis.sent_order["tgtSentsInOrder"]["text"][d[4][i]]);
+                    vis.pairs_to_print.push(vis.sent_order["srcSentsInOrder"]["text"][d[3][i]] + '<br>' + vis.sent_order["tgtSentsInOrder"]["text"][d[4][i]]);
                 }
                 let cont = document.getElementById("textArea")
                 while(cont.firstChild){
                     cont.removeChild(cont.firstChild);
                 }
                 let ul = document.createElement('ul');
-                if(typeof pairs_to_print != "undefined"){
-                    for (let i = 0; i <= pairs_to_print.length - 1; i++) {
-                        let li = document.createElement('li');     // create li element.
-                        li.innerHTML = pairs_to_print[i];      // assigning text to li using array value.
-                        ul.appendChild(li);     // append li to ul.
-                    }
+                ul.setAttribute("style", "list-style-type:none");
+                if(typeof vis.pairs_to_print != "undefined" && vis.pairs_to_print.length != 0){
+                    let li = document.createElement('li');     // create li element.
+                    li.innerHTML = vis.pairs_to_print[vis.cur_sent_idx];      // assigning text to li using array value.
+                    ul.appendChild(li);     // append li to ul.
                     cont.appendChild(ul);
                 }
+                let button = document.createElement('button');
+                button.textContent = "Next Example"
+                button.id = "nextAlign";
+                button.onclick = function(event){vis.showNextExample()}
+                cont.append(button)
         });
 
         align_rects.exit().remove()
@@ -153,6 +159,26 @@ class AlignmentBar {
         });
     }
 
+    showNextExample(){
+        let vis = this;
+        if(vis.cur_sent_idx < vis.pairs_to_print.length - 1) {
+            vis.cur_sent_idx += 1;
+        }
+        else{
+            vis.cur_sent_idx = 0;
+        }
+        let cont = document.getElementById("textArea")
+        cont.removeChild(cont.firstChild);
+
+        let ul = document.createElement('ul');
+        ul.setAttribute("style", "list-style-type:none");
+        if(typeof vis.pairs_to_print != "undefined" && vis.pairs_to_print.length != 0){
+            let li = document.createElement('li');     // create li element.
+            li.innerHTML = vis.pairs_to_print[vis.cur_sent_idx];      // assigning text to li using array value.
+            ul.appendChild(li);     // append li to ul.
+            cont.insertBefore(ul, cont.firstChild);
+        }
+    }
     getOccurrence(array, value) {
         return array.filter((v) => (v === value)).length;
     }
