@@ -91,6 +91,7 @@ class AlignmentBar {
                     .html(``);
             })
             .on('click', function (event, d){
+                vis.cur_sent_idx = 0;
                 vis.pairs_to_print = [];
                 for (let i = 0; i < d[3].length; i++) {
                     vis.pairs_to_print.push(vis.sent_order["srcSentsInOrder"]["text"][d[3][i]] + '<br>' + vis.sent_order["tgtSentsInOrder"]["text"][d[4][i]]);
