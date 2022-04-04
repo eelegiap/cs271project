@@ -14,23 +14,20 @@ let source_align;
 let translation_align;
 let myAlignmentBar;
 let myTimeline;
-let element = document.getElementById("rando");
-element.onclick = function(event){testRandomWord()}
+let sent_order;
+// let element = document.getElementById("rando");
+// element.onclick = function(event){testRandomWord()}
 
 // initMainPage
 function initMainPage(allDataArray) {
     let sent_align = allDataArray[0];
-    let sent_order = allDataArray[1];
+    sent_order = allDataArray[1];
     let word_align = allDataArray[2];
     source_align = allDataArray[3];
     translation_align = allDataArray[4];
 
-    // console.log("sent alignment", sent_align);
-    // console.log("sent order", sent_order);
-    // console.log("word align", word_align);
-    console.log("span_align", source_align);
-    console.log("eng_align", translation_align);
 
+    myText = new TextPanel(sent_order, word_align);
     myAlignmentBar = new AlignmentBar('alignmentBar', source_align, translation_align, sent_order);
     myTimeline = new Timeline('timeline', source_align, translation_align, sent_order);
 }
