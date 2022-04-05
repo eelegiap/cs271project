@@ -19,7 +19,6 @@ class TextPanel {
         d3.select('#analysispanel').style('left', parseInt($(window).width() * .68) + 'px').style('position', 'fixed')
 
         let data = vis.sent_order;
-        console.log("data", data)
         var srccharcount = 0;
         var tgtcharcount = 0;
 
@@ -234,7 +233,8 @@ class TextPanel {
                 if (exists) {
                     // display word pair up top
                     d3.select('#wordpair').text(srctoken + '- ' + tgttoken)
-
+                    console.log(srctoken, tgttoken);
+                    updateSidebar(srctoken, tgttoken);
                     // wiktionary
                     // $.get('http://en.wiktionary.org/w/index.php?title=testx&printable=yes',function(data, status) {
                     //     console.log(data)

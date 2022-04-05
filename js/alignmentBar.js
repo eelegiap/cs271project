@@ -47,6 +47,7 @@ class AlignmentBar {
         vis.cur_source_align = s;
         vis.cur_translation_align =t;
 
+        console.log(s, t);
         vis.wrangleData();
 
         let lengths = [];
@@ -121,7 +122,6 @@ class AlignmentBar {
 
     wrangleData(){
         let vis = this;
-
         let ab = vis.getOccurrence(vis.source_align[vis.cur_source_align][0], vis.cur_translation_align);
         let anotb = vis.source_align[vis.cur_source_align][0].length - ab;
         let bnota = vis.translation_align[vis.cur_translation_align][0].length - ab;
