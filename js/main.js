@@ -36,6 +36,7 @@ function initMainPage(allDataArray) {
     myText = new TextPanel(sent_order, word_align);
     myAlignmentBar = new AlignmentBar('alignmentBar', source_align, translation_align, sent_order);
     myTimeline = new Timeline('timeline', source_align, translation_align, sent_order);
+    myNGrams = new nGrams("En", "In");
 }
 
 
@@ -48,4 +49,5 @@ function updateSidebar(cur_source_align, cur_translation_align){
     let translation_lemma = translation_lemmas[cur_translation_align.toLowerCase().trim()];
     myAlignmentBar.updateVis(source_lemma, translation_lemma);
     myTimeline.updateVis(source_lemma, translation_lemma);
+    myNGrams = new nGrams(cur_source_align, cur_translation_align);
 }

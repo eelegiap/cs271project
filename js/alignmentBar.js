@@ -18,7 +18,7 @@ class AlignmentBar {
 
     initVis() {
         let vis = this;
-        vis.margin = {top: 5, right: 40, bottom: 5, left: 20};
+        vis.margin = {top: 8, right: 40, bottom: 5, left: 20};
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
 
@@ -103,8 +103,9 @@ class AlignmentBar {
                 while(title_cont.firstChild){
                     title_cont.removeChild(title_cont.firstChild);
                 }
-                let title = document.createElement('h3');
+                let title = document.createElement('p');
                 title.textContent = d[0];
+                title.setAttribute("style", "color:gray");
                 title_cont.appendChild(title);
 
                 vis.cur_sent_idx = -1;
@@ -119,7 +120,8 @@ class AlignmentBar {
         while(title_cont.firstChild){
             title_cont.removeChild(title_cont.firstChild);
         }
-        let title = document.createElement('h3');
+        let title = document.createElement('p');
+        title.setAttribute("style", "color:gray");
         title.textContent = d[0];
         title_cont.appendChild(title);
 
