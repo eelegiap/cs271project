@@ -10,8 +10,8 @@ class AlignmentBar {
         this.parentElement = parentElement;
         this.source_align = source_align;
         this.translation_align = translation_align;
-        this.cur_source_align = "leer";
-        this.cur_translation_align = "read";
+        this.cur_source_align = "en";
+        this.cur_translation_align = "in";
         this.sent_order = sent_order;
         this.initVis()
     }
@@ -55,7 +55,6 @@ class AlignmentBar {
         vis.cur_source_align = s;
         vis.cur_translation_align =t;
 
-        console.log(s, t);
         vis.wrangleData();
 
         let lengths = [];
@@ -115,7 +114,21 @@ class AlignmentBar {
                 }
                 vis.showNextExample();
         });
+        let d = vis.data[0];
+        let title_cont = document.getElementById("alignmentTitle")
+        while(title_cont.firstChild){
+            title_cont.removeChild(title_cont.firstChild);
+        }
+        let title = document.createElement('h3');
+        title.textContent = d[0];
+        title_cont.appendChild(title);
 
+        vis.cur_sent_idx = -1;
+        vis.pairs_to_print = [];
+        for (let i = 0; i < d[3].length; i++) {
+            vis.pairs_to_print.push(vis.sent_order["srcSentsInOrder"]["text"][d[3][i]] + '<br>' + vis.sent_order["tgtSentsInOrder"]["text"][d[4][i]]);
+        }
+        vis.showNextExample();
         align_rects.exit().remove()
 
     }
