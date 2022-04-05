@@ -10,15 +10,15 @@ class AlignmentBar {
         this.parentElement = parentElement;
         this.source_align = source_align;
         this.translation_align = translation_align;
-        this.cur_source_align = "leer";
-        this.cur_translation_align = "read";
+        this.cur_source_align = "en";
+        this.cur_translation_align = "in";
         this.sent_order = sent_order;
         this.initVis()
     }
 
     initVis() {
         let vis = this;
-        vis.margin = {top: 5, right: 40, bottom: 5, left: 20};
+        vis.margin = {top: 8, right: 40, bottom: 5, left: 20};
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
 
@@ -34,9 +34,17 @@ class AlignmentBar {
 
         vis.colors = ["lightgrey", "darkgrey","grey",];
 
+        vis.cur_sent_idx = -1;
+
+        let button = document.createElement('button');
+        button.textContent = "Next Example"
+        button.id = "nextAlign";
+        button.onclick = function(event){vis.showNextExample()}
+        let cont = document.getElementById("nextButton")
+        cont.append(button)
+
         vis.updateVis(vis.cur_source_align, vis.cur_translation_align);
 
-        vis.cur_sent_idx = 0;
     }
 
 
@@ -91,37 +99,44 @@ class AlignmentBar {
                     .html(``);
             })
             .on('click', function (event, d){
-                vis.cur_sent_idx = 0;
+                let title_cont = document.getElementById("alignmentTitle")
+                while(title_cont.firstChild){
+                    title_cont.removeChild(title_cont.firstChild);
+                }
+                let title = document.createElement('p');
+                title.textContent = d[0];
+                title.setAttribute("style", "color:gray");
+                title_cont.appendChild(title);
+
+                vis.cur_sent_idx = -1;
                 vis.pairs_to_print = [];
                 for (let i = 0; i < d[3].length; i++) {
                     vis.pairs_to_print.push(vis.sent_order["srcSentsInOrder"]["text"][d[3][i]] + '<br>' + vis.sent_order["tgtSentsInOrder"]["text"][d[4][i]]);
                 }
-                let cont = document.getElementById("textArea")
-                while(cont.firstChild){
-                    cont.removeChild(cont.firstChild);
-                }
-                let ul = document.createElement('ul');
-                ul.setAttribute("style", "list-style-type:none");
-                if(typeof vis.pairs_to_print != "undefined" && vis.pairs_to_print.length != 0){
-                    let li = document.createElement('li');     // create li element.
-                    li.innerHTML = vis.pairs_to_print[vis.cur_sent_idx];      // assigning text to li using array value.
-                    ul.appendChild(li);     // append li to ul.
-                    cont.appendChild(ul);
-                }
-                let button = document.createElement('button');
-                button.textContent = "Next Example"
-                button.id = "nextAlign";
-                button.onclick = function(event){vis.showNextExample()}
-                cont.append(button)
+                vis.showNextExample();
         });
+        let d = vis.data[1];
+        let title_cont = document.getElementById("alignmentTitle")
+        while(title_cont.firstChild){
+            title_cont.removeChild(title_cont.firstChild);
+        }
+        let title = document.createElement('p');
+        title.setAttribute("style", "color:gray");
+        title.textContent = d[0];
+        title_cont.appendChild(title);
 
+        vis.cur_sent_idx = -1;
+        vis.pairs_to_print = [];
+        for (let i = 0; i < d[3].length; i++) {
+            vis.pairs_to_print.push(vis.sent_order["srcSentsInOrder"]["text"][d[3][i]] + '<br>' + vis.sent_order["tgtSentsInOrder"]["text"][d[4][i]]);
+        }
+        vis.showNextExample();
         align_rects.exit().remove()
 
     }
 
     wrangleData(){
         let vis = this;
-
         let ab = vis.getOccurrence(vis.source_align[vis.cur_source_align][0], vis.cur_translation_align);
         let anotb = vis.source_align[vis.cur_source_align][0].length - ab;
         let bnota = vis.translation_align[vis.cur_translation_align][0].length - ab;
