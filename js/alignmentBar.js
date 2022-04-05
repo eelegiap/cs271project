@@ -40,7 +40,7 @@ class AlignmentBar {
         button.textContent = "Next Example"
         button.id = "nextAlign";
         button.onclick = function(event){vis.showNextExample()}
-        let cont = document.getElementById("textArea")
+        let cont = document.getElementById("nextButton")
         cont.append(button)
 
         vis.updateVis(vis.cur_source_align, vis.cur_translation_align);
@@ -114,7 +114,7 @@ class AlignmentBar {
                 }
                 vis.showNextExample();
         });
-        let d = vis.data[0];
+        let d = vis.data[1];
         let title_cont = document.getElementById("alignmentTitle")
         while(title_cont.firstChild){
             title_cont.removeChild(title_cont.firstChild);
