@@ -146,6 +146,7 @@ class TextPanel {
                 d3.selectAll('.sentence').classed('chosen', true)
                 d3.selectAll('.token').classed('chosen', false)
             }
+            switchSidebar(this.value);
         })
 
         // HOVER SENTENCES
