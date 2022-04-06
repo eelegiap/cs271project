@@ -31,7 +31,7 @@ class nGrams {
         $("#ngramtitle").append('<tr style="color:gray"><th> Google N-Gram Viewer</th><th>');
         $("#ngramviewer").append('<iframe name="ngram_chart" src="https://books.google.com/ngrams/interactive_chart?smoothing=3&direct_url=' + direct_url
             + '&corpus=36&year_start=1800&content=' + content
-            + '&year_end=2010" width=' + $('#analysispanel').width() + ' height=200 marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0 scrolling=no></iframe>');
+            + '&year_end=2010" width=500 height=200 marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0 scrolling=no></iframe>');
         // done ngrams
     }
 }
