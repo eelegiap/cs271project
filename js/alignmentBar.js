@@ -184,7 +184,9 @@ class AlignmentBar {
             vis.cur_sent_idx = 0;
         }
         let cont = document.getElementById("textArea")
-        cont.removeChild(cont.firstChild);
+        if (cont.firstChild.id == "sentExample") {
+            cont.removeChild(cont.firstChild);
+        }
 
         let ul = document.createElement('ul');
         ul.setAttribute("style", "list-style-type:none");
@@ -192,6 +194,7 @@ class AlignmentBar {
             let li = document.createElement('li');     // create li element.
             li.innerHTML = vis.pairs_to_print[vis.cur_sent_idx];      // assigning text to li using array value.
             ul.appendChild(li);     // append li to ul.
+            ul.setAttribute("id","sentExample");
             cont.insertBefore(ul, cont.firstChild);
         }
     }
