@@ -3,6 +3,7 @@
 }
 .token {
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .wrapper {
@@ -14,7 +15,6 @@
 }
 
 #analysispanel {
-
     top: 20px;
 }
 
@@ -25,10 +25,6 @@ iframe.previewhtml {
     min-height: 400px;
     overflow: auto;
 }
-/* #srctext {
-    display: flex
-}
 .token mark {
-    display:inline-block;
-    font-size: 15px
-} */
+    display: contents;
+}
