@@ -46856,17 +46856,6 @@
                     "linebreak": false
                 },
                 {
-                    "tokenid": 54,
-                    "pos": "NUM",
-                    "text": "9",
-                    "lemma": "9",
-                    "features": {
-                        "NumForm": "Digit",
-                        "NumType": "Card"
-                    },
-                    "linebreak": false
-                },
-                {
                     "tokenid": 56,
                     "pos": "ADJ",
                     "text": "secreto",
@@ -55242,16 +55231,6 @@
                     "linebreak": false
                 },
                 {
-                    "tokenid": 26,
-                    "pos": "NUM",
-                    "text": "2",
-                    "lemma": "2",
-                    "features": {
-                        "NumType": "Card"
-                    },
-                    "linebreak": false
-                },
-                {
                     "tokenid": 28,
                     "pos": "ADJ",
                     "text": "arid",
@@ -63030,16 +63009,6 @@
                     "linebreak": false
                 },
                 {
-                    "tokenid": 21,
-                    "pos": "NUM",
-                    "text": "3",
-                    "lemma": "3",
-                    "features": {
-                        "NumType": "Card"
-                    },
-                    "linebreak": false
-                },
-                {
                     "tokenid": 23,
                     "pos": "PART",
                     "text": "not",
@@ -69960,16 +69929,6 @@
         {
             "text": "4",
             "tokens": [
-                {
-                    "tokenid": 0,
-                    "pos": "NUM",
-                    "text": "4",
-                    "lemma": "4",
-                    "features": {
-                        "NumType": "Card"
-                    },
-                    "linebreak": true
-                }
             ]
         },
         {
@@ -75591,16 +75550,6 @@
                         "Number": "Sing",
                         "Person": "3",
                         "PronType": "Prs"
-                    },
-                    "linebreak": false
-                },
-                {
-                    "tokenid": 10,
-                    "pos": "NUM",
-                    "text": "5",
-                    "lemma": "5",
-                    "features": {
-                        "NumType": "Card"
                     },
                     "linebreak": false
                 },
@@ -89712,16 +89661,6 @@
                     "linebreak": false
                 },
                 {
-                    "tokenid": 246,
-                    "pos": "NUM",
-                    "text": "7",
-                    "lemma": "7",
-                    "features": {
-                        "NumType": "Card"
-                    },
-                    "linebreak": false
-                },
-                {
                     "tokenid": 248,
                     "pos": "PRON",
                     "text": "me",
@@ -97129,16 +97068,6 @@
         {
             "text": "8",
             "tokens": [
-                {
-                    "tokenid": 0,
-                    "pos": "NUM",
-                    "text": "8",
-                    "lemma": "8",
-                    "features": {
-                        "NumType": "Card"
-                    },
-                    "linebreak": true
-                }
             ]
         },
         {
@@ -101627,26 +101556,6 @@
         {
             "text": "1.",
             "tokens": [
-                {
-                    "tokenid": 0,
-                    "pos": "X",
-                    "text": "1",
-                    "lemma": "1",
-                    "features": {
-                        "NumType": "Ord"
-                    },
-                    "linebreak": false
-                },
-                {
-                    "tokenid": 1,
-                    "pos": "PUNCT",
-                    "text": ".",
-                    "lemma": ".",
-                    "features": {
-                        "PunctType": "Peri"
-                    },
-                    "linebreak": false
-                }
             ]
         },
         {
