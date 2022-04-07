@@ -1,7 +1,7 @@
 let promises = [
     d3.json("nlp/jsondata/sentAlignment3-28.json"),
-    d3.json("nlp/jsondata/sentsInOrder3-28.json"),
-    d3.json("nlp/jsondata/wordAlignment3-28.json"),
+    d3.json("nlp/jsondata/spanish/sentsInOrder4-7.json"),
+    d3.json("nlp/jsondata/spanish/wordAlignment4-7.json"),
     d3.json("nlp/jsondata/span_alignments.json"),
     d3.json("nlp/jsondata/eng_alignments.json"),
     d3.json("nlp/jsondata/span_lemmas.json"),
