@@ -24,20 +24,35 @@ class TextPanel {
 
 
         // APPEND SOURCE SENTENCES
-        function spacenospace(tokens, d, j) {
-            if (d.linebreak) {
-                return d.text + '<br><br>'
+        function spacenospace(tokens, thistoken, j) {
+            if (thistoken.linebreak) {
+                return thistoken.text + '<br><br>'
             }
             if (j < tokens.length-1) {
-                if ('.,)?'.includes(tokens[j+1].text)) {
-                    return d.text
+                var nexttoken = tokens[j+1]
+                if ('.,)?;'.includes(nexttoken.text)) {
+                    return thistoken.text
                 } 
+                if ((':' == nexttoken.text) || '...' == nexttoken.text) {
+                    return thistoken.text
+                }
+                if (('"' == nexttoken.text) && thistoken.text == ':') {
+                    return thistoken.text + ' '
+                } 
+                if (('"' == nexttoken.text) && thistoken.pos == 'PUNCT') {
+                    return thistoken.text
+                } 
+                if (('"' == thistoken.text) && nexttoken.text == '¿') {
+                    return thistoken.text
+                } 
+                if ('¿"'.includes(thistoken.text) && nexttoken.pos != 'PUNCT') {
+                    return thistoken.text
+                }
             } 
-            if ('(¿'.includes(d.text)) {
-                return d.text
+            if ('(¿'.includes(thistoken.text)) {
+                return thistoken.text
             }
-
-            return d.text + ' '
+            return thistoken.text + ' '
         }
 
         data.srcSentsInOrder.forEach(function (sent, i) {
