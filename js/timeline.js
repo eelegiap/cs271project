@@ -48,8 +48,8 @@ class Timeline{
         vis.cur_source_align = s;
         vis.cur_translation_align =t;
 
-        let source_length = vis.sent_order['srcSentsInOrder']['text'].length
-        let translation_length = vis.sent_order['tgtSentsInOrder']['text'].length
+        let source_length = vis.sent_order['srcSentsInOrder'].length
+        let translation_length = vis.sent_order['tgtSentsInOrder'].length
         vis.scale_source = d3.scaleLinear()
             .domain([0, source_length])
             .range([0, vis.width]);

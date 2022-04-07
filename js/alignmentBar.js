@@ -111,7 +111,7 @@ class AlignmentBar {
                 vis.cur_sent_idx = -1;
                 vis.pairs_to_print = [];
                 for (let i = 0; i < d[3].length; i++) {
-                    vis.pairs_to_print.push(vis.sent_order["srcSentsInOrder"]["text"][d[3][i]] + '<br>' + vis.sent_order["tgtSentsInOrder"]["text"][d[4][i]]);
+                    vis.pairs_to_print.push(vis.sent_order["srcSentsInOrder"][d[3][i]]["text"] + '<br>' + vis.sent_order["tgtSentsInOrder"][d[4][i]]["text"]);
                 }
                 vis.showNextExample();
         });
@@ -128,7 +128,7 @@ class AlignmentBar {
         vis.cur_sent_idx = -1;
         vis.pairs_to_print = [];
         for (let i = 0; i < d[3].length; i++) {
-            vis.pairs_to_print.push(vis.sent_order["srcSentsInOrder"]["text"][d[3][i]] + '<br>' + vis.sent_order["tgtSentsInOrder"]["text"][d[4][i]]);
+            vis.pairs_to_print.push(vis.sent_order["srcSentsInOrder"][d[3][i]]["text"] + '<br>' + vis.sent_order["tgtSentsInOrder"][d[4][i]]["text"]);
         }
         vis.showNextExample();
         align_rects.exit().remove()
