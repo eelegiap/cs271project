@@ -94,13 +94,13 @@ function switchSidebar(bar_type){
         createWordLevelSidebar();
     }
     else{
-        analysis_panel.innerHTML += "\t\t\t\t\t<div class=\"row-md-auto\" style=\"height: 30vh\">\n" +
+        analysis_panel.innerHTML += "\t\t\t\t\t<div class=\"row-md-auto\">\n" +
             "\t\t\t\t\t\t<p>Word Frequency</p>\n" +
             "\t\t\t\t\t</div>\n" +
-            "\t\t\t\t\t<div class=\"row-md-auto\" style=\"height: 30vh\">\n" +
+            "\t\t\t\t\t<div class=\"row-md-auto\">\n" +
             "\t\t\t\t\t\t<p>Sentence Length</p>\n" +
             "\t\t\t\t\t</div>\n" +
-            "\t\t\t\t\t<div class=\"row-md-auto\" style=\"height: 30vh\">\n" +
+            "\t\t\t\t\t<div class=\"row-md-auto\">\n" +
             "\t\t\t\t\t\t<p>Lexical Richness</p>\n" +
             "\t\t\t\t\t</div>"
         createSentenceLevelSidebar();
@@ -113,7 +113,6 @@ function dataProcessing(data) {
     let rawSource = [];
     let rawTrans = [];
 
-    //console.log(data);
     let sourceSentences = (data.srcSentsInOrder.tokens).map(function (d) {
         let result = {
             sentence: d
@@ -199,7 +198,6 @@ function dataProcessing(data) {
 
         }
 
-        console.log(output);
 
         let temp = Object.keys(output).map((key => [(key), output[key]]));
 
@@ -218,7 +216,6 @@ function dataProcessing(data) {
     sourceCount = (tally(rawSource));
     transCount = (tally(rawTrans));
 
-    console.log(rawSource);
 
 
     barchart = new BarChart("main-container", sourceCount);
