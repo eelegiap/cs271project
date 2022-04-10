@@ -139,7 +139,7 @@ class BarChart {
         vis.svg.select(".y-axis")
             .transition()
             .duration(800)
-            .call(vis.yAxis);
+            .call(vis.yAxis.ticks(3));
 
         // (5) Update the x-axis
         vis.svg.select(".x-axis")
