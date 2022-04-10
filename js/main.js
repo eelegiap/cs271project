@@ -87,13 +87,13 @@ function switchSidebar(bar_type){
         createWordLevelSidebar();
     }
     else{
-        analysis_panel.innerHTML += "\t\t\t\t\t<div class=\"row-md-auto\" style=\"height: 30vh\">\n" +
+        analysis_panel.innerHTML += "\t\t\t\t\t<div class=\"row-md-auto\">\n" +
             "\t\t\t\t\t\t<p>Word Frequency</p>\n" +
             "\t\t\t\t\t</div>\n" +
-            "\t\t\t\t\t<div class=\"row-md-auto\" style=\"height: 30vh\">\n" +
+            "\t\t\t\t\t<div class=\"row-md-auto\">\n" +
             "\t\t\t\t\t\t<p>Sentence Length</p>\n" +
             "\t\t\t\t\t</div>\n" +
-            "\t\t\t\t\t<div class=\"row-md-auto\" style=\"height: 30vh\">\n" +
+            "\t\t\t\t\t<div class=\"row-md-auto\">\n" +
             "\t\t\t\t\t\t<p>Lexical Richness</p>\n" +
             "\t\t\t\t\t</div>"
         createSentenceLevelSidebar();
