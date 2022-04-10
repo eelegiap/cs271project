@@ -40,7 +40,7 @@ function initMainPage(allDataArray) {
     raj_words = allDataArray[7];
 
     myText = new TextPanel(sent_order, word_align);
-    dataProcessing(raj_words)
+    createSentenceLevelSidebar();
 }
 
 
@@ -63,7 +63,7 @@ function createWordLevelSidebar(){
 }
 
 function createSentenceLevelSidebar(){
-    console.log("Placeholder for sentence level sidebar")
+    dataProcessing(raj_words);
 }
 
 function switchSidebar(bar_type){
@@ -94,14 +94,24 @@ function switchSidebar(bar_type){
         createWordLevelSidebar();
     }
     else{
-        analysis_panel.innerHTML += "\t\t\t\t\t<div class=\"row-md-auto\">\n" +
-            "\t\t\t\t\t\t<p>Word Frequency</p>\n" +
-            "\t\t\t\t\t</div>\n" +
-            "\t\t\t\t\t<div class=\"row-md-auto\">\n" +
-            "\t\t\t\t\t\t<p>Sentence Length</p>\n" +
-            "\t\t\t\t\t</div>\n" +
-            "\t\t\t\t\t<div class=\"row-md-auto\">\n" +
-            "\t\t\t\t\t\t<p>Lexical Richness</p>\n" +
+        analysis_panel.innerHTML += "\t\t\t<div class=\"row-md-auto\">\n" +
+            "\t\t\t\t\t\t<!-- * Column that holds the bar charts * -->\n" +
+            "\t\t\t\t\t\t<div class=\"col-8\" style=\"height: 25vh\">\n" +
+            "\t\t\t\t\t\t\t<p>Word Frequency</p>\n" +
+            "\t\t\t\t\t\t\t<label for=\"lang\">Choose a text:</label>\n" +
+            "\t\t\t\t\t\t\t<select name=\"lang\" id=\"lang\">\n" +
+            "\t\t\t\t\t\t\t\t<option value=\"source\">Source</option>\n" +
+            "\t\t\t\t\t\t\t\t<option value=\"trans\">Translation</option>\n" +
+            "\t\t\t\t\t\t\t</select>\n" +
+            "\n" +
+            "\t\t\t\t\t\t\t<label for=\"numb\">Number of elements:</label>\n" +
+            "\t\t\t\t\t\t\t<select name=\"numb\" id=\"numb\">\n" +
+            "\t\t\t\t\t\t\t\t<option value=5>5</option>\n" +
+            "\t\t\t\t\t\t\t\t<option value=10>10</option>\n" +
+            "\t\t\t\t\t\t\t\t<option value=15>15</option>\n" +
+            "\t\t\t\t\t\t\t</select>\n" +
+            "\t\t\t\t\t\t\t<div id=\"main-container\" style=\"height: 20vh\"></div>\n" +
+            "\t\t\t\t\t\t</div>\n" +
             "\t\t\t\t\t</div>"
         createSentenceLevelSidebar();
     }
