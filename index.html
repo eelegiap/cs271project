@@ -17,15 +17,15 @@
 	<body style="padding: 5vh">
 	<div class="container-fluid">
 		<div class="row" style="height: 80vh">
-			<div class="col-sm" id="srccol">
+			<div class="col-sm-4 one" id="srccol">
 				<h4>Source Text</h4>
 				<div id="srctext"></div>
 			</div>
-			<div class="col-sm" id="tgtcol">
+			<div class="col-sm-4 two" id="tgtcol">
 				<h4>Target Text</h4>
 				<div id="tgttext"></div>
 			</div>
-			<div class="col-sm">
+			<div class="col-sm-4 offset-sm-8 fixed-top three" id="analysisCol">
 				<h4>Analysis Panel</h4>
 				<div class="row" style="height: 10vh">
 					<form id="form">
@@ -34,13 +34,13 @@
 					</form>
 				</div>
 				<div id="aPanel">
-					<div class="row" style="height: 30vh">
+					<div class="row-md-auto">
 						<p>Word Frequency</p>
 					</div>
-					<div class="row" style="height: 30vh">
+					<div class="row"-md-auto>
 						<p>Sentence Length</p>
 					</div>
-					<div class="row" style="height: 30vh">
+					<div class="row-d-auto">
 						<p>Lexical Richness</p>
 					</div>
 				</div>

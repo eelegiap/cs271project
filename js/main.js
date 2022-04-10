@@ -65,21 +65,21 @@ function switchSidebar(bar_type){
         analysis_panel.removeChild(analysis_panel.firstChild);
     }
     if(bar_type == "wordlevel") {
-        analysis_panel.innerHTML += "<div class=\"row\" style=\"height: 80vh\">\n" +
+        analysis_panel.innerHTML += "<div class=\"row-md-auto\"\n" +
             "\t\t\t\t\t\t<div id=\"nextButton\"></div>\n" +
             "\t\t\t\t\t\t<div id=\"alignmentBar\" style=\"height: 5vh\">\n" +
             "\t\t\t\t\t\t</div>\n" +
             "\t\t\t\t\t\t<div id=\"alignmentTitle\">\n" +
             "\t\t\t\t\t\t</div>\n" +
-            "\t\t\t\t\t\t<div id=\"textArea\" style=\"height: 35vh\">\n" +
+            "\t\t\t\t\t\t<div id=\"textArea\">\n" +
             "\t\t\t\t\t\t</div>\n" +
             "\t\t\t\t\t</div>\n" +
-            "\t\t\t\t\t<div class=\"row\" style=\"height: 30vh\">\n" +
+            "\t\t\t\t\t<div class=\"row-md-auto\">\n" +
             "\t\t\t\t\t\t<table id='ngramtitle' style=\"width:100%; color: gray\"></table>\n" +
             "\t\t\t\t\t\t<div id='ngramviewer'>\n" +
             "\t\t\t\t\t\t</div>\n" +
             "\t\t\t\t\t</div>\n" +
-            "\t\t\t\t\t<div class=\"row\" style=\"height: 30vh\">\n" +
+            "\t\t\t\t\t<div class=\"row-md-auto\">\n" +
             "\t\t\t\t\t\t<div id=\"timeline\">\n" +
             "\t\t\t\t\t\t</div>\n" +
             "\t\t\t\t\t</div>\n" +
@@ -87,13 +87,13 @@ function switchSidebar(bar_type){
         createWordLevelSidebar();
     }
     else{
-        analysis_panel.innerHTML += "\t\t\t\t\t<div class=\"row\" style=\"height: 30vh\">\n" +
+        analysis_panel.innerHTML += "\t\t\t\t\t<div class=\"row-md-auto\" style=\"height: 30vh\">\n" +
             "\t\t\t\t\t\t<p>Word Frequency</p>\n" +
             "\t\t\t\t\t</div>\n" +
-            "\t\t\t\t\t<div class=\"row\" style=\"height: 30vh\">\n" +
+            "\t\t\t\t\t<div class=\"row-md-auto\" style=\"height: 30vh\">\n" +
             "\t\t\t\t\t\t<p>Sentence Length</p>\n" +
             "\t\t\t\t\t</div>\n" +
-            "\t\t\t\t\t<div class=\"row\" style=\"height: 30vh\">\n" +
+            "\t\t\t\t\t<div class=\"row-md-auto\" style=\"height: 30vh\">\n" +
             "\t\t\t\t\t\t<p>Lexical Richness</p>\n" +
             "\t\t\t\t\t</div>"
         createSentenceLevelSidebar();
