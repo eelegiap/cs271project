@@ -36,6 +36,26 @@
 				<div id="aPanel">
 					<div class="row-md-auto">
 						<p>Word Frequency</p>
+						<!-- * Column that holds the selectors * -->
+						<div class="col-4">
+							<label for="lang">Choose a text:</label>
+							<select name="lang" id="lang">
+								<option value="source">Source</option>
+								<option value="trans">Translation</option>
+							</select>
+
+							<label for="numb">Number of elements:</label>
+							<select name="numb" id="numb">
+								<option value=5>5</option>
+								<option value=10>10</option>
+								<option value=15>15</option>
+							</select>
+						</div>
+
+
+						<!-- * Column that holds the bar charts * -->
+						<div class="col-8" id="main-container" style="height: 20vh; width:100%;">
+						</div>
 					</div>
 					<div class="row"-md-auto>
 						<p>Sentence Length</p>
@@ -64,5 +84,6 @@
 	<script src="js/timeline.js"></script>
 	<script src="js/text.js"></script>
 	<script src="js/ngrams.js"></script>
+	<script src="js/barchart.js"></script>
 	</body>
 </html>
