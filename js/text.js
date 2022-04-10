@@ -119,13 +119,6 @@ class TextPanel {
         })
         var totalcharcount = srccharcount + tgtcharcount
 
-        // MAKE SURE CORRECT WIDTH
-        var srccolwidth = parseInt(srccharcount / totalcharcount * ($(window).width() - 100) * .66)
-        var tgtcolwidth = parseInt(tgtcharcount / totalcharcount * ($(window).width() - 100) * .66)
-        var analysiswidth = parseInt(($(window).width() - 100) * .33)
-
-        d3.select('.wrapper').style('grid-template-columns', `${srccolwidth}px ${tgtcolwidth}px ${analysiswidth}px`)
-
         let wadata = vis.word_align;
 
         var src2tgt = Object()
