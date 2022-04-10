@@ -24,3 +24,7 @@ iframe.previewhtml {
 .token mark {
     display: contents;
 }
+
+#analysisCol{
+    margin-top: 50px;
+}
