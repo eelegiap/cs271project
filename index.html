@@ -27,7 +27,7 @@
 			</div>
 			<div class="col-sm-4 offset-sm-8 fixed-top three" id="analysisCol">
 				<h4>Analysis Panel</h4>
-				<div class="row" style="height: 10vh">
+				<div class="row" style="height: 8vh">
 					<form id="form">
 						<input type="radio" name="level" value="sentlevel" checked> Sentence Level<br>
 						<input type="radio" name="level" value="wordlevel"> Word Level
@@ -35,13 +35,23 @@
 				</div>
 				<div id="aPanel">
 					<div class="row-md-auto">
-						<p>Word Frequency</p>
-					</div>
-					<div class="row"-md-auto>
-						<p>Sentence Length</p>
-					</div>
-					<div class="row-d-auto">
-						<p>Lexical Richness</p>
+						<!-- * Column that holds the bar charts * -->
+						<div class="col-8" style="height: 25vh">
+							<p>Word Frequency</p>
+							<label for="lang">Choose a text:</label>
+							<select name="lang" id="lang">
+								<option value="source">Source</option>
+								<option value="trans">Translation</option>
+							</select>
+
+							<label for="numb">Number of elements:</label>
+							<select name="numb" id="numb">
+								<option value=5>5</option>
+								<option value=10>10</option>
+								<option value=15>15</option>
+							</select>
+							<div id="main-container" style="height: 20vh"></div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -64,5 +74,7 @@
 	<script src="js/timeline.js"></script>
 	<script src="js/text.js"></script>
 	<script src="js/ngrams.js"></script>
+	<script src="js/barchart.js"></script>
+	<script src="js/dataProcessing.js"></script>
 	</body>
 </html>
