@@ -1,4 +1,4 @@
-let src_lang = "russian";
+let src_lang = "spanish";
 let tgt_lang = "english"
 
 let promises = [

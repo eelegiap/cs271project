@@ -2,8 +2,8 @@
 
 function dataProcessing(data) {
 
-    let sourceSentences = (data.srcSentsInOrder).map(function (d) { return d.tokens; })
-    let transSentences = (data.tgtSentsInOrder).map(function (d) { return d.tokens })
+    let sourceSentences = data.srcSentsInOrder.tokens
+    let transSentences = data.tgtSentsInOrder.tokens
 
     function tally(sentTokenList) {
         let tf = {}
