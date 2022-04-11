@@ -22,11 +22,20 @@ class TextPanel {
         var srccharcount = 0;
         var tgtcharcount = 0;
 
+        let src_linebreak = 0;
+        let tgt_linebreak = 0;
 
         // APPEND SOURCE SENTENCES
-        function spacenospace(tokens, thistoken, j) {
+        function spacenospace(tokens, thistoken, j, type_str) {
             if (thistoken.linebreak) {
+                if (type_str == "src"){
+                    src_linebreak += 1;
+                }
+                else{
+                    tgt_linebreak += 1;
+                }
                 return thistoken.text + '<br><br>'
+
             }
             if (j < tokens.length-1) {
                 var nexttoken = tokens[j+1]
@@ -81,7 +90,7 @@ class TextPanel {
                     return 'srcsent' + i + 'token' + j
                 })
                 .html(function (d,j) {
-                    return spacenospace(tokens, d, j)
+                    return spacenospace(tokens, d, j, "src")
                 })
                 .style('background-color', 'white')
         })
@@ -113,18 +122,25 @@ class TextPanel {
                     return ('tgtsent' + i + 'token' + j)
                 })
                 .html(function (d, j) {
-                    return spacenospace(tokens, d, j)
+                    return spacenospace(tokens, d, j, "tgt")
                 })
                 .style('background-color', 'white')
         })
-        var totalcharcount = srccharcount + tgtcharcount
+        var totalcharcount = srccharcount + tgtcharcount;
+
+        let line_break = src_linebreak - tgt_linebreak;
+        let char_per_break_est = 75;
 
         // MAKE SURE CORRECT WIDTH
-        var srccolwidth = parseInt(srccharcount / totalcharcount * ($(window).width() - 100) * .66)
-        var tgtcolwidth = parseInt(tgtcharcount / totalcharcount * ($(window).width() - 100) * .66)
-        var analysiswidth = parseInt(($(window).width() - 100) * .33)
+        var srccolwidth = (srccharcount + line_break * char_per_break_est)/ (totalcharcount + line_break * char_per_break_est) * 100;
+        var tgtcolwidth = 100 - srccolwidth;
 
-        d3.select('.wrapper').style('grid-template-columns', `${srccolwidth}px ${tgtcolwidth}px ${analysiswidth}px`)
+
+        d3.select("#srccol").attr("style", "width: " + srccolwidth + "%");
+        d3.select("#tgtcol").attr("style", "width: " + tgtcolwidth + "%");
+
+        console.log(srccolwidth)
+        console.log(tgtcolwidth)
 
         let wadata = vis.word_align;
 
