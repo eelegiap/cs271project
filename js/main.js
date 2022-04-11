@@ -6,7 +6,7 @@ let promises = [
     d3.json("nlp/jsondata/eng_alignments.json"),
     d3.json("nlp/jsondata/span_lemmas.json"),
     d3.json("nlp/jsondata/eng_lemmas.json"),
-    d3.json("nlp/jsondata/spanish/wordJSON.json"),
+    d3.json("nlp/jsondata/spanish/sentsInOrder4-7.json"),
 ];
 
 Promise.all(promises)
