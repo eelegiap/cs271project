@@ -1,12 +1,14 @@
+let src_lang = "spanish";
+let tgt_lang = "english"
+
 let promises = [
-    d3.json("nlp/jsondata/sentAlignment3-28.json"),
-    d3.json("nlp/jsondata/spanish/sentsInOrder4-7.json"),
-    d3.json("nlp/jsondata/spanish/wordAlignment4-7.json"),
-    d3.json("nlp/jsondata/span_alignments.json"),
-    d3.json("nlp/jsondata/eng_alignments.json"),
-    d3.json("nlp/jsondata/span_lemmas.json"),
-    d3.json("nlp/jsondata/eng_lemmas.json"),
-    d3.json("nlp/jsondata/spanish/sentsInOrder4-7.json"),
+    d3.json("nlp/jsondata/"+ src_lang +"/sentAlignment.json"),
+    d3.json("nlp/jsondata/"+ src_lang +"/sentsInOrder.json"),
+    d3.json("nlp/jsondata/"+ src_lang +"/wordAlignment.json"),
+    d3.json("nlp/jsondata/"+ src_lang +"/alignments.json"),
+    d3.json("nlp/jsondata/"+ tgt_lang +"/alignments.json"),
+    d3.json("nlp/jsondata/"+ src_lang +"/lemmas.json"),
+    d3.json("nlp/jsondata/"+ tgt_lang +"/lemmas.json"),
 ];
 
 Promise.all(promises)
@@ -37,8 +39,8 @@ function initMainPage(allDataArray) {
     translation_align = allDataArray[4];
     source_lemmas = allDataArray[5];
     translation_lemmas = allDataArray[6];
-    raj_words = allDataArray[7];
 
+    console.log(sent_order)
     myText = new TextPanel(sent_order, word_align);
     createSentenceLevelSidebar();
 }
@@ -63,7 +65,7 @@ function createWordLevelSidebar(){
 }
 
 function createSentenceLevelSidebar(){
-    dataProcessing(raj_words);
+    dataProcessing(sent_order);
 }
 
 function switchSidebar(bar_type){
@@ -118,6 +120,19 @@ function switchSidebar(bar_type){
 
 }
 
-
-
+function change_language_selection(lang){
+    src_lang = lang;
+    let promises = [
+        d3.json("nlp/jsondata/"+ src_lang +"/sentAlignment.json"),
+        d3.json("nlp/jsondata/"+ src_lang +"/sentsInOrder.json"),
+        d3.json("nlp/jsondata/"+ src_lang +"/wordAlignment.json"),
+        d3.json("nlp/jsondata/"+ src_lang +"/alignments.json"),
+        d3.json("nlp/jsondata/"+ tgt_lang +"/alignments.json"),
+        d3.json("nlp/jsondata/"+ src_lang +"/lemmas.json"),
+        d3.json("nlp/jsondata/"+ tgt_lang +"/lemmas.json"),
+    ];
+    Promise.all(promises)
+        .then( function(data){ initMainPage(data) })
+        .catch( function (err){console.log(err)} );
+}
 
