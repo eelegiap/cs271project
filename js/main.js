@@ -1,4 +1,4 @@
-let src_lang = "spanish";
+let src_lang = "russian";
 let tgt_lang = "english"
 
 let promises = [
@@ -6,9 +6,9 @@ let promises = [
     d3.json("nlp/jsondata/"+ src_lang +"/sentsInOrder.json"),
     d3.json("nlp/jsondata/"+ src_lang +"/wordAlignment.json"),
     d3.json("nlp/jsondata/"+ src_lang +"/alignments.json"),
-    d3.json("nlp/jsondata/"+ tgt_lang +"/alignments.json"),
+    d3.json("nlp/jsondata/"+ tgt_lang +"/"+ src_lang +"/alignments.json"),
     d3.json("nlp/jsondata/"+ src_lang +"/lemmas.json"),
-    d3.json("nlp/jsondata/"+ tgt_lang +"/lemmas.json"),
+    d3.json("nlp/jsondata/"+ tgt_lang +"/"+ src_lang +"/lemmas.json"),
 ];
 
 Promise.all(promises)
@@ -127,9 +127,9 @@ function change_language_selection(lang){
         d3.json("nlp/jsondata/"+ src_lang +"/sentsInOrder.json"),
         d3.json("nlp/jsondata/"+ src_lang +"/wordAlignment.json"),
         d3.json("nlp/jsondata/"+ src_lang +"/alignments.json"),
-        d3.json("nlp/jsondata/"+ tgt_lang +"/alignments.json"),
+        d3.json("nlp/jsondata/"+ tgt_lang +"/"+ src_lang +"/alignments.json"),
         d3.json("nlp/jsondata/"+ src_lang +"/lemmas.json"),
-        d3.json("nlp/jsondata/"+ tgt_lang +"/lemmas.json"),
+        d3.json("nlp/jsondata/"+ tgt_lang +"/"+ src_lang +"/lemmas.json"),
     ];
     Promise.all(promises)
         .then( function(data){ initMainPage(data) })

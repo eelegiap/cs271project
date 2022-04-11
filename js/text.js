@@ -63,14 +63,13 @@ class TextPanel {
             }
             return thistoken.text + ' '
         }
-
-        data.srcSentsInOrder.forEach(function (sent, i) {
+        data.srcSentsInOrder.text.forEach(function (sent, i) {
             srcdiv
                 .append('span')
                 .attr('id', 'srcsent' + i)
                 .attr('class', 'sentence chosen')
 
-            var tokens = data.srcSentsInOrder[i].tokens
+            var tokens = data.srcSentsInOrder.tokens[i]
             // var tokenshtml = ''
             tokens.forEach(function (t, j) {
                 srccharcount += t.text.length
@@ -96,13 +95,13 @@ class TextPanel {
         })
 
         // APPEND TARGET SENTENCES
-        data.tgtSentsInOrder.forEach(function (sent, i) {
+        data.tgtSentsInOrder.text.forEach(function (sent, i) {
             tgtdiv
                 .append('span')
                 .attr('id', 'tgtsent' + i)
                 .attr('class', 'sentence chosen')
 
-            var tokens = data.tgtSentsInOrder[i].tokens
+            var tokens = data.tgtSentsInOrder.tokens[i]
 
             tokens.forEach(function (t) {
                 tgtcharcount += t.text.length
