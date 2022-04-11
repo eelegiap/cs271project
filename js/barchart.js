@@ -23,10 +23,10 @@ class BarChart {
      */
     initVis() {
         let vis = this;
-        vis.margin = {top: 20, right: 100, bottom: 100, left: 100};
+        vis.margin = { top: 10, right: 100, bottom: 100, left: 70 };
 
         // Dynamically instantiate width and height of vis
-        vis.width =  (document.getElementById(this.parentElement).getBoundingClientRect().width) - (vis.margin.left - vis.margin.right);
+        vis.width = (document.getElementById(this.parentElement).getBoundingClientRect().width) - (vis.margin.left - vis.margin.right);
         vis.height = (document.getElementById(this.parentElement).getBoundingClientRect().height) - (vis.margin.top - vis.margin.bottom);
 
         // SVG drawing area
@@ -68,37 +68,34 @@ class BarChart {
         vis.svg.append("g")
             .attr("class", "x-axis axis");
 
-        // Labelling axis https://stackoverflow.com/questions/11189284/d3-axis-labeling
-        vis.svg.append("text")
-            .attr("class", "x label genText")
-            .attr("text-anchor", "end")
-            .attr("x", vis.width/2)
-            .attr("y", vis.height + 50)
-            .text("Date");
+        vis.tooltip = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
 
         vis.svg.append("text")
             .attr("class", "y label genText")
-            .attr("text-anchor", "end")
-            .attr("y", 6)
+            .attr("text-anchor", "right")
+            .attr("transform", "rotate(-90)")
+            .attr("y", vis.margin.left - 25)
+            .attr("x", (0 - vis.height / 2))
             .attr("dy", "-5em")
             .attr("dx", "-5em")
-            .attr("transform", "rotate(-90)")
-            .text("Weighted Frequency");
+            .text("TF-IDF Frequency");
 
         // (Filter, aggregate, modify data)
         vis.wrangleData();
     }
 
     /*
-	 * Data wrangling
-	 */
+     * Data wrangling
+     */
 
     wrangleData() {
         let vis = this;
 
         displayData = vis.data;
 
-        displayData = displayData.filter(function(d, index) {
+        displayData = displayData.filter(function (d, index) {
             return index < splAmt;
         })
 
@@ -118,28 +115,47 @@ class BarChart {
         vis.svg.selectAll("rect").remove();
 
         // (1) Update domains
-        vis.y.domain([0, d3.max((displayData).map(a => a[1]))]);
+        vis.y.domain([0, d3.max((displayData).map(a => a.tfidf))]);
         vis.x
-            .domain((displayData).map(b => b[0]))
+            .domain((displayData).map(b => b.lemma))
             .padding(0.2);
 
         // (2) Draw rectangles
-        vis.svg.selectAll("." + rectClassName).data(displayData)
+        vis.bars = vis.svg.selectAll("." + rectClassName).data(displayData)
             .enter().append("rect")
             .attr("class", "bar")
             .attr("width", (vis.x).bandwidth())
-            .attr("x", function(d) { return vis.x(d[0]) })
-            .attr("y", function(d) {return ((vis.y(d[1]))); })
+            .attr("x", function (d) { return vis.x(d.lemma) })
+            .attr("y", function (d) { return ((vis.y(d.tfidf))); })
+        vis.bars
             .transition() // <---- Here is the transition
-            .duration(2000) // 2 seconds
-            .attr("height", function(d) {return (vis.height - (vis.y(d[1]))); })
-            .attr("fill", "#00FFFF");
+            .duration(1000) // 2 seconds
+            .attr("height", function (d) { return (vis.height - (vis.y(d.tfidf))); })
+            .attr("fill", "#00FFFF")
+
+        vis.bars.on("mouseover", function (event, d) {
+            d3.select(this).transition().duration(200).attr('fill','#00cccc')
+            console.log(d)
+            vis.tooltip.transition()
+                .duration(200)
+                .style("opacity", .9);
+            vis.tooltip.html(`Occurs ${d.tf} times in <br>${d.df} sentences.`)
+                .style("left", (event.pageX) + "px")
+                .style("top", (event.pageY) + "px");
+        })
+            .on("mouseout", function (d) {
+                d3.select(this).transition().duration(200).attr('fill','#00FFFF')
+
+                vis.tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            });
 
         // (4) Update the y-axis
         vis.svg.select(".y-axis")
             .transition()
             .duration(800)
-            .call(vis.yAxis.ticks(3));
+            .call(vis.yAxis.ticks(10));
 
         // (5) Update the x-axis
         vis.svg.select(".x-axis")
@@ -148,8 +164,11 @@ class BarChart {
             .duration(800)
             .call(vis.xAxis)
             .selectAll("text")
-            .attr("font-size", "small");
-
+            .attr("font-size", "small")
+            .attr('dy', "-.5em")
+            .attr("dx", "1em")
+            .attr("transform", "rotate(90)")
+            .style("text-anchor", "start");
     }
 
     langSelectionChanged(selectData) {

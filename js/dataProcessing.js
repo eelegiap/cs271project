@@ -1,119 +1,77 @@
 
 
 function dataProcessing(data) {
-    let rawSource = [];
-    let rawTrans = [];
 
-    let sourceSentences = (data.srcSentsInOrder.tokens).map(function (d) {
-        let result = {
-            sentence: d
-        }
-        return result;
-    })
-    sourceSentences.forEach(sentence => {
-        for(let i = 0; i < sentence["sentence"].length; i++)
-        {
-            rawSource.push(sentence["sentence"][i]["lemma"]);
-        }
-    })
+    let sourceSentences = (data.srcSentsInOrder).map(function (d) { return d.tokens; })
+    let transSentences = (data.tgtSentsInOrder).map(function (d) { return d.tokens })
 
-    let transSentences = (data.tgtSentsInOrder.tokens).map(function (d) {
-        let result = {
-            sentence: d
-        }
-        return result;
-    })
-    transSentences.forEach(sentence => {
-        for(let i = 0; i < sentence["sentence"].length; i++)
-        {
-            rawTrans.push(sentence["sentence"][i]["lemma"]);
-        }
-    })
+    function tally(sentTokenList) {
+        let tf = {}
+        let df = {}
+        let tfidf = {}
 
-    function tally(data) {
-
-        let sentences = [];
-        let sentIndex = 0;
-        for(let j=0; j < data.length; j++) {
-            let word = data[j];
-            if(sentences[sentIndex] == undefined)
-                sentences[sentIndex] = "";
-
-            if(word ==".") {
-                sentIndex++;
+        let totalTokens = 0
+        sentTokenList.forEach(function (tokens) {
+            if (tokens == undefined) {
+                console.log(tokens)
+            } else {
+                tokens.forEach(function (t) {
+                    totalTokens += 1
+                    if (!tf.hasOwnProperty(t.lemma)) {
+                        tf[t.lemma] = 1
+                        df[t.lemma] = 0
+                        tfidf[t.lemma] = 0
+                    } else {
+                        tf[t.lemma] += 1
+                    }
+                })
             }
-            else{
-                sentences[sentIndex] = sentences[sentIndex] + " " + word;
+        })
+
+        sentTokenList.forEach(function (tokens) {
+            let lemmasInSent = new Set()
+            if (tokens == undefined) {
+                console.log(tokens)
+            } else {
+                tokens.forEach(function (t) {
+                    lemmasInSent.add(t.lemma)
+                })
+                lemmasInSent.forEach(function (l) {
+                    df[l] += 1
+                })
             }
-        }
-
-        let output = {};
-
-        for(let i=0; i < data.length; i++) {
-            let word = data[i];
-
-            if(output[word] === undefined) {
-                output[word] = 1;
-            }
-            else {
-                output[word] += 1;
+        })
+        for (const lemma of Object.keys(tfidf)) {
+            if (df[lemma] == 0) {
+                tfidf[lemma] = 0
+            } else {
+                tfidf[lemma] = Math.log(1+tf[lemma]) * Math.log(1 + sentTokenList.length/df[lemma])
             }
         }
 
-
-        let idf = {};
-        let lemmas = Object.keys(output);
-
-        for(let k=0; k<sentences.length; k++) {
-            for(let m=0; m<lemmas.length; m++) {
-                let word = lemmas[m];
-                let tempArray = sentences[k].split(" ");
-
-                if(idf[word] == undefined) {
-                    idf[word] = 0;
-                }
-
-                if(tempArray.indexOf(word) != -1) {
-                    idf[word] += 1;
-                }
+        let temp = Object.keys(tfidf).map(function(key) {
+            return {
+            'lemma' : key, 'tfidf' : tfidf[key], 'tf' : tf[key], 'df' : df[key]
             }
-        }
-
-        for(let y=0; y<lemmas.length; y++) {
-            let word = lemmas[y];
-
-            if(idf[word] == 0) {
-                output[word] = 0;
-            }
-            output[word] = (output[word])/(idf[word]);
-
-        }
-
-
-        let temp = Object.keys(output).map((key => [(key), output[key]]));
-
-
+        });
         let filtered = temp.filter(function(d) {
-            d = d[0];
+            d = d.lemma;
             return filterTriggers.indexOf(d) == -1;
-
         })
 
         return filtered.sort(function (a, b) {
-            return b[1] - a[1];
+            return b.tfidf - a.tfidf;
         })
     }
 
-    sourceCount = (tally(rawSource));
-    transCount = (tally(rawTrans));
-
-
+    sourceCount = (tally(sourceSentences));
+    transCount = (tally(transSentences));
 
     barchart = new BarChart("main-container", sourceCount);
 
     document.getElementById("lang").onchange = function () {
         let selectLang = document.getElementById("lang").value;
-        if(selectLang == "source") {
+        if (selectLang == "source") {
             barchart.langSelectionChanged(sourceCount);
         }
         else {
