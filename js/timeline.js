@@ -17,7 +17,10 @@ class Timeline{
 
     initVis() {
         let vis = this;
-        vis.margin = {top: 20, right: 40, bottom: 20, left: 20};
+
+        vis.shift = 50;
+
+        vis.margin = {top: 5, right: 20, bottom: 20, left: 40};
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = 100 - vis.margin.top - vis.margin.bottom;
 
@@ -34,11 +37,23 @@ class Timeline{
 
         vis.line = vis.svg.append("line");
         vis.line
-            .attr("x1", 0)
+            .attr("x1", vis.shift)
             .attr("x2", vis.width)
             .attr("y1", 30)
             .attr("y2",30)
             .attr("stroke","black");
+
+        vis.src_label = vis.svg.append("text");
+        vis.src_label.text(vis.cur_source_align)
+            .attr("style", "vertical-align: middle;")
+            .attr("y", 15)
+            .attr("x", 0)
+
+        vis.trans_label = vis.svg.append("text");
+        vis.trans_label.text(vis.cur_translation_align)
+            .attr("style", "vertical-align: middle;")
+            .attr("y", 55)
+            .attr("x", 0)
 
         vis.updateVis(vis.cur_source_align, vis.cur_translation_align);
     }
@@ -48,14 +63,17 @@ class Timeline{
         vis.cur_source_align = s;
         vis.cur_translation_align =t;
 
+        vis.src_label.text(vis.cur_source_align)
+        vis.trans_label.text(vis.cur_translation_align)
+
         let source_length = vis.sent_order['srcSentsInOrder'].length
         let translation_length = vis.sent_order['tgtSentsInOrder'].length
         vis.scale_source = d3.scaleLinear()
             .domain([0, source_length])
-            .range([0, vis.width]);
+            .range([vis.margin.left+vis.shift, vis.width]);
         vis.scale_translation = d3.scaleLinear()
             .domain([0, translation_length])
-            .range([vis.margin.left, vis.width]);
+            .range([vis.margin.left+vis.shift, vis.width]);
 
 
         vis.data_source = vis.source_align[vis.cur_source_align][1];
