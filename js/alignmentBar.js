@@ -78,6 +78,7 @@ class AlignmentBar {
                 d3.select(this)
                     .attr('stroke-width', '2px')
                     .attr('stroke', 'black')
+                    .style('cursor', 'pointer')
                 vis.tooltip
                     .style("opacity", 1)
                     .style("left", event.pageX + 40 + "px")
