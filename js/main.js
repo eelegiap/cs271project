@@ -15,7 +15,9 @@ let transCount = [];
 let filterTriggers = ['!', "'", '"', "#", "$", "¿", "%", ',', ".",
     "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", ";", "»", ":"];
 
-let word_level_html = "<div class=\"row-md-auto\"\n" +
+let word_level_html = "" +
+    "<div class=\"row-md-auto\">\n" +
+    "\t\t\t\t\t\t<h6>Alignment Explorer</h6>\n" +
     "\t\t\t\t\t\t<div id=\"nextButton\"></div>\n" +
     "\t\t\t\t\t\t<div id=\"alignmentBar\" style=\"height: 5vh\">\n" +
     "\t\t\t\t\t\t</div>\n" +
@@ -24,12 +26,13 @@ let word_level_html = "<div class=\"row-md-auto\"\n" +
     "\t\t\t\t\t\t<div id=\"textArea\">\n" +
     "\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t<div class=\"row-md-auto\">\n" +
+    "\t\t\t\t\t<div class=\"row\" style='height: 18vh;'>\n" +
+    "\t\t\t\t\t\t<h6>Position in Text</h6>\n" +
     "\t\t\t\t\t\t<div id=\"timeline\">\n" +
     "\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t<div class=\"row-md-auto\">\n" +
-    "\t\t\t\t\t\t<table id='ngramtitle' style=\"width:100%; color: gray\"></table>\n" +
+    "\t\t\t\t\t<div class=\"row\">\n" +
+    "\t\t\t\t\t\t<h6>Google N-Gram Viewer</h6>\n" +
     "\t\t\t\t\t\t<div id='ngramviewer'>\n" +
     "\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t</div>\n" +

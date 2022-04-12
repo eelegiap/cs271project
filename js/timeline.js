@@ -17,7 +17,7 @@ class Timeline{
 
     initVis() {
         let vis = this;
-        vis.margin = {top: 20, right: 40, bottom: 20, left: 20};
+        vis.margin = {top: 5, right: 20, bottom: 20, left: 40};
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = 100 - vis.margin.top - vis.margin.bottom;
 
@@ -60,6 +60,16 @@ class Timeline{
 
         vis.data_source = vis.source_align[vis.cur_source_align][1];
         vis.data_translation =vis.translation_align[vis.cur_translation_align][2];
+
+        let labels = vis.svg.selectAll(".label-text").data([vis.cur_source_align, vis.cur_translation_align, ]);
+
+        labels.enter()
+            .append('text')
+            .text(function(d){return d})
+            .attr("y", function(d, i){return i*50 + 20})
+            .attr("x", -10)
+
+        labels.exit().remove();
 
         let timeline_dots_source = vis.svg.selectAll('.timeline_dots_source')
             .data(vis.data_source)
