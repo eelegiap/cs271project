@@ -6,7 +6,6 @@ let promises = [
     d3.json("nlp/jsondata/eng_alignments.json"),
     d3.json("nlp/jsondata/span_lemmas.json"),
     d3.json("nlp/jsondata/eng_lemmas.json"),
-    d3.json("nlp/jsondata/spanish/sentsInOrder4-7.json"),
 ];
 
 Promise.all(promises)
@@ -37,7 +36,6 @@ function initMainPage(allDataArray) {
     translation_align = allDataArray[4];
     source_lemmas = allDataArray[5];
     translation_lemmas = allDataArray[6];
-    raj_words = allDataArray[7];
 
     myText = new TextPanel(sent_order, word_align);
     createSentenceLevelSidebar();
@@ -63,7 +61,7 @@ function createWordLevelSidebar(){
 }
 
 function createSentenceLevelSidebar(){
-    dataProcessing(raj_words);
+    dataProcessing(sent_order);
 }
 
 function switchSidebar(bar_type){
