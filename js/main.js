@@ -25,12 +25,12 @@ let word_level_html = "<div class=\"row-md-auto\"\n" +
     "\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t<div class=\"row-md-auto\">\n" +
-    "\t\t\t\t\t\t<table id='ngramtitle' style=\"width:100%; color: gray\"></table>\n" +
-    "\t\t\t\t\t\t<div id='ngramviewer'>\n" +
+    "\t\t\t\t\t\t<div id=\"timeline\">\n" +
     "\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t<div class=\"row-md-auto\">\n" +
-    "\t\t\t\t\t\t<div id=\"timeline\">\n" +
+    "\t\t\t\t\t\t<table id='ngramtitle' style=\"width:100%; color: gray\"></table>\n" +
+    "\t\t\t\t\t\t<div id='ngramviewer'>\n" +
     "\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t</div>\n" +
     "\t\t\t\t</div>";
