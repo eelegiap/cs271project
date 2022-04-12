@@ -18,9 +18,9 @@ class Timeline{
     initVis() {
         let vis = this;
 
-        vis.shift = 50;
+        vis.shift = 100;
 
-        vis.margin = {top: 5, right: 20, bottom: 20, left: 40};
+        vis.margin = {top: 5, right: 20, bottom: 20, left: 0};
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = 100 - vis.margin.top - vis.margin.bottom;
 
@@ -89,7 +89,7 @@ class Timeline{
             .attr("cx", function(d){return vis.scale_source(d)})
             .attr("cy", 10)
             .attr("r", 5)
-            .attr("fill", "lightgrey")
+            .attr("fill", "rgb(31,121,211)")
 
         timeline_dots_source.exit().remove()
 
@@ -103,7 +103,7 @@ class Timeline{
             .attr("cx", function(d){return vis.scale_translation(d)})
             .attr("cy", 50)
             .attr("r", 5)
-            .attr("fill", "grey")
+            .attr("fill", "rgb(209,38,38)")
 
         timeline_dots_translation.exit().remove()
 
