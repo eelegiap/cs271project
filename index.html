@@ -38,18 +38,22 @@
 				</div>
 			</div>
 			<div class="col-sm-4 offset-sm-8 fixed-top three" id="analysisCol">
-				<h4>Analysis Panel</h4>
 				<div class="row" style="height: 8vh">
-					<form id="form">
-						<input type="radio" name="level" value="sentlevel" checked> Sentence Level<br>
-						<input type="radio" name="level" value="wordlevel"> Word Level
-					</form>
+					<div class="col-sm-auto">
+						<h4>Analysis Panel</h4>
+					</div>
+					<div class="col-sm-auto">
+						<select name="level" id="level_select" onchange="change_level(value)">
+							<option value="sentlevel" selected="selected">Document Level</option>
+							<option value="wordlevel">Word Level</option>
+						</select>
+					</div>
 				</div>
 				<div id="aPanel">
 					<div class="row-md-auto">
 						<!-- * Column that holds the bar charts * -->
 						<div class="col-8" style="height: 25vh">
-							<p>Word Frequency</p>
+							<h6>Word Frequency</h6>
 							<label for="lang">Choose a text:</label>
 							<select name="lang" id="lang">
 								<option value="source">Source</option>

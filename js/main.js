@@ -41,7 +41,7 @@ let word_level_html = "" +
 let sent_level_html = "\t\t\t<div class=\"row-md-auto\">\n" +
     "\t\t\t\t\t\t<!-- * Column that holds the bar charts * -->\n" +
     "\t\t\t\t\t\t<div class=\"col-8\" style=\"height: 25vh\">\n" +
-    "\t\t\t\t\t\t\t<p>Word Frequency</p>\n" +
+    "\t\t\t\t\t\t\t<h6>Word Frequency</h6>\n" +
     "\t\t\t\t\t\t\t<label for=\"lang\">Choose a text:</label>\n" +
     "\t\t\t\t\t\t\t<select name=\"lang\" id=\"lang\">\n" +
     "\t\t\t\t\t\t\t\t<option value=\"source\">Source</option>\n" +
@@ -157,5 +157,18 @@ function change_language_selection(lang){
     Promise.all(promises)
         .then( function(data){ initMainPage(data) })
         .catch( function (err){console.log(err)} );
+}
+
+function change_level(value){
+    // handle radio buttons
+    console.log("HEY")
+    if (value == 'wordlevel') {
+        d3.selectAll('.sentence').classed('chosen', false)
+        d3.selectAll('.token').classed('chosen', true)
+    } else {
+        d3.selectAll('.sentence').classed('chosen', true)
+        d3.selectAll('.token').classed('chosen', false)
+    }
+    switchSidebar(value);
 }
 

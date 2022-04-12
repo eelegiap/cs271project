@@ -172,15 +172,7 @@ class TextPanel {
 
         // handle radio buttons
         d3.selectAll(("input[name='level']")).on("change", function () {
-            if (this.value == 'wordlevel') {
-                d3.selectAll('.sentence').classed('chosen', false)
-                d3.selectAll('.token').classed('chosen', true)
-            } else {
-                d3.selectAll('.sentence').classed('chosen', true)
-                d3.selectAll('.token').classed('chosen', false)
-            }
             vis.radio_value = this.value;
-            switchSidebar(vis.radio_value);
         })
 
         // HOVER SENTENCES
