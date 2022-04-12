@@ -135,7 +135,6 @@ class BarChart {
 
         vis.bars.on("mouseover", function (event, d) {
             d3.select(this).transition().duration(200).attr('fill','#00cccc')
-            console.log(d)
             vis.tooltip.transition()
                 .duration(200)
                 .style("opacity", .9);
