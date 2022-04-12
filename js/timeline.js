@@ -9,8 +9,8 @@ class Timeline{
         this.parentElement = parentElement;
         this.source_align = source_align;
         this.translation_align = translation_align;
-        this.cur_source_align = "mi";
-        this.cur_translation_align = "my";
+        this.cur_source_align = sent_order.srcSentsInOrder[0].tokens[0].lemma.toLowerCase().trim();
+        this.cur_translation_align = sent_order.tgtSentsInOrder[0].tokens[0].lemma.toLowerCase().trim();
         this.sent_order = sent_order;
         this.initVis()
     }

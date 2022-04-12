@@ -138,8 +138,6 @@ class TextPanel {
         d3.select("#srccol").attr("style", "width: " + srccolwidth + "%");
         d3.select("#tgtcol").attr("style", "width: " + tgtcolwidth + "%");
 
-        console.log(srccolwidth)
-        console.log(tgtcolwidth)
 
         let wadata = vis.word_align;
 
