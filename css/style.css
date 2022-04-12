@@ -2,7 +2,7 @@
     background-color: lightgrey;
 }
 .token {
-    cursor: pointer;
+    cursor: default;
     border-radius: 5px;
 }
 
