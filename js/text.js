@@ -8,6 +8,8 @@ class TextPanel {
 
     initVis() {
         let vis = this;
+
+        vis.radio_value = "wordlevel";
 // set the dimensions and margins of the graph
         var margin = {top: 30, right: 30, bottom: 70, left: 60},
             width = 400 - margin.left - margin.right,
@@ -177,7 +179,8 @@ class TextPanel {
                 d3.selectAll('.sentence').classed('chosen', true)
                 d3.selectAll('.token').classed('chosen', false)
             }
-            switchSidebar(this.value);
+            vis.radio_value = this.value;
+            switchSidebar(vis.radio_value);
         })
 
         // HOVER SENTENCES
@@ -228,7 +231,8 @@ class TextPanel {
                         exists = false;
                     }
                 }
-                if (exists) {
+                if (exists && vis.radio_value == "wordlevel") {
+                    d3.select(this).style('cursor', 'pointer')
                     chosenElt.transition().style('background-color', 'aqua')
                     d3.select('#' + which + 'sent' + sentidx2 + 'span' + tokenidx2).transition().style('background-color', 'aqua')
                 } else {
