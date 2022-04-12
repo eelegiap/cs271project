@@ -42,13 +42,13 @@ let sent_level_html = "\t\t\t<div class=\"row-md-auto\">\n" +
     "\t\t\t\t\t\t<!-- * Column that holds the bar charts * -->\n" +
     "\t\t\t\t\t\t<div class=\"col-8\" style=\"height: 25vh\">\n" +
     "\t\t\t\t\t\t\t<h6>Word Frequency</h6>\n" +
-    "\t\t\t\t\t\t\t<label for=\"lang\">Choose a text:</label>\n" +
+    "\t\t\t\t\t\t\t<label for=\"lang\">Text:</label>\n" +
     "\t\t\t\t\t\t\t<select name=\"lang\" id=\"lang\">\n" +
     "\t\t\t\t\t\t\t\t<option value=\"source\">Source</option>\n" +
     "\t\t\t\t\t\t\t\t<option value=\"trans\">Translation</option>\n" +
     "\t\t\t\t\t\t\t</select>\n" +
     "\n" +
-    "\t\t\t\t\t\t\t<label for=\"numb\">Number of elements:</label>\n" +
+    "\t\t\t\t\t\t\t<label for=\"numb\">Elements:</label>\n" +
     "\t\t\t\t\t\t\t<select name=\"numb\" id=\"numb\">\n" +
     "\t\t\t\t\t\t\t\t<option value=5>5</option>\n" +
     "\t\t\t\t\t\t\t\t<option value=10>10</option>\n" +
