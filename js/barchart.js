@@ -127,9 +127,9 @@ class BarChart {
             .attr("width", (vis.x).bandwidth())
             .attr("x", function (d) { return vis.x(d.lemma) })
             .attr("y", function (d) { return ((vis.y(d.tfidf))); })
-        vis.bars
-            .transition() // <---- Here is the transition
-            .duration(1000) // 2 seconds
+        // vis.bars
+        //     .transition() // <---- Here is the transition
+        //     .duration(1000) // 2 seconds
             .attr("height", function (d) { return (vis.height - (vis.y(d.tfidf))); })
             .attr("fill", "#00FFFF")
 
