@@ -42,7 +42,7 @@ class TextPanel {
             }
             if (j < tokens.length-1) {
                 var nexttoken = tokens[j+1]
-                if ('.,)?;'.includes(nexttoken.text)) {
+                if ('.,)?;»!”'.includes(nexttoken.text)) {
                     return thistoken.text
                 } 
                 if ((':' == nexttoken.text) || '...' == nexttoken.text) {
@@ -51,7 +51,7 @@ class TextPanel {
                 if (('"' == nexttoken.text) && thistoken.text == ':') {
                     return thistoken.text + ' '
                 } 
-                if (('"' == nexttoken.text) && thistoken.pos == 'PUNCT') {
+                if (('"‘' == nexttoken.text) && thistoken.pos == 'PUNCT') {
                     return thistoken.text
                 } 
                 if (('"' == thistoken.text) && nexttoken.text == '¿') {
@@ -60,8 +60,11 @@ class TextPanel {
                 if ('¿"'.includes(thistoken.text) && nexttoken.pos != 'PUNCT') {
                     return thistoken.text
                 }
+                if (['n’t','’m','’s'].includes(nexttoken.text)) {
+                    return thistoken.text
+                }
             } 
-            if ('(¿'.includes(thistoken.text)) {
+            if ('(¿«“‘'.includes(thistoken.text)) {
                 return thistoken.text
             }
             return thistoken.text + ' '
