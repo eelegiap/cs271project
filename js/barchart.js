@@ -23,7 +23,7 @@ class BarChart {
      */
     initVis() {
         let vis = this;
-        vis.margin = { top: 10, right: 100, bottom: 100, left: 70 };
+        vis.margin = { top: 10, right: 100, bottom: 60, left: 70 };
 
         // Dynamically instantiate width and height of vis
         vis.width = (document.getElementById(this.parentElement).getBoundingClientRect().width) - (vis.margin.left - vis.margin.right);
@@ -138,7 +138,7 @@ class BarChart {
             vis.tooltip.transition()
                 .duration(200)
                 .style("opacity", .9);
-            vis.tooltip.html(`Occurs ${d.tf} times in <br>${d.df} sentences.`)
+            vis.tooltip.html(`${d.lemma} occurs ${d.tf} times in <br>${d.df} sentences.`)
                 .style("left", (event.pageX+5) + "px")
                 .style("top", (event.pageY-15) + "px");
         })
