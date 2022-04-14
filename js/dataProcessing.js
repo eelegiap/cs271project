@@ -3,7 +3,11 @@
 function dataProcessing(data) {
 
     let sourceSentences = (data.srcSentsInOrder).map(function (d) { return d.tokens; })
-    let transSentences = (data.tgtSentsInOrder).map(function (d) { return d.tokens })
+    let targetSentences = (data.tgtSentsInOrder).map(function (d) { return d.tokens })
+
+    let srcSentLengths = (data.srcSentsInOrder).map(function (d) { return d.tokens.length; })
+    let tgtSentLengths = (data.tgtSentsInOrder).map(function (d) { return d.tokens.length })
+
 
     function tally(sentTokenList) {
         let tf = {}
@@ -13,7 +17,6 @@ function dataProcessing(data) {
         let totalTokens = 0
         sentTokenList.forEach(function (tokens) {
             if (tokens == undefined) {
-                console.log(tokens)
             } else {
                 tokens.forEach(function (t) {
                     totalTokens += 1
@@ -31,7 +34,6 @@ function dataProcessing(data) {
         sentTokenList.forEach(function (tokens) {
             let lemmasInSent = new Set()
             if (tokens == undefined) {
-                console.log(tokens)
             } else {
                 tokens.forEach(function (t) {
                     lemmasInSent.add(t.lemma)
@@ -65,17 +67,20 @@ function dataProcessing(data) {
     }
 
     sourceCount = (tally(sourceSentences));
-    transCount = (tally(transSentences));
+    targetCount = (tally(targetSentences));
 
-    barchart = new BarChart("main-container", sourceCount);
+    barchart = new BarChart("word-freq", sourceCount);
+    senthistogram = new sentHistogram("sent-length", srcSentLengths);
 
     document.getElementById("lang").onchange = function () {
         let selectLang = document.getElementById("lang").value;
         if (selectLang == "source") {
             barchart.langSelectionChanged(sourceCount);
+            senthistogram.langSelectionChanged(srcSentLengths);
         }
         else {
-            barchart.langSelectionChanged(transCount);
+            barchart.langSelectionChanged(targetCount);
+            senthistogram.langSelectionChanged(tgtSentLengths);
         }
     }
 

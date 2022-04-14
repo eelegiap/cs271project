@@ -27,6 +27,7 @@ iframe.previewhtml {
 
 #analysisCol{
     margin-top: 5vh;
+    /* overflow: scroll; */
 }
 
 div.tooltip {
@@ -48,4 +49,11 @@ div.tooltip {
 
 #level_select{
     margin-left: 10px;
+}
+.description {
+    color: dark gray;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    margin: 7px;
+    /* text-align:center; */
 }
