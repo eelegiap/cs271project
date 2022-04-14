@@ -5,7 +5,7 @@
  * @param _config			-- whether the data set is the translation or source
  */
 let displayData;
-let splAmt = 5;
+let splAmt = 15;
 let rectClassName;
 let rectLabelClassName;
 
@@ -80,7 +80,7 @@ class BarChart {
             .attr("x", (0 - vis.height / 2))
             .attr("dy", "-5em")
             .attr("dx", "-5em")
-            .text("TF-IDF Frequency");
+            .text("# of Occurrences in Text");
 
         // (Filter, aggregate, modify data)
         vis.wrangleData();
@@ -115,7 +115,7 @@ class BarChart {
         vis.svg.selectAll("rect").remove();
 
         // (1) Update domains
-        vis.y.domain([0, d3.max((displayData).map(a => a.tfidf))]);
+        vis.y.domain([0, d3.max((displayData).map(a => a.tf))]);
         vis.x
             .domain((displayData).map(b => b.lemma))
             .padding(0.2);
@@ -126,12 +126,12 @@ class BarChart {
             .attr("class", "bar")
             .attr("width", (vis.x).bandwidth())
             .attr("x", function (d) { return vis.x(d.lemma) })
-            .attr("y", function (d) { return ((vis.y(d.tfidf))); })
+            .attr("y", function (d) { return ((vis.y(d.tf))); })
         // vis.bars
         //     .transition() // <---- Here is the transition
         //     .duration(1000) // 2 seconds
-            .attr("height", function (d) { return (vis.height - (vis.y(d.tfidf))); })
-            .attr("fill", "#00FFFF")
+            .attr("height", function (d) { return (vis.height - (vis.y(d.tf))); })
+            .attr("fill", "#69b3a2")
 
         vis.bars.on("mouseover", function (event, d) {
             d3.select(this).transition().duration(200).attr('fill','#00cccc')
@@ -139,11 +139,11 @@ class BarChart {
                 .duration(200)
                 .style("opacity", .9);
             vis.tooltip.html(`Occurs ${d.tf} times in <br>${d.df} sentences.`)
-                .style("left", (event.pageX) + "px")
-                .style("top", (event.pageY) + "px");
+                .style("left", (event.pageX+5) + "px")
+                .style("top", (event.pageY-15) + "px");
         })
             .on("mouseout", function (d) {
-                d3.select(this).transition().duration(200).attr('fill','#00FFFF')
+                d3.select(this).transition().duration(200).attr('fill','#69b3a2')
 
                 vis.tooltip.transition()
                     .duration(500)
@@ -164,9 +164,9 @@ class BarChart {
             .call(vis.xAxis)
             .selectAll("text")
             .attr("font-size", "small")
-            .attr('dy', "-.5em")
-            .attr("dx", "1em")
-            .attr("transform", "rotate(90)")
+            .attr('dy', ".5em")
+            .attr("dx", ".75em")
+            .attr("transform", "rotate(45)")
             .style("text-anchor", "start");
     }
 

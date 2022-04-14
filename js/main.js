@@ -9,6 +9,7 @@ let sent_order;
 let source_lemmas;
 let translation_lemmas;
 let barchart;
+let senthistogram;
 
 let sourceCount = [];
 let transCount = [];
@@ -41,8 +42,8 @@ let word_level_html = "" +
 let sent_level_html = "\t\t\t<div class=\"row-md-auto\">\n" +
     "\t\t\t\t\t\t<!-- * Column that holds the bar charts * -->\n" +
     "\t\t\t\t\t\t<div class=\"col-8\" style=\"height: 25vh\">\n" +
-    "\t\t\t\t\t\t\t<h6>Word Frequency</h6>\n" +
     "\t\t\t\t\t\t\t<label for=\"lang\">Text:</label>\n" +
+    "\t\t\t\t\t\t\t<h6>Word Frequency</h6>\n" +
     "\t\t\t\t\t\t\t<select name=\"lang\" id=\"lang\">\n" +
     "\t\t\t\t\t\t\t\t<option value=\"source\">Source</option>\n" +
     "\t\t\t\t\t\t\t\t<option value=\"trans\">Translation</option>\n" +
@@ -54,7 +55,11 @@ let sent_level_html = "\t\t\t<div class=\"row-md-auto\">\n" +
     "\t\t\t\t\t\t\t\t<option value=10>10</option>\n" +
     "\t\t\t\t\t\t\t\t<option value=15>15</option>\n" +
     "\t\t\t\t\t\t\t</select>\n" +
-    "\t\t\t\t\t\t\t<div id=\"main-container\" style=\"height: 20vh\"></div>\n" +
+    "\t\t\t\t\t\t\t<div class='description'>Words that appear an unusually high number of times in a low number of sentences.</div>\n" +
+    "\t\t\t\t\t\t\t<div id=\"word-freq\" style=\"min-height: 20vh\"></div>\n" +
+    "\t\t\t\t\t\t\t<h6>Sentence Length Throughout Text</h6>\n" +
+    "\t\t\t\t\t\t\t<div class='description'>Distribution of sentence length across work as a whole.</div>\n" +
+    "\t\t\t\t\t\t\t<div id=\"sent-length\" style=\"height: 20vh\"></div>\n" +
     "\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t</div>"
 

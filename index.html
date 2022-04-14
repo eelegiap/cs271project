@@ -58,14 +58,17 @@
 								<option value="source">Source</option>
 								<option value="trans">Translation</option>
 							</select>
-
 							<label for="numb">Elements:</label>
 							<select name="numb" id="numb">
 								<option value=5>5</option>
 								<option value=10>10</option>
-								<option value=15>15</option>
+								<option value=15 selected>15</option>
 							</select>
-							<div id="main-container" style="height: 20vh"></div>
+							<div class="description">Words that appear an unusually high number of times in a low number of sentences.</div>
+							<div id="word-freq" style="min-height: 20vh"></div>
+							<h6>Sentence Length</h6>
+							<div class="description">Distribution of sentence length across work as a whole.</div>
+							<div id="sent-length" style="height: 20vh"></div>
 						</div>
 					</div>
 				</div>
@@ -91,6 +94,7 @@
 	<script src="js/text.js"></script>
 	<script src="js/ngrams.js"></script>
 	<script src="js/barchart.js"></script>
+	<script src="js/sentHistogram.js"></script>
 	<script src="js/dataProcessing.js"></script>
 	</body>
 </html>
