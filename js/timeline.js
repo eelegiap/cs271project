@@ -61,7 +61,7 @@ class Timeline{
     updateVis(s, t){
         let vis = this;
         vis.cur_source_align = s;
-        vis.cur_translation_align =t;
+        vis.cur_translation_align = t;
 
         vis.src_label.text(vis.cur_source_align)
         vis.trans_label.text(vis.cur_translation_align)

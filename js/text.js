@@ -1,8 +1,9 @@
 class TextPanel {
 
-    constructor(sent_order, word_align) {
+    constructor(sent_order, word_align, src_lang) {
         this.sent_order = sent_order;
         this.word_align = word_align;
+        this.src_lang = src_lang;
         this.initVis()
     }
 
@@ -238,7 +239,6 @@ class TextPanel {
 
         // CLICK TOKENS
         d3.selectAll('.token').on('click', function () {
-            $("#ngramtitle").empty();
             $("#ngramviewer").empty();
 
             var chosenElt = d3.select(this)
@@ -271,7 +271,8 @@ class TextPanel {
                 if (exists) {
                     // display word pair up top
                     d3.select('#wordpair').text(srctoken + '- ' + tgttoken)
-                    updateSidebar(srctoken, tgttoken);
+                    console.log('textpanel', vis.src_lang)
+                    updateSidebar(srctoken, tgttoken, vis.src_lang);
                     // wiktionary
                     // $.get('http://en.wiktionary.org/w/index.php?title=testx&printable=yes',function(data, status) {
                     //     console.log(data)

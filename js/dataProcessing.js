@@ -1,6 +1,6 @@
 
 
-function dataProcessing(data) {
+function dataProcessing(data, src_lang) {
 
     let sourceSentences = (data.srcSentsInOrder).map(function (d) { return d.tokens; })
     let targetSentences = (data.tgtSentsInOrder).map(function (d) { return d.tokens })
@@ -71,9 +71,15 @@ function dataProcessing(data) {
 
     barchart = new BarChart("word-freq", sourceCount);
     senthistogram = new sentHistogram("sent-length", srcSentLengths);
+    var s = data.srcSentsInOrder[0].tokens[0].lemma.toLowerCase().trim();
+    var t = data.tgtSentsInOrder[0].tokens[0].lemma.toLowerCase().trim()
+    console.log('dataprocess', src_lang)
+    myNGrams = new nGrams(s, t, src_lang)
+    
 
     document.getElementById("lang").onchange = function () {
         let selectLang = document.getElementById("lang").value;
+
         if (selectLang == "source") {
             barchart.langSelectionChanged(sourceCount);
             senthistogram.langSelectionChanged(srcSentLengths);

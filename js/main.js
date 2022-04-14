@@ -28,12 +28,12 @@ let word_level_html = "" +
     "\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t<div class=\"row\" style='height: 18vh;'>\n" +
-    "\t\t\t\t\t\t<h6>Position in Text</h6>\n" +
+    "\t\t\t\t\t\t<h6>Position(s) in Text</h6>\n" +
     "\t\t\t\t\t\t<div id=\"timeline\">\n" +
     "\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t<div class=\"row\">\n" +
-    "\t\t\t\t\t\t<h6>Google N-Gram Viewer</h6>\n" +
+    "\t\t\t\t\t\t<h6>Google N-Gram Viewer (Usage over time)</h6>\n" +
     "\t\t\t\t\t\t<div id='ngramviewer'>\n" +
     "\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t</div>\n" +
@@ -53,7 +53,7 @@ let sent_level_html = "\t\t\t<div class=\"row-md-auto\">\n" +
     "\t\t\t\t\t\t\t<select name=\"numb\" id=\"numb\">\n" +
     "\t\t\t\t\t\t\t\t<option value=5>5</option>\n" +
     "\t\t\t\t\t\t\t\t<option value=10>10</option>\n" +
-    "\t\t\t\t\t\t\t\t<option value=15>15</option>\n" +
+    "\t\t\t\t\t\t\t\t<option value=15 selected>15</option>\n" +
     "\t\t\t\t\t\t\t</select>\n" +
     "\t\t\t\t\t\t\t<div class='description'>Words that appear an unusually high number of times in a low number of sentences.</div>\n" +
     "\t\t\t\t\t\t\t<div id=\"word-freq\" style=\"min-height: 20vh\"></div>\n" +
@@ -74,13 +74,14 @@ let promises = [
 ];
 
 Promise.all(promises)
-    .then( function(data){ initMainPage(data) })
+    .then( function(data){ initMainPage(data, src_lang) })
     .catch( function (err){console.log(err)} );
 
 
 
 // initMainPage
-function initMainPage(allDataArray) {
+function initMainPage(allDataArray, src_lang) {
+    console.log('initMainPage', src_lang)
     let sent_align = allDataArray[0];
     sent_order = allDataArray[1];
     let word_align = allDataArray[2];
@@ -89,7 +90,7 @@ function initMainPage(allDataArray) {
     source_lemmas = allDataArray[5];
     translation_lemmas = allDataArray[6];
 
-    myText = new TextPanel(sent_order, word_align);
+    myText = new TextPanel(sent_order, word_align, src_lang);
     createSentenceLevelSidebar();
 }
 
@@ -97,22 +98,24 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
-function updateSidebar(cur_source_align, cur_translation_align){
+function updateSidebar(cur_source_align, cur_translation_align, src_lang){
     let source_lemma = source_lemmas[cur_source_align.toLowerCase().trim()];
     let translation_lemma = translation_lemmas[cur_translation_align.toLowerCase().trim()];
     myAlignmentBar.updateVis(source_lemma, translation_lemma);
     myTimeline.updateVis(source_lemma, translation_lemma);
-    myNGrams = new nGrams(cur_source_align, cur_translation_align);
+    myNGrams.updateVis(source_lemma, translation_lemma, src_lang);
 }
 
 function createWordLevelSidebar(){
     myAlignmentBar = new AlignmentBar('alignmentBar', source_align, translation_align, sent_order);
     myTimeline = new Timeline('timeline', source_align, translation_align, sent_order);
-    myNGrams = new nGrams("En", "In");
+    console.log('creaetwordLevelsidebar',src_lang)
+    myNGrams = new nGrams("En", "In", src_lang);
 }
 
 function createSentenceLevelSidebar(){
-    dataProcessing(sent_order);
+    console.log('createSentenceLevelSidebar', src_lang)
+    dataProcessing(sent_order, src_lang);
 }
 
 function switchSidebar(bar_type){
@@ -160,7 +163,7 @@ function change_language_selection(lang){
         d3.json("nlp/jsondata/"+ tgt_lang +"/"+ src_lang +"/lemmas.json"),
     ];
     Promise.all(promises)
-        .then( function(data){ initMainPage(data) })
+        .then( function(data){ initMainPage(data, src_lang) })
         .catch( function (err){console.log(err)} );
 }
 
