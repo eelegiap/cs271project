@@ -94,3 +94,11 @@ div.tooltip {
 table, th, td {
     padding: 2px;
 }
+.carousel-control-prev-icon{
+    outline: black;
+    border: 1px solid black;
+}
+.carousel-control-next-icon{
+    outline: black;
+    border: 1px solid black;
+}

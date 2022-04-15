@@ -97,13 +97,14 @@ function switchSidebar(bar_type){
     else{
         $( "#aPanel" ).load( "html/sentenceLevel.html" )
         let checkIfExists = setInterval(function() {
-            var exists = document.getElementById("lex-richness");
-
+            var exists = document.getElementById("word-freq");
+            console.log(exists)
             if (exists) {
+                console.log("loading")
                 clearInterval(checkIfExists);
                 createSentenceLevelSidebar();
             }
-        }, 25);
+        }, 100);
     }
 
 }
