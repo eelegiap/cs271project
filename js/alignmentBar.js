@@ -46,12 +46,12 @@ class AlignmentBar {
 
         vis.cur_sent_idx = -1;
 
-        let button = document.createElement('button');
-        button.textContent = "Next Example"
-        button.id = "nextAlign";
-        button.onclick = function(event){vis.showNextExample()}
-        let cont = document.getElementById("nextButton")
-        cont.append(button)
+        // let button = document.createElement('button');
+        // button.textContent = "Next Example"
+        // button.id = "nextAlign";
+        // button.onclick = function(event){vis.showNextExample()}
+        // let cont = document.getElementById("nextButton")
+        // cont.append(button)
 
         vis.src_tkn_idx = 0;
         vis.trans_tkn_idk = 0;
@@ -117,23 +117,16 @@ class AlignmentBar {
                     .html(``);
             })
             .on('click', function (event, d){
-                let title_cont = document.getElementById("alignmentTitle")
-                while(title_cont.firstChild){
-                    title_cont.removeChild(title_cont.firstChild);
-                }
-                let title = document.createElement('p');
-                title.textContent = d[0];
-                title.setAttribute("style", "color:gray");
-                title_cont.appendChild(title);
-
-                vis.cur_sent_idx = -1;
-                vis.pairs_to_print = [];
-                for (let i = 0; i < d[3].length; i++) {
-                    vis.pairs_to_print.push( vis.getBrevExample("srcSentsInOrder", d, i, vis.src_tkn_idx) + '<br>' + vis.getBrevExample("tgtSentsInOrder", d, i, vis.trans_tkn_idk));
-                }
-                vis.showNextExample();
+                vis.showExamples(d)
         });
         let d = vis.data[1];
+        vis.showExamples(d)
+        align_rects.exit().remove()
+
+    }
+
+    showExamples(d){
+        let vis = this;
         let title_cont = document.getElementById("alignmentTitle")
         while(title_cont.firstChild){
             title_cont.removeChild(title_cont.firstChild);
@@ -144,31 +137,36 @@ class AlignmentBar {
         title_cont.appendChild(title);
 
         vis.cur_sent_idx = -1;
-        vis.pairs_to_print = [];
-
-        for (let i = 0; i < d[3].length; i++) {
-            vis.pairs_to_print.push( vis.getBrevExample("srcSentsInOrder", d, i, vis.src_tkn_idx) + '<br>' + vis.getBrevExample("tgtSentsInOrder", d, i, vis.trans_tkn_idk));
-        }
+        vis.getPairsToPrint(d);
         vis.showNextExample();
-        align_rects.exit().remove()
 
     }
-
+    getPairsToPrint(d){
+        let vis = this;
+        vis.pairs_to_print = [];
+        for (let i = 0; i < 1; i++) {
+            vis.pairs_to_print.push( vis.getBrevExample("srcSentsInOrder", d, i, vis.src_tkn_idx) + '<br>' + vis.getBrevExample("tgtSentsInOrder", d, i, vis.trans_tkn_idk));
+        }
+    }
     getBrevExample(col, d, i, idx){
+        console.log("indx", idx)
         let vis = this;
         let test = [];
-        let min = idx - 5;
+        idx = parseInt(idx);
+        let min =idx - 4;
         if(min < 0){
             min = 0;
         }
         else{
             test.push("...");
         }
-        let max = idx + 5;
+        let max = idx + 4;
+        console.log("max", max)
         if(max > vis.sent_order[col][d[3][i]]["tokens"].length){
             max = vis.sent_order[col][d[3][i]]["tokens"].length;
         }
         vis.sent_order[col][d[3][i]]["tokens"].slice(min,max).forEach(function (d){test.push(d.text)})
+        console.log(test.length, min, max)
         if(max != vis.sent_order[col][d[3][i]]["tokens"].length){
             test.push("...")
         }
