@@ -97,7 +97,7 @@ function switchSidebar(bar_type){
     else{
         $( "#aPanel" ).load( "html/sentenceLevel.html" )
         let checkIfExists = setInterval(function() {
-            var exists = document.getElementById("word-freq");
+            var exists = document.getElementById("lex-richness");
             console.log(exists)
             if (exists) {
                 console.log("loading")
