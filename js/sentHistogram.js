@@ -26,11 +26,11 @@ class sentHistogram {
 
 
         // set the dimensions and margins of the graph
-        vis.margin = { top: 10, right: 100, bottom: 50, left: 70 },
+        vis.margin = { top: 10, right: 50, bottom: 50, left: 50 },
 
-            // Dynamically instantiate width and height of vis
-            vis.width = (document.getElementById(this.parentElement).getBoundingClientRect().width) - (vis.margin.left - vis.margin.right);
-        vis.height = (document.getElementById(this.parentElement).getBoundingClientRect().height) - (vis.margin.top - vis.margin.bottom);
+        // Dynamically instantiate width and height of vis
+        vis.width = (document.getElementById('analysispanel').getBoundingClientRect().width - 200) - (vis.margin.left - vis.margin.right);
+        vis.height = (document.getElementById('analysispanel').getBoundingClientRect().height * .5) - (vis.margin.top - vis.margin.bottom);
 
         // SVG drawing area
         vis.svg = d3.select("#" + vis.parentElement).append("svg")

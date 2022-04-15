@@ -39,29 +39,40 @@ let word_level_html = "" +
     "\t\t\t\t\t</div>\n" +
     "\t\t\t\t</div>";
 
-let sent_level_html = "\t\t\t<div class=\"row-md-auto\">\n" +
-    "\t\t\t\t\t\t<!-- * Column that holds the bar charts * -->\n" +
-    "\t\t\t\t\t\t<div class=\"col-8\" style=\"height: 25vh\">\n" +
-    "\t\t\t\t\t\t\t<label for=\"lang\">Text:</label>\n" +
-    "\t\t\t\t\t\t\t<h6>Word Frequency</h6>\n" +
-    "\t\t\t\t\t\t\t<select name=\"lang\" id=\"lang\">\n" +
-    "\t\t\t\t\t\t\t\t<option value=\"source\">Source</option>\n" +
-    "\t\t\t\t\t\t\t\t<option value=\"trans\">Translation</option>\n" +
-    "\t\t\t\t\t\t\t</select>\n" +
-    "\n" +
-    "\t\t\t\t\t\t\t<label for=\"numb\">Elements:</label>\n" +
-    "\t\t\t\t\t\t\t<select name=\"numb\" id=\"numb\">\n" +
-    "\t\t\t\t\t\t\t\t<option value=5>5</option>\n" +
-    "\t\t\t\t\t\t\t\t<option value=10>10</option>\n" +
-    "\t\t\t\t\t\t\t\t<option value=15 selected>15</option>\n" +
-    "\t\t\t\t\t\t\t</select>\n" +
-    "\t\t\t\t\t\t\t<div class='description'>Words that appear an unusually high number of times in a low number of sentences.</div>\n" +
-    "\t\t\t\t\t\t\t<div id=\"word-freq\" style=\"min-height: 20vh\"></div>\n" +
-    "\t\t\t\t\t\t\t<h6>Sentence Length Throughout Text</h6>\n" +
-    "\t\t\t\t\t\t\t<div class='description'>Distribution of sentence length across work as a whole.</div>\n" +
-    "\t\t\t\t\t\t\t<div id=\"sent-length\" style=\"height: 20vh\"></div>\n" +
-    "\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t</div>"
+let sent_level_html = "<div id='myCarousel' class='carousel slide' data-ride='carousel' data-interval=false>" +
+"<div class='carousel-inner' role='listbox'>"+
+    "<div class='item active''>"+
+            "<h4 class=' sentleveltitle'>Word Frequency</h4>"+
+        "<div class='description'>Words that appear an unusually high number of times in a low number of sentences.</div>"+
+        "<div style='float:left '> <label for='numb'>Elements:</label>"+
+            "<select name='numb' id='numb'>"+
+                "<option value=5>5</option>"+
+                "<option value=10>10</option>"+
+                "<option value=15 selected>15</option>"+
+            "</select>"+
+        "</div>"+
+        "<div id='word-freq'></div>"+
+    "</div>"+
+    "<div class='item'>"+
+        "<h4 class='sentleveltitle'>Sentence Length</h4>"+
+        "<div class='description'>Distribution of sentence length across work as a whole.</div>"+
+        "<div id='sent-length'></div>"+
+    "</div>"+
+    "<div class='item'>"+
+        "<h4 class='sentleveltitle'>Lexical Richness</h4>"+
+        "<div class='description'>What is lexical richness again?</div>"+
+        "<div id='lex-richness'></div>"+
+    "</div>"+
+"</div>"+
+"<a class='left carousel-control' href='#myCarousel' role='button' data-slide='prev'>"+
+    "<span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span>"+
+    "<span class='sr-only'>Previous</span>"+
+"</a>"+
+"<a class='right carousel-control' href='#myCarousel' role='button' data-slide='next'>"+
+    "<span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span>"+
+    "<span class='sr-only'>Next</span>"+
+"</a>"+
+"</div>"
 
 let promises = [
     d3.json("nlp/jsondata/"+ src_lang +"/sentAlignment.json"),

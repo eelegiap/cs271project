@@ -19,8 +19,6 @@ class TextPanel {
         var srcdiv = d3.select("#srctext")
         var tgtdiv = d3.select("#tgttext")
 
-        d3.select('#analysispanel').style('left', parseInt($(window).width() * .68) + 'px').style('position', 'fixed')
-
         let data = vis.sent_order;
         var srccharcount = 0;
         var tgtcharcount = 0;
@@ -60,7 +58,7 @@ class TextPanel {
                 if ('¿"'.includes(thistoken.text) && nexttoken.pos != 'PUNCT') {
                     return thistoken.text
                 }
-                if (['n’t','’m','’s'].includes(nexttoken.text)) {
+                if (['n’t','’m','’s',"'s"].includes(nexttoken.text)) {
                     return thistoken.text
                 }
             } 
@@ -131,19 +129,24 @@ class TextPanel {
                 })
                 .style('background-color', 'white')
         })
-        var totalcharcount = srccharcount + tgtcharcount;
 
-        let line_break = src_linebreak - tgt_linebreak;
-        let char_per_break_est = 75;
+        let char_per_break_est = 50;
+
+        var src_space = srccharcount + src_linebreak*char_per_break_est;
+        if (vis.src_lang == 'russian') {
+            src_space = src_space * 1.1
+        }
+        var tgt_space = tgtcharcount + tgt_linebreak*char_per_break_est
+
+        var totalcharcount = src_space + tgt_space
 
         // MAKE SURE CORRECT WIDTH
-        var srccolwidth = (srccharcount + line_break * char_per_break_est)/ (totalcharcount + line_break * char_per_break_est) * 100;
-        var tgtcolwidth = 100 - srccolwidth;
+        var srccolwidth = parseInt((src_space)/ totalcharcount * ($(window).width() - 100) * .66)
+        var tgtcolwidth = parseInt((tgt_space) / totalcharcount * ($(window).width() -100) * .66)
+        var analysiswidth = parseInt(($(window).width() - 300) * .33)
 
-
-        d3.select("#srccol").attr("style", "width: " + srccolwidth + "%");
-        d3.select("#tgtcol").attr("style", "width: " + tgtcolwidth + "%");
-
+        d3.select('.wrapper').style('grid-template-columns', `${srccolwidth}px ${tgtcolwidth}px ${analysiswidth}px`)
+        d3.select('#analysispanel').style('left', parseInt(($(window).width() - 100)* .66) + 'px').style('position', 'fixed')
 
         let wadata = vis.word_align;
 

@@ -1,3 +1,7 @@
+.wrapper {
+    display: grid;
+    /* grid-template-columns: 300px 300px; */
+}
 .tooltip{
     background-color: lightgrey;
 }
@@ -24,10 +28,9 @@ iframe.previewhtml {
 .token mark {
     display: contents;
 }
-
-#analysisCol{
-    margin-top: 5vh;
-    /* overflow: scroll; */
+#analysispanel {
+    max-width: auto;
+    top: 0
 }
 
 div.tooltip {
@@ -57,3 +60,32 @@ div.tooltip {
     margin: 7px;
     /* text-align:center; */
 }
+.glyphicon {
+    color: #69b3a2;
+}
+#myCarousel {
+    background: none;
+}
+.carousel-control.left,
+.carousel-control.right {
+  background-image: none;
+  height: 0
+}
+.sentleveltitle {
+    /* padding-top: 10px */
+}
+.carousel .carousel-indicators li {
+    background-color: #fff;
+    background-color: rgba(70, 70, 70, 0.25);
+  }
+  
+  .carousel .carousel-indicators .active {
+    background-color: #444;
+  }
+  .item {
+    text-align: center;
+  }
+
+  #sent-length, #word-freq, #lex-richness{
+      min-height: 20vh;
+  }
