@@ -76,8 +76,8 @@ let sent_level_html = "<div id='myCarousel' class='carousel slide' data-ride='ca
 
 let promises = [
     d3.json("nlp/jsondata/"+ src_lang +"/sentAlignment.json"),
-    d3.json("nlp/jsondata/"+ src_lang +"/sentsInOrder.json"),
-    d3.json("nlp/jsondata/"+ src_lang +"/wordAlignment.json"),
+    d3.json("nlp/jsondata/"+ src_lang +"/sentsInOrder4-15.json"),
+    d3.json("nlp/jsondata/"+ src_lang +"/wordAlignment4-15.json"),
     d3.json("nlp/jsondata/"+ src_lang +"/alignments.json"),
     d3.json("nlp/jsondata/"+ tgt_lang +"/"+ src_lang +"/alignments.json"),
     d3.json("nlp/jsondata/"+ src_lang +"/lemmas.json"),
