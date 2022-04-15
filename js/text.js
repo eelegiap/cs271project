@@ -11,13 +11,49 @@ class TextPanel {
         let vis = this;
 
         vis.radio_value = "wordlevel";
-// set the dimensions and margins of the graph
+
+        // set the dimensions and margins of the graph
         var margin = {top: 30, right: 30, bottom: 70, left: 60},
             width = 400 - margin.left - margin.right,
             height = 400 - margin.top - margin.bottom;
 
         var srcdiv = d3.select("#srctext")
         var tgtdiv = d3.select("#tgttext")
+
+        // text titles
+        var titles = {
+            'russian' : {
+                'src' : 'Дама с собачкой',
+                'tgt' : 'Lady with the Lapdog'
+            },
+            'arabic' : {
+                'src' : 'الأيام',
+                'tgt' : 'The Days (1-5)'
+            },
+            'spanish' : {
+                'src' : "El jardín de senderos que se bifurcan",
+                'tgt' : "The Garden of Forking Paths"
+            },
+        }
+        var authors = {
+            'russian' : {
+                'src' : 'Антон Чехов',
+                'tgt' : 'by Anton Chekhov'
+            },
+            'arabic' : {
+                'src' : 'by Taha Hussein',
+                'tgt' : 'translated by E.H. Paxton'
+            },
+            'spanish' : {
+                'src' : 'by Jorge Luis Borges',
+                'tgt' : 'translated by Anthony Kerrigan',
+            }   
+        }
+
+        d3.select('#srcTitle').text(titles[vis.src_lang]['src'])
+        d3.select('#tgtTitle').text(titles[vis.src_lang]['tgt'])
+        d3.select('#srcAuthor').text(authors[vis.src_lang]['src'])
+        d3.select('#tgtAuthor').text(authors[vis.src_lang]['tgt'])
 
         let data = vis.sent_order;
         var srccharcount = 0;
@@ -146,7 +182,8 @@ class TextPanel {
         var analysiswidth = parseInt(($(window).width() - 300) * .33)
 
         d3.select('.wrapper').style('grid-template-columns', `${srccolwidth}px ${tgtcolwidth}px ${analysiswidth}px`)
-        d3.select('#analysispanel').style('left', parseInt(($(window).width() - 100)* .66) + 'px').style('position', 'fixed')
+
+        d3.select('#analysispanel').style('visibility','visible').style('left', parseInt(($(window).width() - 100)* .66) + 'px').style('position', 'fixed')
 
         let wadata = vis.word_align;
 
