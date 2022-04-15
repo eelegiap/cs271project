@@ -39,7 +39,12 @@ let word_level_html = "" +
     "\t\t\t\t\t</div>\n" +
     "\t\t\t\t</div>";
 
-let sent_level_html = "<div id='myCarousel' class='carousel slide' data-ride='carousel' data-interval=false>" +
+let sent_level_html = "<label for=\"lang\">Text:</label>\n" +
+    "\t\t\t\t\t\t\t\t<select name=\"lang\" id=\"lang\">\n" +
+    "\t\t\t\t\t\t\t\t\t<option value=\"source\">Source</option>\n" +
+    "\t\t\t\t\t\t\t\t\t<option value=\"trans\">Translation</option>\n" +
+    "\t\t\t\t\t\t\t\t</select>" +
+    "<div id='myCarousel' class='carousel slide' data-ride='carousel' data-interval=false>" +
 "<div class='carousel-inner' role='listbox'>"+
     "<div class='item active''>"+
             "<h4 class=' sentleveltitle'>Word Frequency</h4>"+
@@ -102,7 +107,7 @@ function initMainPage(allDataArray, src_lang) {
     translation_lemmas = allDataArray[6];
 
     myText = new TextPanel(sent_order, word_align, src_lang);
-    createSentenceLevelSidebar();
+    change_level("wordlevel")
 }
 
 function getRandomInt(max) {
