@@ -29,7 +29,7 @@ iframe.previewhtml {
     display: contents;
 }
 #analysispanel {
-    max-width: auto;
+    visibility: hidden;
     top: 0
 }
 
