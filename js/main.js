@@ -16,68 +16,6 @@ let transCount = [];
 let filterTriggers = ['!', "'", '"', "#", "$", "¿", "%", ',', ".",
     "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", ";", "»", ":"];
 
-let word_level_html = "" +
-    "<div class=\"row-md-auto\">\n" +
-    "\t\t\t\t\t\t<h6>Alignment Explorer</h6>\n" +
-    "\t\t\t\t\t\t<div id=\"nextButton\"></div>\n" +
-    "\t\t\t\t\t\t<div id=\"alignmentBar\" style=\"height: 5vh\">\n" +
-    "\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t<div id=\"alignmentTitle\">\n" +
-    "\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t<div id=\"textArea\">\n" +
-    "\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t<div class=\"row\" style='height: 18vh;'>\n" +
-    "\t\t\t\t\t\t<h6>Position(s) in Text</h6>\n" +
-    "\t\t\t\t\t\t<div id=\"timeline\">\n" +
-    "\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t<div class=\"row\">\n" +
-    "\t\t\t\t\t\t<h6>Google N-Gram Viewer (Usage over time)</h6>\n" +
-    "\t\t\t\t\t\t<div id='ngramviewer'>\n" +
-    "\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t</div>\n" +
-    "\t\t\t\t</div>";
-
-let sent_level_html = "<label for=\"lang\">Text:</label>\n" +
-    "\t\t\t\t\t\t\t\t<select name=\"lang\" id=\"lang\">\n" +
-    "\t\t\t\t\t\t\t\t\t<option value=\"source\">Source</option>\n" +
-    "\t\t\t\t\t\t\t\t\t<option value=\"trans\">Translation</option>\n" +
-    "\t\t\t\t\t\t\t\t</select>" +
-    "<div id='myCarousel' class='carousel slide' data-ride='carousel' data-interval=false>" +
-"<div class='carousel-inner' role='listbox'>"+
-    "<div class='item active''>"+
-            "<h4 class=' sentleveltitle'>Word Frequency</h4>"+
-        "<div class='description'>Words that appear an unusually high number of times in a low number of sentences.</div>"+
-        "<div style='float:left '> <label for='numb'>Elements:</label>"+
-            "<select name='numb' id='numb'>"+
-                "<option value=5>5</option>"+
-                "<option value=10>10</option>"+
-                "<option value=15 selected>15</option>"+
-            "</select>"+
-        "</div>"+
-        "<div id='word-freq'></div>"+
-    "</div>"+
-    "<div class='item'>"+
-        "<h4 class='sentleveltitle'>Sentence Length</h4>"+
-        "<div class='description'>Distribution of sentence length across work as a whole.</div>"+
-        "<div id='sent-length'></div>"+
-    "</div>"+
-    "<div class='item'>"+
-        "<h4 class='sentleveltitle'>Lexical Richness</h4>"+
-        "<div class='description'>What is lexical richness again?</div>"+
-        "<div id='lex-richness'></div>"+
-    "</div>"+
-"</div>"+
-"<a class='left carousel-control' href='#myCarousel' role='button' data-slide='prev'>"+
-    "<span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span>"+
-    "<span class='sr-only'>Previous</span>"+
-"</a>"+
-"<a class='right carousel-control' href='#myCarousel' role='button' data-slide='next'>"+
-    "<span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span>"+
-    "<span class='sr-only'>Next</span>"+
-"</a>"+
-"</div>"
 
 let promises = [
     d3.json("nlp/jsondata/"+ src_lang +"/sentAlignment.json"),
@@ -117,6 +55,12 @@ function getRandomInt(max) {
 function updateSidebar(cur_source_align, cur_translation_align, src_lang, source_lemma_idx, translation_lemma_idx){
     let source_lemma = source_lemmas[cur_source_align.toLowerCase().trim()];
     let translation_lemma = translation_lemmas[cur_translation_align.toLowerCase().trim()];
+
+    document.getElementById("table_src_align").innerHTML =  cur_source_align;
+    document.getElementById("table_src_lemma").innerHTML = source_lemma;
+    document.getElementById("table_tgt_align").innerHTML =  cur_translation_align;
+    document.getElementById("table_tgt_lemma").innerHTML = translation_lemma;
+
     myAlignmentBar.updateVis(source_lemma, translation_lemma, source_lemma_idx, translation_lemma_idx);
     myTimeline.updateVis(source_lemma, translation_lemma);
     myNGrams.updateVis(source_lemma, translation_lemma, src_lang);
@@ -140,12 +84,26 @@ function switchSidebar(bar_type){
         analysis_panel.removeChild(analysis_panel.firstChild);
     }
     if(bar_type == "wordlevel") {
-        analysis_panel.innerHTML += word_level_html;
-        createWordLevelSidebar();
+        $( "#aPanel" ).load( "html/wordLevel.html" )
+        let checkIfExists = setInterval(function() {
+            var exists = document.getElementById("textArea");
+
+            if (exists) {
+                clearInterval(checkIfExists);
+                createWordLevelSidebar();
+            }
+        }, 25);
     }
     else{
-        analysis_panel.innerHTML += sent_level_html;
-        createSentenceLevelSidebar();
+        $( "#aPanel" ).load( "html/sentenceLevel.html" )
+        let checkIfExists = setInterval(function() {
+            var exists = document.getElementById("lex-richness");
+
+            if (exists) {
+                clearInterval(checkIfExists);
+                createSentenceLevelSidebar();
+            }
+        }, 25);
     }
 
 }
@@ -167,7 +125,7 @@ function clear_panels(){
 }
 function change_language_selection(lang){
     analysis_panel = clear_panels();
-    analysis_panel.innerHTML += sent_level_html;
+    $( "#aPanel" ).load( "html/wordLevel.html" )
     src_lang = lang;
     let promises = [
         d3.json("nlp/jsondata/"+ src_lang +"/sentAlignment.json"),
@@ -184,8 +142,6 @@ function change_language_selection(lang){
 }
 
 function change_level(value){
-    // handle radio buttons
-    console.log("HEY")
     if (value == 'wordlevel') {
         d3.selectAll('.sentence').classed('chosen', false)
         d3.selectAll('.token').classed('chosen', true)

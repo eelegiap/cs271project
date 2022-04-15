@@ -10,14 +10,24 @@ class AlignmentBar {
         this.parentElement = parentElement;
         this.source_align = source_align;
         this.translation_align = translation_align;
-        this.cur_source_align = sent_order.srcSentsInOrder[0].tokens[0].lemma.toLowerCase().trim();
-        this.cur_translation_align = sent_order.tgtSentsInOrder[0].tokens[0].lemma.toLowerCase().trim();
         this.sent_order = sent_order;
         this.initVis()
     }
 
     initVis() {
         let vis = this;
+
+        let align_src = sent_order.srcSentsInOrder[0].tokens[0];
+        let align_tgt = sent_order.tgtSentsInOrder[0].tokens[0];
+
+        vis.cur_source_align = align_src.lemma.toLowerCase().trim();
+        vis.cur_translation_align = align_tgt.lemma.toLowerCase().trim();
+
+        document.getElementById("table_src_align").innerHTML =  align_src.text;
+        document.getElementById("table_src_lemma").innerHTML = vis.cur_source_align;
+        document.getElementById("table_tgt_align").innerHTML =  align_tgt.text;
+        document.getElementById("table_tgt_lemma").innerHTML = vis.cur_translation_align;
+
         vis.margin = {top: 8, right: 40, bottom: 5, left: 20};
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
