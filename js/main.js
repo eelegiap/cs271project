@@ -114,10 +114,10 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
-function updateSidebar(cur_source_align, cur_translation_align, src_lang){
+function updateSidebar(cur_source_align, cur_translation_align, src_lang, source_lemma_idx, translation_lemma_idx){
     let source_lemma = source_lemmas[cur_source_align.toLowerCase().trim()];
     let translation_lemma = translation_lemmas[cur_translation_align.toLowerCase().trim()];
-    myAlignmentBar.updateVis(source_lemma, translation_lemma);
+    myAlignmentBar.updateVis(source_lemma, translation_lemma, source_lemma_idx, translation_lemma_idx);
     myTimeline.updateVis(source_lemma, translation_lemma);
     myNGrams.updateVis(source_lemma, translation_lemma, src_lang);
 }

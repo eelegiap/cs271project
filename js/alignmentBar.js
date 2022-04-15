@@ -43,17 +43,24 @@ class AlignmentBar {
         let cont = document.getElementById("nextButton")
         cont.append(button)
 
-        vis.updateVis(vis.cur_source_align, vis.cur_translation_align);
+        vis.src_tkn_idx = 0;
+        vis.trans_tkn_idk = 0;
+
+        vis.updateVis(vis.cur_source_align, vis.cur_translation_align,  vis.src_tkn_idx ,  vis.trans_tkn_idk );
 
     }
 
 
 
-    updateVis(s, t){
+    updateVis(s, t, src_tkn_idx, trans_tkn_idk){
         let vis = this;
 
         vis.cur_source_align = s;
         vis.cur_translation_align =t;
+        vis.src_tkn_idx = src_tkn_idx;
+        vis.trans_tkn_idk = trans_tkn_idk;
+
+        console.log(src_tkn_idx, trans_tkn_idk)
 
         vis.wrangleData();
 
@@ -112,7 +119,7 @@ class AlignmentBar {
                 vis.cur_sent_idx = -1;
                 vis.pairs_to_print = [];
                 for (let i = 0; i < d[3].length; i++) {
-                    vis.pairs_to_print.push(vis.sent_order["srcSentsInOrder"][d[3][i]]["text"] + '<br>' + vis.sent_order["tgtSentsInOrder"][d[4][i]]["text"]);
+                    vis.pairs_to_print.push( vis.getBrevExample("srcSentsInOrder", d, i, vis.src_tkn_idx) + '<br>' + vis.getBrevExample("tgtSentsInOrder", d, i, vis.trans_tkn_idk));
                 }
                 vis.showNextExample();
         });
@@ -128,12 +135,34 @@ class AlignmentBar {
 
         vis.cur_sent_idx = -1;
         vis.pairs_to_print = [];
+
         for (let i = 0; i < d[3].length; i++) {
-            vis.pairs_to_print.push(vis.sent_order["srcSentsInOrder"][d[3][i]]["text"] + '<br>' + vis.sent_order["tgtSentsInOrder"][d[4][i]]["text"]);
+            vis.pairs_to_print.push( vis.getBrevExample("srcSentsInOrder", d, i, vis.src_tkn_idx) + '<br>' + vis.getBrevExample("tgtSentsInOrder", d, i, vis.trans_tkn_idk));
         }
         vis.showNextExample();
         align_rects.exit().remove()
 
+    }
+
+    getBrevExample(col, d, i, idx){
+        let vis = this;
+        let test = [];
+        let min = idx - 5;
+        if(min < 0){
+            min = 0;
+        }
+        else{
+            test.push("...");
+        }
+        let max = idx + 5;
+        if(max > vis.sent_order[col][d[3][i]]["tokens"].length){
+            max = vis.sent_order[col][d[3][i]]["tokens"].length;
+        }
+        vis.sent_order[col][d[3][i]]["tokens"].slice(min,max).forEach(function (d){test.push(d.text)})
+        if(max != vis.sent_order[col][d[3][i]]["tokens"].length){
+            test.push("...")
+        }
+        return test.join(" ");
     }
 
     wrangleData(){
