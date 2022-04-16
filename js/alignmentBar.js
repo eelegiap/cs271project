@@ -144,12 +144,11 @@ class AlignmentBar {
     getPairsToPrint(d){
         let vis = this;
         vis.pairs_to_print = [];
-        for (let i = 0; i < 1; i++) {
+        for (let i = 0; i < d[3].length; i++) {
             vis.pairs_to_print.push( vis.getBrevExample("srcSentsInOrder", d, i, vis.src_tkn_idx) + '<br>' + vis.getBrevExample("tgtSentsInOrder", d, i, vis.trans_tkn_idk));
         }
     }
     getBrevExample(col, d, i, idx){
-        console.log("indx", idx)
         let vis = this;
         let test = [];
         idx = parseInt(idx);
@@ -161,12 +160,10 @@ class AlignmentBar {
             test.push("...");
         }
         let max = idx + 4;
-        console.log("max", max)
         if(max > vis.sent_order[col][d[3][i]]["tokens"].length){
             max = vis.sent_order[col][d[3][i]]["tokens"].length;
         }
         vis.sent_order[col][d[3][i]]["tokens"].slice(min,max).forEach(function (d){test.push(d.text)})
-        console.log(test.length, min, max)
         if(max != vis.sent_order[col][d[3][i]]["tokens"].length){
             test.push("...")
         }

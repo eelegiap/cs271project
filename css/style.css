@@ -1,3 +1,9 @@
+body{
+    padding-top: 1vh;
+    padding-right: 5vh;
+    padding-left: 5vh;
+    padding-bottom: 5vh;
+}
 .wrapper {
     display: grid;
     /* grid-template-columns: 300px 300px; */
@@ -30,7 +36,7 @@ iframe.previewhtml {
 }
 #analysispanel {
     visibility: hidden;
-    top: 0;
+    top: 1vh;
     margin-left: 10px;
 }
 
