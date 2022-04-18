@@ -19,8 +19,8 @@ let filterTriggers = ['!', "'", '"', "#", "$", "¿", "%", ',', ".",
 
 let promises = [
     d3.json("nlp/jsondata/"+ src_lang +"/sentAlignment.json"),
-    d3.json("nlp/jsondata/"+ src_lang +"/sentsInOrder4-15.json"),
-    d3.json("nlp/jsondata/"+ src_lang +"/wordAlignment4-15.json"),
+    d3.json("nlp/jsondata/"+ src_lang +"/sentsInOrder.json"),
+    d3.json("nlp/jsondata/"+ src_lang +"/wordAlignment.json"),
     d3.json("nlp/jsondata/"+ src_lang +"/alignments.json"),
     d3.json("nlp/jsondata/"+ tgt_lang +"/"+ src_lang +"/alignments.json"),
     d3.json("nlp/jsondata/"+ src_lang +"/lemmas.json"),
@@ -53,9 +53,12 @@ function getRandomInt(max) {
 }
 
 function updateSidebar(cur_source_align, cur_translation_align, src_lang, source_lemma_idx, translation_lemma_idx){
+    console.log('curaligns', cur_source_align, cur_translation_align)
     let source_lemma = source_lemmas[cur_source_align.toLowerCase().trim()];
     let translation_lemma = translation_lemmas[cur_translation_align.toLowerCase().trim()];
-
+    // let source_lemma = cur_source_align
+    // let translation_lemma = cur_translation_align
+    console.log('updateSidebar',source_lemma, translation_lemma)
     document.getElementById("table_src_align").innerHTML =  cur_source_align;
     document.getElementById("table_src_lemma").innerHTML = source_lemma;
     document.getElementById("table_tgt_align").innerHTML =  cur_translation_align;
