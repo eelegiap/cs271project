@@ -315,7 +315,7 @@ class TextPanel {
                     // display word pair up top
                     d3.select('#wordpair').text(srctoken + '- ' + tgttoken)
                     console.log('textpanel', vis.src_lang)
-                    updateSidebar(srctoken, tgttoken, vis.src_lang);
+                    updateSidebar(srctoken, tgttoken, vis.src_lang, tokenidx1, tokenidx2 );
                     // wiktionary
                     // $.get('http://en.wiktionary.org/w/index.php?title=testx&printable=yes',function(data, status) {
                     //     console.log(data)

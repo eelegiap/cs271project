@@ -1,0 +1,41 @@
+<label for="lang">Text:</label>  
+<select name="lang" id="lang">  
+    <option value="source">Source</option>  
+    <option value="trans">Translation</option>  
+</select>
+<div id='myCarousel' class='carousel slide' data-ride='carousel' data-interval=false>
+    <div class='carousel-inner' role='listbox'>
+        <div class='carousel-item active'>
+            <div class="col">
+            <div class="row">
+                <h4 class='sentleveltitle'>Word Frequency</h4>
+                <div class='description'>Words that appear an unusually high number of times in a low number of sentences.</div>
+                <div style='float:left '> <label for='numb'>Elements:</label>
+                    <select name='numb' id='numb'>
+                        <option value=5>5</option>
+                        <option value=10>10</option>
+                        <option value=15 selected>15</option>
+                        </select>
+                    </div>
+                <div id='word-freq'></div>
+                </div>
+            </div>
+        </div>
+        <div class='carousel-item'>
+            <h4 class='sentleveltitle'>Sentence Length</h4>
+            <div class='description'>Distribution of sentence length across work as a whole.</div>
+            <div id='sent-length'></div>
+        </div>
+        <div class='carousel-item'>
+            <h4 class='sentleveltitle'>Lexical Richness</h4>
+            <div class='description'>What is lexical richness again?</div>
+            <div id='lex-richness'></div>
+        </div>
+    </div>
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+</button>

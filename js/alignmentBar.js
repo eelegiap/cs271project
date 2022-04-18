@@ -10,14 +10,24 @@ class AlignmentBar {
         this.parentElement = parentElement;
         this.source_align = source_align;
         this.translation_align = translation_align;
-        this.cur_source_align = sent_order.srcSentsInOrder[0].tokens[0].lemma.toLowerCase().trim();
-        this.cur_translation_align = sent_order.tgtSentsInOrder[0].tokens[0].lemma.toLowerCase().trim();
         this.sent_order = sent_order;
         this.initVis()
     }
 
     initVis() {
         let vis = this;
+
+        let align_src = sent_order.srcSentsInOrder[0].tokens[0];
+        let align_tgt = sent_order.tgtSentsInOrder[0].tokens[0];
+
+        vis.cur_source_align = align_src.lemma.toLowerCase().trim();
+        vis.cur_translation_align = align_tgt.lemma.toLowerCase().trim();
+
+        document.getElementById("table_src_align").innerHTML =  align_src.text;
+        document.getElementById("table_src_lemma").innerHTML = vis.cur_source_align;
+        document.getElementById("table_tgt_align").innerHTML =  align_tgt.text;
+        document.getElementById("table_tgt_lemma").innerHTML = vis.cur_translation_align;
+
         vis.margin = {top: 8, right: 40, bottom: 5, left: 20};
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
@@ -36,24 +46,31 @@ class AlignmentBar {
 
         vis.cur_sent_idx = -1;
 
-        let button = document.createElement('button');
-        button.textContent = "Next Example"
-        button.id = "nextAlign";
-        button.onclick = function(event){vis.showNextExample()}
-        let cont = document.getElementById("nextButton")
-        cont.append(button)
+        // let button = document.createElement('button');
+        // button.textContent = "Next Example"
+        // button.id = "nextAlign";
+        // button.onclick = function(event){vis.showNextExample()}
+        // let cont = document.getElementById("nextButton")
+        // cont.append(button)
 
-        vis.updateVis(vis.cur_source_align, vis.cur_translation_align);
+        vis.src_tkn_idx = 0;
+        vis.trans_tkn_idk = 0;
+
+        vis.updateVis(vis.cur_source_align, vis.cur_translation_align,  vis.src_tkn_idx ,  vis.trans_tkn_idk );
 
     }
 
 
 
-    updateVis(s, t){
+    updateVis(s, t, src_tkn_idx, trans_tkn_idk){
         let vis = this;
 
         vis.cur_source_align = s;
         vis.cur_translation_align =t;
+        vis.src_tkn_idx = src_tkn_idx;
+        vis.trans_tkn_idk = trans_tkn_idk;
+
+        console.log(src_tkn_idx, trans_tkn_idk)
 
         vis.wrangleData();
 
@@ -100,23 +117,16 @@ class AlignmentBar {
                     .html(``);
             })
             .on('click', function (event, d){
-                let title_cont = document.getElementById("alignmentTitle")
-                while(title_cont.firstChild){
-                    title_cont.removeChild(title_cont.firstChild);
-                }
-                let title = document.createElement('p');
-                title.textContent = d[0];
-                title.setAttribute("style", "color:gray");
-                title_cont.appendChild(title);
-
-                vis.cur_sent_idx = -1;
-                vis.pairs_to_print = [];
-                for (let i = 0; i < d[3].length; i++) {
-                    vis.pairs_to_print.push(vis.sent_order["srcSentsInOrder"][d[3][i]]["text"] + '<br>' + vis.sent_order["tgtSentsInOrder"][d[4][i]]["text"]);
-                }
-                vis.showNextExample();
+                vis.showExamples(d)
         });
         let d = vis.data[1];
+        vis.showExamples(d)
+        align_rects.exit().remove()
+
+    }
+
+    showExamples(d){
+        let vis = this;
         let title_cont = document.getElementById("alignmentTitle")
         while(title_cont.firstChild){
             title_cont.removeChild(title_cont.firstChild);
@@ -127,13 +137,37 @@ class AlignmentBar {
         title_cont.appendChild(title);
 
         vis.cur_sent_idx = -1;
+        vis.getPairsToPrint(d);
+        vis.showNextExample();
+
+    }
+    getPairsToPrint(d){
+        let vis = this;
         vis.pairs_to_print = [];
         for (let i = 0; i < d[3].length; i++) {
-            vis.pairs_to_print.push(vis.sent_order["srcSentsInOrder"][d[3][i]]["text"] + '<br>' + vis.sent_order["tgtSentsInOrder"][d[4][i]]["text"]);
+            vis.pairs_to_print.push( vis.getBrevExample("srcSentsInOrder", d, i, vis.src_tkn_idx) + '<br>' + vis.getBrevExample("tgtSentsInOrder", d, i, vis.trans_tkn_idk));
         }
-        vis.showNextExample();
-        align_rects.exit().remove()
-
+    }
+    getBrevExample(col, d, i, idx){
+        let vis = this;
+        let test = [];
+        idx = parseInt(idx);
+        let min =idx - 4;
+        if(min < 0){
+            min = 0;
+        }
+        else{
+            test.push("...");
+        }
+        let max = idx + 4;
+        if(max > vis.sent_order[col][d[3][i]]["tokens"].length){
+            max = vis.sent_order[col][d[3][i]]["tokens"].length;
+        }
+        vis.sent_order[col][d[3][i]]["tokens"].slice(min,max).forEach(function (d){test.push(d.text)})
+        if(max != vis.sent_order[col][d[3][i]]["tokens"].length){
+            test.push("...")
+        }
+        return test.join(" ");
     }
 
     wrangleData(){
