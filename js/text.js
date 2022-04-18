@@ -74,6 +74,9 @@ class TextPanel {
                 return thistoken.text + '<br><br>'
 
             }
+            if (thistoken.pos == 'SUPERSCRIPT') {
+                return '<sup>1</sup>'
+            }
             if (j < tokens.length-1) {
                 var nexttoken = tokens[j+1]
                 if ('.,)?;»!”'.includes(nexttoken.text)) {
@@ -121,12 +124,15 @@ class TextPanel {
                 .enter()
                 .append('span')
                 .attr('id', function (d, j) {
+                    if (d.text == 'павильоне') {
+                        console.log(d)
+                    }
                     return 'srcsent' + i + 'span' + j
                 })
                 .attr('class', 'token')
                 .append('mark')
                 .attr('id', function (d, j) {
-                    return 'srcsent' + i + 'token' + j
+                    return 'srcsent' + i + 'token' +  j
                 })
                 .html(function (d,j) {
                     return spacenospace(tokens, d, j, "src")
@@ -153,12 +159,12 @@ class TextPanel {
                 .enter()
                 .append('span')
                 .attr('id', function (d, j) {
-                    return ('tgtsent' + i + 'span' + j)
+                    return ('tgtsent' + i + 'span' +  j)
                 })
                 .attr('class', 'token')
                 .append('mark')
                 .attr('id', function (d, j) {
-                    return ('tgtsent' + i + 'token' + j)
+                    return ('tgtsent' + i + 'token' +  j)
                 })
                 .html(function (d, j) {
                     return spacenospace(tokens, d, j, "tgt")
@@ -177,13 +183,16 @@ class TextPanel {
         var totalcharcount = src_space + tgt_space
 
         // MAKE SURE CORRECT WIDTH
-        var srccolwidth = parseInt((src_space)/ totalcharcount * ($(window).width() - 100) * .66)
-        var tgtcolwidth = parseInt((tgt_space) / totalcharcount * ($(window).width() -100) * .66)
+        var srccolwidth = (src_space/ totalcharcount) * 100
+        var tgtcolwidth = (tgt_space / totalcharcount) * 100
+
+        d3.select('#srccol').style('width',`${srccolwidth}%`)
+        d3.select('#tgtcol').style('width',`${tgtcolwidth}%`)
+
         var analysiswidth = parseInt(($(window).width() - 300) * .33)
 
-        d3.select('.wrapper').style('grid-template-columns', `${srccolwidth}px ${tgtcolwidth}px ${analysiswidth}px`)
-
-        d3.select('#analysispanel').style('visibility','visible').style('left', parseInt(($(window).width() - 100)* .66) + 'px').style('position', 'fixed')
+        // d3.select('.wrapper').style('grid-template-columns', `${srccolwidth}px ${tgtcolwidth}px ${analysiswidth}px`)
+        // d3.select('#analysispanel').style('visibility','visible').style('left', parseInt(($(window).width() - 100)* .66) + 'px').style('position', 'fixed')
 
         let wadata = vis.word_align;
 
@@ -242,13 +251,14 @@ class TextPanel {
         })
 
         // HOVER TOKENS
-        d3.selectAll('.token').on('mouseover', function () {
+        d3.selectAll('.token').on('mouseover', function (d) {
             var chosenElt = d3.select(this)
             if (chosenElt.classed('chosen')) {
                 var chosenID = chosenElt.attr('id')
 
                 var sentidx1 = chosenID.split('span')[0].replace('sent', '').replace('src', '').replace('tgt', '')
                 var tokenidx1 = chosenID.split('span')[1]
+                console.log(sentidx1, tokenidx1)
                 var exists = true
                 if (chosenID.includes('src')) {
                     var which = 'tgt'
@@ -315,6 +325,7 @@ class TextPanel {
                     // display word pair up top
                     d3.select('#wordpair').text(srctoken + '- ' + tgttoken)
                     console.log('textpanel', vis.src_lang)
+                    console.log('text.js',srctoken, tgttoken)
                     updateSidebar(srctoken, tgttoken, vis.src_lang, tokenidx1, tokenidx2 );
                     // wiktionary
                     // $.get('http://en.wiktionary.org/w/index.php?title=testx&printable=yes',function(data, status) {
