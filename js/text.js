@@ -203,23 +203,45 @@ class TextPanel {
         tgt2src['sentences'] = Object()
         tgt2src['tokens'] = Object()
 
+        var alignment = Object()
+        alignment['src'] = Object()
+        alignment['tgt'] = Object()
+
         // CREATE WORD AND SENTENCE ALIGNMENT LOOKUP
         wadata.forEach(function (s) {
-            // sent level
-            var i = s.srcsentidx
-            var j = s.tgtsentidx
-            src2tgt['sentences'][i] = j
-            tgt2src['sentences'][j] = i
 
-            // token level
-            src2tgt['tokens'][i] = Object()
-            tgt2src['tokens'][j] = Object()
-            s.alignedwordindices.forEach(function (kl) {
-                var k = kl[0];
-                var l = kl[1]
-                src2tgt['tokens'][i][k] = l
-                tgt2src['tokens'][j][l] = k
+            alignment['src'][s.srcsentidx] ??= []
+            alignment['tgt'][s.tgtsentidx] ??= []
+            var alignedTokens = Object()
+            alignedTokens['src'] = Object()
+            alignedTokens['tgt'] = Object()
+            s.alignedwordindices.forEach(function (st) {
+                    alignedTokens['src'][st[0]] = st[1]
+                    alignedTokens['tgt'][st[1]] = st[0]
+                })
+            alignment['src'][s.srcsentidx].push({
+                'sentIdx' : s.tgtsentidx,
+                'tokenObj' : alignedTokens['src']
             })
+            alignment['tgt'][s.tgtsentidx].push({
+                'sentIdx' : s.srcsentidx,
+                'tokenObj' : alignedTokens['tgt']
+            })
+            // // sent level
+            // var i = s.srcsentidx
+            // var j = s.tgtsentidx
+            // src2tgt['sentences'][i] = j
+            // tgt2src['sentences'][j] = i
+
+            // // token level
+            // src2tgt['tokens'][i] = Object()
+            // tgt2src['tokens'][j] = Object()
+            // s.alignedwordindices.forEach(function (kl) {
+            //     var k = kl[0];
+            //     var l = kl[1]
+            //     src2tgt['tokens'][i][k] = l
+            //     tgt2src['tokens'][j][l] = k
+            // })
 
         })
 
@@ -234,16 +256,22 @@ class TextPanel {
             if (chosenElt.classed('chosen')) {
                 var chosenID = chosenElt.attr('id')
                 var index1 = chosenID.replace('sent', '').replace('src', '').replace('tgt', '')
-
+                var index2;
                 if (chosenID.includes('src')) {
                     var which = 'tgt'
-                    var index2 = src2tgt['sentences'][index1]
+                    alignment['src'][index1].forEach(function(info) {
+                    index2 = info.sentIdx
+                    chosenElt.transition().style('background-color', 'aqua')
+                    d3.select('#' + which + 'sent' + sentidx2 + 'span' + tokenidx2).transition().style('background-color', 'aqua')
+                    })
                 } else {
                     var which = 'src'
-                    var index2 = tgt2src['sentences'][index1]
+                    alignment['src'][index1].forEach(function(info) {
+                    index2 = info.sentIdx
+                    chosenElt.transition().style('background-color', 'aqua')
+                    d3.select('#' + which + 'sent' + sentidx2 + 'span' + tokenidx2).transition().style('background-color', 'aqua')
+                    })
                 }
-                chosenElt.selectAll('span.token').transition().style('background-color', 'aqua')
-                d3.select('#' + which + 'sent' + index2).selectAll('span.token').transition().style('background-color', 'aqua')
             }
         })
         d3.selectAll('.sentence').on('mouseout', function () {
@@ -258,29 +286,39 @@ class TextPanel {
 
                 var sentidx1 = chosenID.split('span')[0].replace('sent', '').replace('src', '').replace('tgt', '')
                 var tokenidx1 = chosenID.split('span')[1]
-                console.log(sentidx1, tokenidx1)
+
                 var exists = true
+                var sentidx2; var tokenidx2;
                 if (chosenID.includes('src')) {
                     var which = 'tgt'
                     try {
-                        var sentidx2 = src2tgt['sentences'][sentidx1]
-                        var tokenidx2 = src2tgt['tokens'][sentidx1][tokenidx1]
-                    } catch {
+                        alignment['src'][sentidx1].forEach(function(info) {
+                            sentidx2 = info.sentIdx
+                            tokenidx2 = info.tokenObj[tokenidx1]
+                            chosenElt.transition().style('background-color', 'aqua')
+                            d3.select('#' + which + 'sent' + sentidx2 + 'span' + tokenidx2).transition().style('background-color', 'aqua')
+                        })
+                        // var sentidx2 = src2tgt['sentences'][sentidx1]
+                        // var tokenidx2 = src2tgt['tokens'][sentidx1][tokenidx1]
+                    } catch(e) {
+                        chosenElt.transition().style('background-color', 'tomato')
                         exists = false;
                     }
                 } else {
                     var which = 'src'
                     try {
-                        var sentidx2 = tgt2src['sentences'][sentidx1]
-                        var tokenidx2 = tgt2src['tokens'][sentidx1][tokenidx1]
+                        alignment['tgt'][sentidx1].forEach(function(info) {
+                            sentidx2 = info.sentIdx
+                            tokenidx2 = info.tokenObj[tokenidx1]
+                            chosenElt.transition().style('background-color', 'aqua')
+                            d3.select('#' + which + 'sent' + sentidx2 + 'span' + tokenidx2).transition().style('background-color', 'aqua')
+                        })
                     } catch {
                         exists = false;
                     }
                 }
                 if (exists && vis.radio_value == "wordlevel") {
                     d3.select(this).style('cursor', 'pointer')
-                    chosenElt.transition().style('background-color', 'aqua')
-                    d3.select('#' + which + 'sent' + sentidx2 + 'span' + tokenidx2).transition().style('background-color', 'aqua')
                 } else {
                     d3.select(this).style('cursor', 'default')
                 }
