@@ -17,6 +17,7 @@ class nGrams {
         vis.updateVis(vis.srctoken, vis.tgttoken);
     }
     updateVis(s, t) {
+        console.log('ngrams', s,t)
         let vis = this;
         vis.srctoken = s;
         vis.tgttoken = t;
