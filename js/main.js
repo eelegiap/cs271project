@@ -54,7 +54,6 @@ function getRandomInt(max) {
 function updateSidebar(cur_source_align, cur_translation_align, src_lang, src_sent_idx, tgt_sent_idx, source_lemma, translation_lemma){
     source_lemma = source_lemma.toLowerCase().trim();
     translation_lemma = translation_lemma.toLowerCase().trim();
-    console.log(source_lemma, translation_lemma)
 
     document.getElementById("table_src_align").innerHTML =  cur_source_align;
     document.getElementById("table_src_lemma").innerHTML = source_lemma;

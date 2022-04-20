@@ -194,6 +194,9 @@ class AlignmentBar {
 
         let aligned_words_in_tgt = vis.source_align[vis.cur_source_align][0]
         let aligned_words_in_src = vis.translation_align[vis.cur_translation_align][0]
+
+        console.log("aligned tgt", aligned_words_in_tgt)
+        console.log("aligned src", aligned_words_in_src)
         let ab = vis.getOccurrence(aligned_words_in_tgt, vis.cur_translation_align);
         let anotb = aligned_words_in_tgt.length - ab;
         let bnota = aligned_words_in_src.length - ab;
@@ -201,6 +204,13 @@ class AlignmentBar {
         let idx_ab = vis.getIndex(aligned_words_in_tgt, vis.cur_translation_align);
         let idx_anotb = vis.getNotIndex(aligned_words_in_tgt, vis.cur_translation_align);
         let idx_bnota = vis.getNotIndex(aligned_words_in_src, vis.cur_source_align);
+
+        // console.log(typeof idx_ab)
+        // let idx_anotb_set = new Set(idx_anotb.filter(x => !idx_ab.includes(x)));
+        // let idx_bnota_set = new Set(idx_bnota.filter(x => !idx_ab.includes(x)));
+        //
+        // idx_anotb = Array.from(idx_anotb_set);
+        // idx_bnota = Array.from(idx_bnota_set);
 
         let str_ab = vis.cur_source_align + " translated as " + vis.cur_translation_align;
         let str_anotb= vis.cur_source_align + " not translated as " + vis.cur_translation_align;
@@ -241,15 +251,23 @@ class AlignmentBar {
             vis.data [1][6].push(aligned_tgt_wd_indices[element]);
         });
 
+        aligned_src_indices = vis.translation_align[vis.cur_translation_align][1]
+        aligned_tgt_indices = vis.translation_align[vis.cur_translation_align][2]
+
+        aligned_src_wd_indices = vis.translation_align[vis.cur_translation_align][4]
+        aligned_tgt_wd_indices = vis.translation_align[vis.cur_translation_align][5]
+        
         idx_bnota.forEach(function (element) {
-            vis.data [2][3].push(vis.translation_align[vis.cur_translation_align][1][element]);
-            vis.data [2][4].push(vis.translation_align[vis.cur_translation_align][2][element]);
+            vis.data [2][3].push(aligned_src_indices[element]);
+            vis.data [2][4].push(aligned_tgt_indices[element]);
         });
 
         idx_bnota.forEach(function (element) {
             vis.data [2][5].push(aligned_src_wd_indices[element]);
             vis.data [2][6].push(aligned_tgt_wd_indices[element]);
         });
+
+        console.log(idx_anotb, idx_ab, idx_bnota);
 
 
     }
@@ -290,7 +308,11 @@ class AlignmentBar {
 
     getNotIndex(array, true_align){
         return array.reduce(function(arr, value, i) {
-            if (value != true_align) arr.push(i);
+            // console.log(value, " ", true_align)
+            if (value != true_align){
+                // console.log("above does not equal")
+                arr.push(i);
+            }
             return arr;
         }, []);
     }

@@ -345,7 +345,6 @@ class TextPanel {
                         sentidx2 = info.sentIdx
                         tokenidx2 = info.tokenObj[tokenidx1]
                         tgttoken = d3.select('#' + which + 'sent' + sentidx2 + 'span' + tokenidx2).text()
-                        console.log(d3.select('#' + which + 'sent' + sentidx2 + 'span' + tokenidx2))
                         vis.tgt_lemma = d3.select('#' + which + 'sent' + sentidx2 + 'span' + tokenidx2)["_groups"][0][0]["__data__"].lemma
                         vis.src_lemma = chosenElt["_groups"][0][0]["__data__"].lemma
                         srctoken = chosenElt.text()
@@ -359,7 +358,6 @@ class TextPanel {
                         sentidx2 = info.sentIdx
                         tokenidx2 = info.tokenObj[tokenidx1]
                         srctoken = d3.select('#' + which + 'sent' + sentidx2 + 'span' + tokenidx2).text()
-                        console.log(d3.select('#' + which + 'sent' + sentidx2 + 'span' + tokenidx2))
                         vis.src_lemma = d3.select('#' + which + 'sent' + sentidx2 + 'span' + tokenidx2)["_groups"][0][0]["__data__"].lemma
                         vis.tgt_lemma = chosenElt["_groups"][0][0]["__data__"].lemma
                         tgttoken = chosenElt.text()
