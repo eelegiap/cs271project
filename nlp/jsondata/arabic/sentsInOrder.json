@@ -17,7 +17,7 @@
                     "text": "I.",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -286,7 +286,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -2280,7 +2280,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -2645,7 +2645,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -3362,7 +3362,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -4119,7 +4119,7 @@
                     "text": "شكّاءً.",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 },
                 {
                     "tokenid": 94,
@@ -5438,7 +5438,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -6272,7 +6272,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -6943,7 +6943,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -8118,7 +8118,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -8480,7 +8480,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -8509,7 +8509,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -9520,7 +9520,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -11164,7 +11164,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -12392,7 +12392,7 @@
                     "text": "\"",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -12565,7 +12565,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -12938,7 +12938,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -13756,7 +13756,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -15013,7 +15013,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -15042,7 +15042,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -16291,7 +16291,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -16954,7 +16954,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -16983,7 +16983,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -18380,7 +18380,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -19586,7 +19586,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -20572,7 +20572,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -21477,7 +21477,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -22161,7 +22161,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -23698,7 +23698,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -25557,7 +25557,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -26878,7 +26878,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -28095,7 +28095,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -28116,7 +28116,7 @@
                     "text": "V.",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -31083,7 +31083,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -31882,7 +31882,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -33633,7 +33633,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -33870,7 +33870,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -36834,7 +36834,7 @@
                     "text": "\"",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -38077,7 +38077,7 @@
                     "text": ".",
                     "lemma": "",
                     "features": {},
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         }
