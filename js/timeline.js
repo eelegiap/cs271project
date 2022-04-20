@@ -79,6 +79,10 @@ class Timeline{
         vis.data_source = vis.source_align[vis.cur_source_align][1];
         vis.data_translation =vis.translation_align[vis.cur_translation_align][2];
 
+        vis.src_token_idxs = vis.translation_align[vis.cur_translation_align][3];
+        vis.tgt_token_idxs = vis.source_align[vis.cur_source_align][3];
+        console.log('srctokenidxs, tgttokenidxs', vis.src_token_idxs, vis.tgt_token_idxs)
+
         let timeline_dots_source = vis.svg.selectAll('.timeline_dots_source')
             .data(vis.data_source)
 
@@ -86,12 +90,34 @@ class Timeline{
             .append('circle')
             .attr("class", "timeline_dots_source")
             .merge(timeline_dots_source)
+            .attr('id', function(d,i) {
+                var sentidx = d;
+                var tokenidx = vis.tgt_token_idxs[i]
+                return `sent${sentidx}dot${tokenidx}`
+            })
             .attr("cx", function(d){return vis.scale_source(d)})
             .attr("cy", 10)
             .attr("r", 5)
             .attr("fill", "rgb(31,121,211)")
+            .style('cursor','pointer')
 
         timeline_dots_source.exit().remove()
+
+        timeline_dots_source.on('click', function() {
+            var dotID = d3.select(this).attr('id')
+            var tokenIdx = dotID.split('dot')[1]
+            var sentIdx = dotID.split('dot')[0].replace('sent','')
+            console.log('indices',sentIdx, tokenIdx)
+            var element = document.getElementById(`srcsent${sentIdx}span${tokenIdx}`)
+            console.log(element)
+            element.scrollIntoView();
+            
+            const y = element.getBoundingClientRect().top + window.scrollY;
+            window.scroll({
+            top: y,
+            behavior: 'smooth'
+            });
+        })
 
         let timeline_dots_translation = vis.svg.selectAll('.timeline_dots_translation')
             .data(vis.data_translation)
