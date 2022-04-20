@@ -188,7 +188,7 @@ class AlignmentBar {
 
     wrangleData(){
         let vis = this;
-
+        
         let aligned_words_in_tgt = vis.source_align[vis.cur_source_align][0]
         let aligned_words_in_src = vis.translation_align[vis.cur_translation_align][0]
 
