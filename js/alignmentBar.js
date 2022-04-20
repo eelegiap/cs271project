@@ -17,17 +17,11 @@ class AlignmentBar {
     initVis() {
         let vis = this;
 
-        // let align_src = sent_order.srcSentsInOrder[0].tokens[0];
-        // let align_tgt = sent_order.tgtSentsInOrder[0].tokens[0];
-        //
-        // vis.cur_source_align = align_src.lemma.toLowerCase().trim();
-        // vis.cur_translation_align = align_tgt.lemma.toLowerCase().trim();
+        let align_src = sent_order.srcSentsInOrder[0].tokens[0];
+        let align_tgt = sent_order.tgtSentsInOrder[0].tokens[0];
 
-        let align_src = "Historia";
-        let align_tgt = "History";
-        //
-        vis.cur_source_align = "historia";
-        vis.cur_translation_align = "history";
+        vis.cur_source_align = align_src.lemma.toLowerCase().trim();
+        vis.cur_translation_align = align_tgt.lemma.toLowerCase().trim();
 
         document.getElementById("table_src_align").innerHTML =  align_src.text;
         document.getElementById("table_src_lemma").innerHTML = vis.cur_source_align;
@@ -172,8 +166,6 @@ class AlignmentBar {
         console.log("Sentence idx", sentence_idx)
         console.log("Example sentence", vis.sent_order[col][sentence_idx]["text"])
 
-        console.log()
-        console.log("Token ", vis.sent_order[col][sentence_idx]["tokens"])
         let test = [];
 
         let idx = wd_idx;
@@ -235,7 +227,7 @@ class AlignmentBar {
 
         idx_anotb.forEach(function (element) {
             vis.data [0][5].push(aligned_src_wd_indices[element]);
-            vis.data [0][6].push(aligned_src_wd_indices[element]);
+            vis.data [0][6].push(aligned_tgt_wd_indices[element]);
         });
 
         idx_ab.forEach(function (element) {
@@ -246,7 +238,7 @@ class AlignmentBar {
 
         idx_ab.forEach(function (element) {
             vis.data [1][5].push(aligned_src_wd_indices[element]);
-            vis.data [1][6].push(aligned_src_wd_indices[element]);
+            vis.data [1][6].push(aligned_tgt_wd_indices[element]);
         });
 
         idx_bnota.forEach(function (element) {
@@ -256,7 +248,7 @@ class AlignmentBar {
 
         idx_bnota.forEach(function (element) {
             vis.data [2][5].push(aligned_src_wd_indices[element]);
-            vis.data [2][6].push(aligned_src_wd_indices[element]);
+            vis.data [2][6].push(aligned_tgt_wd_indices[element]);
         });
 
 
