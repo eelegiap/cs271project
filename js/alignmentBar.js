@@ -155,7 +155,7 @@ class AlignmentBar {
     getPairsToPrint(d){
         let vis = this;
         vis.pairs_to_print = [];
-        console.log("d" ,d)
+        // console.log("d" ,d)
         for (let i = 0; i < d[3].length; i++) {
             vis.pairs_to_print.push( vis.getBrevExample("srcSentsInOrder", d, i, d[3][i], d[5][i]) + '<br>' + vis.getBrevExample("tgtSentsInOrder", d, i, d[4][i], d[6][i]));
         }
@@ -163,14 +163,14 @@ class AlignmentBar {
     getBrevExample(col, d, i, sentence_idx, wd_idx){
         let vis = this;
         let sentence_tokens = vis.sent_order[col][sentence_idx]["tokens"]
-        console.log("Sentence idx", sentence_idx)
-        console.log("Example sentence", vis.sent_order[col][sentence_idx]["text"])
+        // console.log("Sentence idx", sentence_idx)
+        // console.log("Example sentence", vis.sent_order[col][sentence_idx]["text"])
 
         let test = [];
 
         let idx = wd_idx;
 
-        console.log("Word index in sentence ", idx)
+        // console.log("Word index in sentence ", idx)
         let min = idx - 4;
         if(min < 0){
             min = 0;
