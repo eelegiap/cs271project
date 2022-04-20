@@ -163,14 +163,11 @@ class AlignmentBar {
     getBrevExample(col, d, i, sentence_idx, wd_idx){
         let vis = this;
         let sentence_tokens = vis.sent_order[col][sentence_idx]["tokens"]
-        // console.log("Sentence idx", sentence_idx)
-        // console.log("Example sentence", vis.sent_order[col][sentence_idx]["text"])
 
         let test = [];
 
         let idx = wd_idx;
 
-        // console.log("Word index in sentence ", idx)
         let min = idx - 4;
         if(min < 0){
             min = 0;
@@ -195,8 +192,6 @@ class AlignmentBar {
         let aligned_words_in_tgt = vis.source_align[vis.cur_source_align][0]
         let aligned_words_in_src = vis.translation_align[vis.cur_translation_align][0]
 
-        console.log("aligned tgt", aligned_words_in_tgt)
-        console.log("aligned src", aligned_words_in_src)
         let ab = vis.getOccurrence(aligned_words_in_tgt, vis.cur_translation_align);
         let anotb = aligned_words_in_tgt.length - ab;
         let bnota = aligned_words_in_src.length - ab;
@@ -256,7 +251,7 @@ class AlignmentBar {
 
         aligned_src_wd_indices = vis.translation_align[vis.cur_translation_align][4]
         aligned_tgt_wd_indices = vis.translation_align[vis.cur_translation_align][5]
-        
+
         idx_bnota.forEach(function (element) {
             vis.data [2][3].push(aligned_src_indices[element]);
             vis.data [2][4].push(aligned_tgt_indices[element]);
@@ -267,7 +262,6 @@ class AlignmentBar {
             vis.data [2][6].push(aligned_tgt_wd_indices[element]);
         });
 
-        console.log(idx_anotb, idx_ab, idx_bnota);
 
 
     }
@@ -308,9 +302,7 @@ class AlignmentBar {
 
     getNotIndex(array, true_align){
         return array.reduce(function(arr, value, i) {
-            // console.log(value, " ", true_align)
             if (value != true_align){
-                // console.log("above does not equal")
                 arr.push(i);
             }
             return arr;
