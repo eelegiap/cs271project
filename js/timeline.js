@@ -92,32 +92,19 @@ class Timeline{
             .merge(timeline_dots_source)
             .attr('id', function(d,i) {
                 var sentidx = d;
-                var tokenidx = vis.tgt_token_idxs[i]
-                return `sent${sentidx}dot${tokenidx}`
+                var tokenidx = vis.src_token_idxs[i]
+                return `srcsent${sentidx}dot${tokenidx}`
             })
             .attr("cx", function(d){return vis.scale_source(d)})
             .attr("cy", 10)
             .attr("r", 5)
             .attr("fill", "rgb(31,121,211)")
+            .attr('stroke-width','1px')
+            .attr('stroke','white')
+            .style('opacity',.5)
             .style('cursor','pointer')
 
         timeline_dots_source.exit().remove()
-
-        timeline_dots_source.on('click', function() {
-            var dotID = d3.select(this).attr('id')
-            var tokenIdx = dotID.split('dot')[1]
-            var sentIdx = dotID.split('dot')[0].replace('sent','')
-            console.log('indices',sentIdx, tokenIdx)
-            var element = document.getElementById(`srcsent${sentIdx}span${tokenIdx}`)
-            console.log(element)
-            element.scrollIntoView();
-            
-            const y = element.getBoundingClientRect().top + window.scrollY;
-            window.scroll({
-            top: y,
-            behavior: 'smooth'
-            });
-        })
 
         let timeline_dots_translation = vis.svg.selectAll('.timeline_dots_translation')
             .data(vis.data_translation)
@@ -126,13 +113,38 @@ class Timeline{
             .append('circle')
             .attr("class", "timeline_dots_translation")
             .merge(timeline_dots_translation)
+            .attr('id', function(d,i) {
+                var sentidx = d;
+                var tokenidx = vis.tgt_token_idxs[i]
+                return `tgtsent${sentidx}dot${tokenidx}`
+            })
             .attr("cx", function(d){return vis.scale_translation(d)})
             .attr("cy", 50)
             .attr("r", 5)
             .attr("fill", "rgb(209,38,38)")
+            .style('opacity',.5)
+            .style('cursor','pointer')
 
         timeline_dots_translation.exit().remove()
 
+        d3.selectAll('circle').on('mouseover', function() {
+            d3.selectAll('circle').style('opacity',.2)
+            d3.select(this).attr('r',8).style('opacity',1)
+        }).on('mouseout', function() {
+            d3.select(this).attr('r',5)
+            d3.selectAll('circle').style('opacity',.5)
+        })
+
+        d3.selectAll('circle').on('click', function() {
+            var dotID = d3.select(this).attr('id')
+            var tokenIdx = dotID.split('dot')[1]
+            var sentIdx = dotID.split('dot')[0].split('sent')[1]
+            var which = dotID.split('dot')[0].split('sent')[0]
+
+            var element = document.getElementById(`${which}sent${sentIdx}span${tokenIdx}`)
+            element.scrollIntoView()
+            d3.select(`#${which}sent${sentIdx}span${tokenIdx}`).transition(5000).style('background-color','#D0756F')
+        })
 
     }
 }
