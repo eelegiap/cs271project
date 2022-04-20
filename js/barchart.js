@@ -115,6 +115,8 @@ class BarChart {
         vis.svg.selectAll("rect").remove();
 
         // (1) Update domains
+        console.log('displayData', displayData)
+        displayData = displayData.sort(function(a,b) { return b.tf - a.tf})
         vis.y.domain([0, d3.max((displayData).map(a => a.tf))]);
         vis.x
             .domain((displayData).map(b => b.lemma))
