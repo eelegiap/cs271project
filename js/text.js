@@ -261,15 +261,15 @@ class TextPanel {
                     var which = 'tgt'
                     alignment['src'][index1].forEach(function(info) {
                     index2 = info.sentIdx
-                    chosenElt.transition().style('background-color', 'aqua')
-                    d3.select('#' + which + 'sent' + sentidx2 + 'span' + tokenidx2).transition().style('background-color', 'aqua')
+                    chosenElt.selectAll('span.token').transition().style('background-color', 'aqua')
+                    d3.select('#' + which + 'sent' + index2).selectAll('span.token').transition().style('background-color', 'aqua')
                     })
                 } else {
                     var which = 'src'
                     alignment['src'][index1].forEach(function(info) {
                     index2 = info.sentIdx
-                    chosenElt.transition().style('background-color', 'aqua')
-                    d3.select('#' + which + 'sent' + sentidx2 + 'span' + tokenidx2).transition().style('background-color', 'aqua')
+                    chosenElt.selectAll('span.token').transition().style('background-color', 'aqua')
+                    d3.select('#' + which + 'sent' + index2).selectAll('span.token').transition().style('background-color', 'aqua')
                     })
                 }
             }
@@ -330,31 +330,38 @@ class TextPanel {
 
         // CLICK TOKENS
         d3.selectAll('.token').on('click', function () {
+            console.log('token clicked in text.js')
             $("#ngramviewer").empty();
 
+            console.log('chosen elt before')
             var chosenElt = d3.select(this)
+            console.log('chosen elt after')
             if (chosenElt.classed('chosen')) {
                 var chosenID = chosenElt.attr('id')
                 var sentidx1 = chosenID.split('span')[0].replace('sent', '').replace('src', '').replace('tgt', '')
                 var tokenidx1 = chosenID.split('span')[1]
                 var exists = true
+                var srctoken; var tgttoken;
+                var info; var sentidx2; var tokenidx2; var which
                 if (chosenID.includes('src')) {
-                    var which = 'tgt'
-                    try {
-                        var sentidx2 = src2tgt['sentences'][sentidx1]
-                        var tokenidx2 = src2tgt['tokens'][sentidx1][tokenidx1]
-                        var tgttoken = d3.select('#' + which + 'sent' + sentidx2 + 'span' + tokenidx2).text()
-                        var srctoken = chosenElt.text()
-                    } catch {
-                        exists = false
-                    }
+                    which = 'tgt'
+                    // try {
+                        info = alignment['src'][sentidx1][0]
+                        sentidx2 = info.sentIdx
+                        tokenidx2 = info.tokenObj[tokenidx1]
+                        tgttoken = d3.select('#' + which + 'sent' + sentidx2 + 'span' + tokenidx2).text()
+                        srctoken = chosenElt.text()                        
+                    // } catch {
+                    //     exists = false
+                    // }
                 } else {
-                    var which = 'src'
+                    which = 'src'
                     try {
-                        var sentidx2 = tgt2src['sentences'][sentidx1]
-                        var tokenidx2 = tgt2src['tokens'][sentidx1][tokenidx1]
-                        var srctoken = d3.select('#' + which + 'sent' + sentidx2 + 'span' + tokenidx2).text()
-                        var tgttoken = chosenElt.text()
+                        info = alignment['tgt'][sentidx1][0]
+                        sentidx2 = info.sentIdx
+                        tokenidx2 = info.tokenObj[tokenidx1]
+                        srctoken = d3.select('#' + which + 'sent' + sentidx2 + 'span' + tokenidx2).text()
+                        tgttoken = chosenElt.text()
                     } catch {
                         exists = false
                     }
@@ -362,8 +369,7 @@ class TextPanel {
                 if (exists) {
                     // display word pair up top
                     d3.select('#wordpair').text(srctoken + '- ' + tgttoken)
-                    console.log('textpanel', vis.src_lang)
-                    console.log('text.js',srctoken, tgttoken)
+                    console.log('exists and udpatedsidebar', srctoken, tgttoken)
                     updateSidebar(srctoken, tgttoken, vis.src_lang, tokenidx1, tokenidx2 );
                     // wiktionary
                     // $.get('http://en.wiktionary.org/w/index.php?title=testx&printable=yes',function(data, status) {

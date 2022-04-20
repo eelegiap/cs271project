@@ -53,12 +53,11 @@ function getRandomInt(max) {
 }
 
 function updateSidebar(cur_source_align, cur_translation_align, src_lang, source_lemma_idx, translation_lemma_idx){
-    console.log('curaligns', cur_source_align, cur_translation_align)
     let source_lemma = source_lemmas[cur_source_align.toLowerCase().trim()];
     let translation_lemma = translation_lemmas[cur_translation_align.toLowerCase().trim()];
     // let source_lemma = cur_source_align
     // let translation_lemma = cur_translation_align
-    console.log('updateSidebar',source_lemma, translation_lemma)
+    console.log('updateSidebar is working',source_lemma, translation_lemma)
     document.getElementById("table_src_align").innerHTML =  cur_source_align;
     document.getElementById("table_src_lemma").innerHTML = source_lemma;
     document.getElementById("table_tgt_align").innerHTML =  cur_translation_align;
