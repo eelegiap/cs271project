@@ -51,16 +51,9 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
-function updateSidebar(cur_source_align, cur_translation_align, src_lang, source_lemma_idx, translation_lemma_idx, source_lemma, translation_lemma){
+function updateSidebar(cur_source_align, cur_translation_align, src_lang, src_sent_idx, tgt_sent_idx, source_lemma, translation_lemma){
     source_lemma = source_lemma.toLowerCase().trim();
     translation_lemma = translation_lemma.toLowerCase().trim();
-
-    if(source_lemma==""){
-        source_lemma = cur_source_align.toLowerCase().trim()
-    }
-    if(translation_lemma==""){
-        translation_lemma = cur_translation_align.toLowerCase().trim()
-    }
     console.log(source_lemma, translation_lemma)
 
     document.getElementById("table_src_align").innerHTML =  cur_source_align;
@@ -68,7 +61,7 @@ function updateSidebar(cur_source_align, cur_translation_align, src_lang, source
     document.getElementById("table_tgt_align").innerHTML =  cur_translation_align;
     document.getElementById("table_tgt_lemma").innerHTML = translation_lemma;
 
-    myAlignmentBar.updateVis(source_lemma, translation_lemma, source_lemma_idx, translation_lemma_idx);
+    myAlignmentBar.updateVis(source_lemma, translation_lemma, src_sent_idx, tgt_sent_idx);
     myTimeline.updateVis(source_lemma, translation_lemma);
     myNGrams.updateVis(source_lemma, translation_lemma, src_lang);
 }
