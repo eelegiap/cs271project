@@ -124,9 +124,6 @@ class TextPanel {
                 .enter()
                 .append('span')
                 .attr('id', function (d, j) {
-                    if (d.text == 'павильоне') {
-                        console.log(d)
-                    }
                     return 'srcsent' + i + 'span' + j
                 })
                 .attr('class', 'token')
@@ -330,12 +327,8 @@ class TextPanel {
 
         // CLICK TOKENS
         d3.selectAll('.token').on('click', function () {
-            console.log('token clicked in text.js')
             $("#ngramviewer").empty();
-
-            console.log('chosen elt before')
             var chosenElt = d3.select(this)
-            console.log('chosen elt after')
             if (chosenElt.classed('chosen')) {
                 var chosenID = chosenElt.attr('id')
                 var sentidx1 = chosenID.split('span')[0].replace('sent', '').replace('src', '').replace('tgt', '')
@@ -369,8 +362,7 @@ class TextPanel {
                 if (exists) {
                     // display word pair up top
                     d3.select('#wordpair').text(srctoken + '- ' + tgttoken)
-                    console.log('exists and udpatedsidebar', srctoken, tgttoken)
-                    updateSidebar(srctoken, tgttoken, vis.src_lang, tokenidx1, tokenidx2 );
+                    updateSidebar(srctoken, tgttoken, vis.src_lang, tokenidx1, tokenidx2);
                     // wiktionary
                     // $.get('http://en.wiktionary.org/w/index.php?title=testx&printable=yes',function(data, status) {
                     //     console.log(data)
