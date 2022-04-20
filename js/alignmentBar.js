@@ -46,13 +46,6 @@ class AlignmentBar {
 
         vis.cur_sent_idx = -1;
 
-        // let button = document.createElement('button');
-        // button.textContent = "Next Example"
-        // button.id = "nextAlign";
-        // button.onclick = function(event){vis.showNextExample()}
-        // let cont = document.getElementById("nextButton")
-        // cont.append(button)
-
         vis.src_tkn_idx = 0;
         vis.trans_tkn_idk = 0;
 
@@ -80,13 +73,13 @@ class AlignmentBar {
         let pos = lengths.map(cumulativeSum);
         pos.unshift(0)
 
-        let align_rects = vis.svg.selectAll('.align_rects')
-            .data(vis.data )
+        vis.align_rects = vis.svg.selectAll('.align_rects')
+            .data(vis.data)
 
-        align_rects.enter()
+        vis.align_rects.enter()
             .append('rect')
             .attr("class", "align_rects")
-            .merge(align_rects)
+            .merge(vis.align_rects)
             .attr("width", function(d, i){return lengths[i]})
             .attr("height", 20)
             .attr("x", function(d, i){return pos[i]})
@@ -116,13 +109,25 @@ class AlignmentBar {
                     .style("top", 0)
                     .html(``);
             })
-            .on('click', function (event, d){
+            .on('click', function (event, d, i){
                 vis.showExamples(d)
+                vis.resetColors(i);
+                d3.select(this)
+                    .style("fill", "aqua");
         });
         let d = vis.data[1];
         vis.showExamples(d)
-        align_rects.exit().remove()
+        vis.align_rects.exit().remove()
 
+    }
+
+    resetColors(){
+        let vis = this;
+        let elements = document.getElementsByClassName("align_rects");
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].style.fill = vis.colors[i];
+            console.log(vis.colors[i])
+        }
     }
 
     showExamples(d){
@@ -132,7 +137,6 @@ class AlignmentBar {
             title_cont.removeChild(title_cont.firstChild);
         }
         let title = document.createElement('p');
-        title.setAttribute("style", "color:gray");
         title.textContent = d[0];
         title_cont.appendChild(title);
 
