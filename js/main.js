@@ -6,8 +6,6 @@ let translation_align;
 let myAlignmentBar;
 let myTimeline;
 let sent_order;
-let source_lemmas;
-let translation_lemmas;
 let barchart;
 let senthistogram;
 
@@ -23,8 +21,6 @@ let promises = [
     d3.json("nlp/jsondata/"+ src_lang +"/wordAlignment.json"),
     d3.json("nlp/jsondata/"+ src_lang +"/alignments.json"),
     d3.json("nlp/jsondata/"+ tgt_lang +"/"+ src_lang +"/alignments.json"),
-    d3.json("nlp/jsondata/"+ src_lang +"/lemmas.json"),
-    d3.json("nlp/jsondata/"+ tgt_lang +"/"+ src_lang +"/lemmas.json"),
 ];
 
 Promise.all(promises)
@@ -40,8 +36,6 @@ function initMainPage(allDataArray, src_lang) {
     let word_align = allDataArray[2];
     source_align = allDataArray[3];
     translation_align = allDataArray[4];
-    source_lemmas = allDataArray[5];
-    translation_lemmas = allDataArray[6];
 
     myText = new TextPanel(sent_order, word_align, src_lang);
     change_level("wordlevel")
@@ -129,8 +123,6 @@ function change_language_selection(lang){
         d3.json("nlp/jsondata/"+ src_lang +"/wordAlignment.json"),
         d3.json("nlp/jsondata/"+ src_lang +"/alignments.json"),
         d3.json("nlp/jsondata/"+ tgt_lang +"/"+ src_lang +"/alignments.json"),
-        d3.json("nlp/jsondata/"+ src_lang +"/lemmas.json"),
-        d3.json("nlp/jsondata/"+ tgt_lang +"/"+ src_lang +"/lemmas.json"),
     ];
     Promise.all(promises)
         .then( function(data){ initMainPage(data, src_lang) })

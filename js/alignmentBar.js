@@ -42,7 +42,7 @@ class AlignmentBar {
             .attr('class', "tooltip")
             .attr('id', 'alignmentTooltip')
 
-        vis.colors = ["lightgrey", "darkgrey","grey",];
+        vis.colors = ["rgb(31,121,211)", "#69b3a2", "rgb(209,38,38)"];
 
         vis.cur_sent_idx = -1;
 
