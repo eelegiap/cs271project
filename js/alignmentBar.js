@@ -109,14 +109,11 @@ class AlignmentBar {
                     .style("top", 0)
                     .html(``);
             })
-            .on('click', function (event, d, i){
-                vis.showExamples(d)
-                vis.resetColors(i);
-                d3.select(this)
-                    .style("fill", "aqua");
+            .on('click', function (event, d){
+                vis.showExamples(d, this)
         });
         let d = vis.data[1];
-        vis.showExamples(d)
+        vis.showExamples(d, document.getElementsByClassName("align_rects")[1])
         vis.align_rects.exit().remove()
 
     }
@@ -130,7 +127,7 @@ class AlignmentBar {
         }
     }
 
-    showExamples(d){
+    showExamples(d, obj){
         let vis = this;
         let title_cont = document.getElementById("alignmentTitle")
         while(title_cont.firstChild){
@@ -143,6 +140,9 @@ class AlignmentBar {
         vis.cur_sent_idx = -1;
         vis.getPairsToPrint(d);
         vis.showNextExample();
+        vis.resetColors();
+        d3.select(obj)
+            .style("fill", "aqua");
 
     }
     getPairsToPrint(d){
