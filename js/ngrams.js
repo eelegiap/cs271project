@@ -13,6 +13,10 @@ class nGrams {
         let vis = this;
         vis.srctoken = vis.cur_source_align;
         vis.tgttoken = vis.cur_translation_align;
+        if(src_lang == "arabic"){
+            vis.srctoken = sent_order.srcSentsInOrder[1].tokens[0].text;
+            vis.tgttoken = sent_order.tgtSentsInOrder[1].tokens[1].lemma.toLowerCase().trim()
+        }
 
         vis.updateVis(vis.srctoken, vis.tgttoken);
     }

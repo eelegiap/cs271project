@@ -18,6 +18,12 @@ class Timeline{
     initVis() {
         let vis = this;
 
+        if(src_lang == "arabic"){
+            vis.cur_source_align = sent_order.srcSentsInOrder[1].tokens[0].text;
+            vis.cur_translation_align = sent_order.tgtSentsInOrder[1].tokens[1].lemma.toLowerCase().trim()
+        }
+
+
         vis.shift = 100;
 
         vis.margin = {top: 5, right: 20, bottom: 20, left: 0};

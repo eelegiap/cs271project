@@ -20,7 +20,16 @@ class AlignmentBar {
         let align_src = sent_order.srcSentsInOrder[0].tokens[0];
         let align_tgt = sent_order.tgtSentsInOrder[0].tokens[0];
 
-        vis.cur_source_align = align_src.lemma.toLowerCase().trim();
+        if(src_lang == "arabic"){
+            align_src = sent_order.srcSentsInOrder[1].tokens[0];
+            align_tgt = sent_order.tgtSentsInOrder[1].tokens[1];
+        }
+        if(align_src.lemma != "") {
+            vis.cur_source_align = align_src.lemma.toLowerCase().trim();
+        }
+        else{
+            vis.cur_source_align = align_src.text.toLowerCase().trim()
+        }
         vis.cur_translation_align = align_tgt.lemma.toLowerCase().trim();
 
         document.getElementById("table_src_align").innerHTML =  align_src.text;
