@@ -135,7 +135,7 @@ ol, ul {
 .titleTooltip .tooltiptext {
     visibility: hidden;
     position: absolute;
-    text-align: center;
+    text-align: left;
     width: fit-content;
     height: fit-content;
     padding: 2px;
@@ -153,3 +153,4 @@ ol, ul {
 }
 .paddingtop {
     padding-top: 25px
+}

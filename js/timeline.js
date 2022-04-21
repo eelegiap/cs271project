@@ -147,9 +147,15 @@ class Timeline{
             var sentIdx = dotID.split('dot')[0].split('sent')[1]
             var which = dotID.split('dot')[0].split('sent')[0]
 
-            var element = document.getElementById(`${which}sent${sentIdx}span${tokenIdx}`)
+            var element = document.getElementById(`${which}sent${sentIdx}`)
             element.scrollIntoView()
-            d3.select(`#${which}sent${sentIdx}span${tokenIdx}`).transition(5000).style('background-color','#D0756F')
+            var color;
+            if (which == 'src') {
+                color = 'rgb(31,121,211,.3)'
+            } else {
+                color = "rgb(209,38,38,.3)"
+            }
+            d3.select(`#${which}sent${sentIdx}`).selectAll('span.token').transition(5000).style('background-color',color)
         })
 
     }
