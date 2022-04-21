@@ -93,7 +93,11 @@ div.tooltip {
       min-height: 20vh;
   }
 
-table, th, td {
+table{
+    padding: 5px;
+}
+
+th, td{
     padding: 2px;
 }
 
@@ -113,3 +117,15 @@ table, th, td {
     border: none;
 }
 
+h6{
+    border-bottom-style: solid;
+    margin-bottom: 5px;
+    border-bottom-color: gray;
+}
+
+ul{
+    font-size: 12px;
+}
+ol, ul {
+    padding-left: 0px;
+}
