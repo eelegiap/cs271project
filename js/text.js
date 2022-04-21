@@ -15,7 +15,7 @@ class TextPanel {
         vis.tgt_lemma = "";
 
         // set the dimensions and margins of the graph
-        var margin = {top: 30, right: 30, bottom: 70, left: 60},
+        var margin = { top: 30, right: 30, bottom: 70, left: 60 },
             width = 400 - margin.left - margin.right,
             height = 400 - margin.top - margin.bottom;
 
@@ -24,32 +24,32 @@ class TextPanel {
 
         // text titles
         var titles = {
-            'russian' : {
-                'src' : 'Дама с собачкой',
-                'tgt' : 'Lady with the Lapdog'
+            'russian': {
+                'src': 'Дама с собачкой',
+                'tgt': 'Lady with the Lapdog'
             },
-            'arabic' : {
-                'src' : 'الأيام',
-                'tgt' : 'The Days (1-5)'
+            'arabic': {
+                'src': 'الأيام',
+                'tgt': 'The Days (1-5)'
             },
-            'spanish' : {
-                'src' : "El jardín de senderos que se bifurcan",
-                'tgt' : "The Garden of Forking Paths"
+            'spanish': {
+                'src': "El jardín de senderos que se bifurcan",
+                'tgt': "The Garden of Forking Paths"
             },
         }
         var authors = {
-            'russian' : {
-                'src' : 'Антон Чехов',
-                'tgt' : 'by Anton Chekhov'
+            'russian': {
+                'src': 'Антон Чехов',
+                'tgt': 'by Anton Chekhov'
             },
-            'arabic' : {
-                'src' : 'by Taha Hussein',
-                'tgt' : 'translated by E.H. Paxton'
+            'arabic': {
+                'src': 'by Taha Hussein',
+                'tgt': 'translated by E.H. Paxton'
             },
-            'spanish' : {
-                'src' : 'by Jorge Luis Borges',
-                'tgt' : 'translated by Anthony Kerrigan',
-            }   
+            'spanish': {
+                'src': 'by Jorge Luis Borges',
+                'tgt': 'translated by Anthony Kerrigan',
+            }
         }
 
         d3.select('#srcTitle').text(titles[vis.src_lang]['src'])
@@ -58,14 +58,14 @@ class TextPanel {
         d3.select('#tgtAuthor').text(authors[vis.src_lang]['tgt'])
 
         if (vis.src_lang == 'arabic') {
-            d3.select('#srctext').attr('dir','rtl').style('font-size','22px')
-            d3.select('#srcTitle').attr('dir','rtl')
-            d3.select('#srcAuthor').attr('dir','rtl')
+            d3.select('#srctext').attr('dir', 'rtl').style('font-size', '22px')
+            d3.select('#srcTitle').attr('dir', 'rtl')
+            d3.select('#srcAuthor').attr('dir', 'rtl')
             d3.select('#ngraminfo').text('Unfortunately, Google N-Grams is not supported in Arabic.')
         } else {
-            d3.select('#srctext').attr('dir','ltr')
-            d3.select('#srcTitle').attr('dir','ltr')
-            d3.select('#srcAuthor').attr('dir','ltr')
+            d3.select('#srctext').attr('dir', 'ltr')
+            d3.select('#srcTitle').attr('dir', 'ltr')
+            d3.select('#srcAuthor').attr('dir', 'ltr')
             d3.select('#ngraminfo').text(``)
         }
 
@@ -79,7 +79,7 @@ class TextPanel {
         // APPEND SOURCE SENTENCES
         function spacenospace(tokens, thistoken, j, type_str) {
             if (thistoken.linebreak) {
-                if (type_str == "src"){
+                if (type_str == "src") {
                     src_linebreak += 1;
                 } else {
                     tgt_linebreak += 1;
@@ -89,39 +89,39 @@ class TextPanel {
             if (thistoken.pos == 'SUPERSCRIPT') {
                 return '<sup>1</sup>'
             }
-            if (j < tokens.length-1) {
-                var nexttoken = tokens[j+1]
+            if (j < tokens.length - 1) {
+                var nexttoken = tokens[j + 1]
                 if (',.'.includes(thistoken.text) && "'".includes(nexttoken.text)) {
                     return thistoken.text
                 }
-                if (["'",'"'].includes(thistoken.text) && nexttoken.text == 'Our') {
+                if (["'", '"'].includes(thistoken.text) && nexttoken.text == 'Our') {
                     return thistoken.text
                 }
-                if (thistoken.text == 'Master' && ["'",'"'].includes(nexttoken.text)) {
+                if (thistoken.text == 'Master' && ["'", '"'].includes(nexttoken.text)) {
                     return thistoken.text
                 }
                 if ('.,)?;»!”'.includes(nexttoken.text)) {
                     return thistoken.text
-                } 
+                }
                 if ((':' == nexttoken.text) || '...' == nexttoken.text) {
                     return thistoken.text
                 }
                 if (('"' == nexttoken.text) && thistoken.text == ':') {
                     return thistoken.text + ' '
-                } 
+                }
                 if (('"‘' == nexttoken.text) && thistoken.pos == 'PUNCT') {
                     return thistoken.text
-                } 
+                }
                 if (('"' == thistoken.text) && nexttoken.text == '¿') {
                     return thistoken.text
-                } 
+                }
                 if ('¿"'.includes(thistoken.text) && nexttoken.pos != 'PUNCT') {
                     return thistoken.text
                 }
-                if (['n’t','’m','’s',"'s"].includes(nexttoken.text)) {
+                if (['n’t', '’m', '’s', "'s"].includes(nexttoken.text)) {
                     return thistoken.text
                 }
-            } 
+            }
             if ('(¿«“‘'.includes(thistoken.text)) {
                 return thistoken.text
             }
@@ -150,9 +150,9 @@ class TextPanel {
                 .attr('class', 'token')
                 .append('mark')
                 .attr('id', function (d, j) {
-                    return 'srcsent' + i + 'token' +  j
+                    return 'srcsent' + i + 'token' + j
                 })
-                .html(function (d,j) {
+                .html(function (d, j) {
                     return spacenospace(tokens, d, j, "src")
                 })
                 .style('background-color', 'white')
@@ -177,12 +177,12 @@ class TextPanel {
                 .enter()
                 .append('span')
                 .attr('id', function (d, j) {
-                    return ('tgtsent' + i + 'span' +  j)
+                    return ('tgtsent' + i + 'span' + j)
                 })
                 .attr('class', 'token')
                 .append('mark')
                 .attr('id', function (d, j) {
-                    return ('tgtsent' + i + 'token' +  j)
+                    return ('tgtsent' + i + 'token' + j)
                 })
                 .html(function (d, j) {
                     return spacenospace(tokens, d, j, "tgt")
@@ -192,22 +192,22 @@ class TextPanel {
 
         let char_per_break_est = 50;
 
-        var src_space = srccharcount + src_linebreak*char_per_break_est;
+        var src_space = srccharcount + src_linebreak * char_per_break_est;
         if (vis.src_lang == 'russian') {
             src_space = src_space * 1.1
         } else if (vis.src_lang == 'arabic') {
-            src_space = src_space *1.32
+            src_space = src_space * 1.32
         }
-        var tgt_space = tgtcharcount + tgt_linebreak*char_per_break_est
+        var tgt_space = tgtcharcount + tgt_linebreak * char_per_break_est
 
         var totalcharcount = src_space + tgt_space
 
         // MAKE SURE CORRECT WIDTH
-        var srccolwidth = (src_space/ totalcharcount) * 100
+        var srccolwidth = (src_space / totalcharcount) * 100
         var tgtcolwidth = (tgt_space / totalcharcount) * 100
 
-        d3.select('#srccol').style('width',`${srccolwidth}%`)
-        d3.select('#tgtcol').style('width',`${tgtcolwidth}%`)
+        d3.select('#srccol').style('width', `${srccolwidth}%`)
+        d3.select('#tgtcol').style('width', `${tgtcolwidth}%`)
 
         var analysiswidth = parseInt(($(window).width() - 300) * .33)
 
@@ -236,33 +236,17 @@ class TextPanel {
             alignedTokens['src'] = Object()
             alignedTokens['tgt'] = Object()
             s.alignedwordindices.forEach(function (st) {
-                    alignedTokens['src'][st[0]] = st[1]
-                    alignedTokens['tgt'][st[1]] = st[0]
-                })
+                alignedTokens['src'][st[0]] = st[1]
+                alignedTokens['tgt'][st[1]] = st[0]
+            })
             alignment['src'][s.srcsentidx].push({
-                'sentIdx' : s.tgtsentidx,
-                'tokenObj' : alignedTokens['src']
+                'sentIdx': s.tgtsentidx,
+                'tokenObj': alignedTokens['src']
             })
             alignment['tgt'][s.tgtsentidx].push({
-                'sentIdx' : s.srcsentidx,
-                'tokenObj' : alignedTokens['tgt']
+                'sentIdx': s.srcsentidx,
+                'tokenObj': alignedTokens['tgt']
             })
-            // // sent level
-            // var i = s.srcsentidx
-            // var j = s.tgtsentidx
-            // src2tgt['sentences'][i] = j
-            // tgt2src['sentences'][j] = i
-
-            // // token level
-            // src2tgt['tokens'][i] = Object()
-            // tgt2src['tokens'][j] = Object()
-            // s.alignedwordindices.forEach(function (kl) {
-            //     var k = kl[0];
-            //     var l = kl[1]
-            //     src2tgt['tokens'][i][k] = l
-            //     tgt2src['tokens'][j][l] = k
-            // })
-
         })
 
         // handle radio buttons
@@ -279,17 +263,19 @@ class TextPanel {
                 var index2;
                 if (chosenID.includes('src')) {
                     var which = 'tgt'
-                    alignment['src'][index1].forEach(function(info) {
-                    index2 = info.sentIdx
-                    chosenElt.selectAll('span.token').transition().style('background-color', 'aqua')
-                    d3.select('#' + which + 'sent' + index2).selectAll('span.token').transition().style('background-color', 'aqua')
+                    alignment['src'][index1].forEach(function (info) {
+                        index2 = info.sentIdx
+                        console.log('text.jshoversent', index1, index2)
+                        chosenElt.selectAll('span.token').transition().style('background-color', 'aqua')
+                        d3.select('#' + which + 'sent' + index2).selectAll('span.token').transition().style('background-color', 'aqua')
                     })
                 } else {
                     var which = 'src'
-                    alignment['src'][index1].forEach(function(info) {
-                    index2 = info.sentIdx
-                    chosenElt.selectAll('span.token').transition().style('background-color', 'aqua')
-                    d3.select('#' + which + 'sent' + index2).selectAll('span.token').transition().style('background-color', 'aqua')
+                    alignment['tgt'][index1].forEach(function (info) {
+                        index2 = info.sentIdx
+                        console.log('text.jshoversent', index1, index2)
+                        chosenElt.selectAll('span.token').transition().style('background-color', 'aqua')
+                        d3.select('#' + which + 'sent' + index2).selectAll('span.token').transition().style('background-color', 'aqua')
                     })
                 }
             }
@@ -312,7 +298,7 @@ class TextPanel {
                 if (chosenID.includes('src')) {
                     var which = 'tgt'
                     try {
-                        alignment['src'][sentidx1].forEach(function(info) {
+                        alignment['src'][sentidx1].forEach(function (info) {
                             sentidx2 = info.sentIdx
                             tokenidx2 = info.tokenObj[tokenidx1]
                             chosenElt.transition().style('background-color', 'aqua')
@@ -320,14 +306,14 @@ class TextPanel {
                         })
                         // var sentidx2 = src2tgt['sentences'][sentidx1]
                         // var tokenidx2 = src2tgt['tokens'][sentidx1][tokenidx1]
-                    } catch(e) {
+                    } catch (e) {
                         chosenElt.transition().style('background-color', 'tomato')
                         exists = false;
                     }
                 } else {
                     var which = 'src'
                     try {
-                        alignment['tgt'][sentidx1].forEach(function(info) {
+                        alignment['tgt'][sentidx1].forEach(function (info) {
                             sentidx2 = info.sentIdx
                             tokenidx2 = info.tokenObj[tokenidx1]
                             chosenElt.transition().style('background-color', 'aqua')
@@ -362,13 +348,13 @@ class TextPanel {
                 if (chosenID.includes('src')) {
                     which = 'tgt'
                     // try {
-                        info = alignment['src'][sentidx1][0]
-                        sentidx2 = info.sentIdx
-                        tokenidx2 = info.tokenObj[tokenidx1]
-                        tgttoken = d3.select('#' + which + 'sent' + sentidx2 + 'span' + tokenidx2).text()
-                        vis.tgt_lemma = d3.select('#' + which + 'sent' + sentidx2 + 'span' + tokenidx2)["_groups"][0][0]["__data__"].lemma
-                        vis.src_lemma = chosenElt["_groups"][0][0]["__data__"].lemma
-                        srctoken = chosenElt.text()
+                    info = alignment['src'][sentidx1][0]
+                    sentidx2 = info.sentIdx
+                    tokenidx2 = info.tokenObj[tokenidx1]
+                    tgttoken = d3.select('#' + which + 'sent' + sentidx2 + 'span' + tokenidx2).text()
+                    vis.tgt_lemma = d3.select('#' + which + 'sent' + sentidx2 + 'span' + tokenidx2)["_groups"][0][0]["__data__"].lemma
+                    vis.src_lemma = chosenElt["_groups"][0][0]["__data__"].lemma
+                    srctoken = chosenElt.text()
                     // } catch {
                     //     exists = false
                     // }

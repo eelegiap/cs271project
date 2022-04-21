@@ -223,7 +223,7 @@ class AlignmentBar {
 
         let str_ab = vis.cur_source_align + " translated as " + vis.cur_translation_align;
         let str_anotb= vis.cur_source_align + " not translated as " + vis.cur_translation_align;
-        let str_bnota= vis.cur_translation_align+ " not translated as "+ vis.cur_source_align;
+        let str_bnota= vis.cur_translation_align+ " not referring to "+ vis.cur_source_align;
 
 
         vis.scale = d3.scaleLinear()

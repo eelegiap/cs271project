@@ -177,7 +177,7 @@ class BarChart {
 
         // Set to appropriate language data
         vis.data = selectData;
-
+        console.log('lang data 4 bar chart', vis.data)
         // Update the visualization
         vis.wrangleData();
     }

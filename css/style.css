@@ -151,3 +151,5 @@ ol, ul {
 .titleTooltip:hover .tooltiptext {
     visibility: visible;
 }
+.paddingtop {
+    padding-top: 25px
