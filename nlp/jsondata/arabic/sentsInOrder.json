@@ -38104,7 +38104,7 @@
                     "features": {
                         "Number": "Sing"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -38621,7 +38621,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -39098,7 +39098,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -39533,7 +39533,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -40057,7 +40057,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -40646,7 +40646,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -40670,8 +40670,8 @@
                 {
                     "tokenid": 1,
                     "pos": "VERB",
-                    "text": "rememlers",
-                    "lemma": "rememler",
+                    "text": "remembers",
+                    "lemma": "remember",
                     "features": {
                         "Number": "Sing",
                         "Person": "3",
@@ -41133,7 +41133,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -42337,7 +42337,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -43054,7 +43054,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -44592,7 +44592,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -50773,7 +50773,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -52053,7 +52053,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -54669,7 +54669,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -55487,7 +55487,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -55522,7 +55522,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -57307,7 +57307,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -58422,7 +58422,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -59528,7 +59528,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -61538,7 +61538,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -63008,7 +63008,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -63685,7 +63685,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -65290,7 +65290,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -67557,7 +67557,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -67592,7 +67592,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -68517,7 +68517,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -69679,7 +69679,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -70877,7 +70877,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -71012,7 +71012,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -71047,7 +71047,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -71634,7 +71634,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -72945,7 +72945,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -74593,7 +74593,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -75697,7 +75697,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -76521,7 +76521,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -76927,7 +76927,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -77734,7 +77734,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -78401,8 +78401,8 @@
                 {
                     "tokenid": 16,
                     "pos": "PROPN",
-                    "text": "Ramadan8",
-                    "lemma": "Ramadan8",
+                    "text": "Ramadan",
+                    "lemma": "Ramadan",
                     "features": {
                         "Number": "Sing"
                     },
@@ -79181,8 +79181,8 @@
                 {
                     "tokenid": 45,
                     "pos": "PROPN",
-                    "text": "couM",
-                    "lemma": "couM",
+                    "text": "could",
+                    "lemma": "can",
                     "features": {
                         "Number": "Sing"
                     },
@@ -79346,7 +79346,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -80709,7 +80709,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -81094,7 +81094,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -82529,7 +82529,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -83686,7 +83686,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -84989,7 +84989,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -86192,8 +86192,8 @@
                 {
                     "tokenid": 37,
                     "pos": "PROPN",
-                    "text": "Baibars,4",
-                    "lemma": "Baibars,4",
+                    "text": "Baibars",
+                    "lemma": "Baibar",
                     "features": {
                         "Number": "Sing"
                     },
@@ -86429,7 +86429,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -87691,7 +87691,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -88887,7 +88887,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -90157,7 +90157,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -91154,7 +91154,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -91565,7 +91565,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -91681,8 +91681,8 @@
                 {
                     "tokenid": 11,
                     "pos": "PROPN",
-                    "text": "Sufism5",
-                    "lemma": "Sufism5",
+                    "text": "Sufism",
+                    "lemma": "Sufism",
                     "features": {
                         "Number": "Sing"
                     },
@@ -91983,7 +91983,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -92568,7 +92568,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -92593,7 +92593,7 @@
                     "features": {
                         "Number": "Sing"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -93205,7 +93205,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -93631,7 +93631,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -95528,7 +95528,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -98009,7 +98009,7 @@
                         "PunctSide": "Fin",
                         "PunctType": "Quot"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -98406,7 +98406,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -99607,7 +99607,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -100652,7 +100652,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -101781,7 +101781,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -103090,7 +103090,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -103728,7 +103728,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -104292,7 +104292,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -105233,7 +105233,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -106641,7 +106641,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -107986,7 +107986,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -109680,7 +109680,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -110548,7 +110548,7 @@
                         "PunctSide": "Fin",
                         "PunctType": "Quot"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -112001,7 +112001,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         },
@@ -112744,7 +112744,7 @@
                     "features": {
                         "PunctType": "Peri"
                     },
-                    "linebreak": false
+                    "linebreak": true
                 }
             ]
         }
