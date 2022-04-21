@@ -8,9 +8,6 @@ body{
     display: grid;
     /* grid-template-columns: 300px 300px; */
 }
-.tooltip{
-    background-color: lightgrey;
-}
 .token {
     cursor: default;
     border-radius: 5px;
@@ -128,4 +125,28 @@ ul{
 }
 ol, ul {
     padding-left: 0px;
+}
+.titleTooltip {
+    position: relative;
+    display: inline-block;
+}
+
+/* Tooltip text */
+.titleTooltip .tooltiptext {
+    visibility: hidden;
+    position: absolute;
+    text-align: center;
+    width: fit-content;
+    height: fit-content;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: #e5ffff;
+    border: 1px solid gray;
+    border-radius: 8px;
+    pointer-events: none;
+
+    z-index: 1;
+}
+.titleTooltip:hover .tooltiptext {
+    visibility: visible;
 }
