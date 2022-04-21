@@ -17,17 +17,13 @@ class nGrams {
         vis.updateVis(vis.srctoken, vis.tgttoken);
     }
     updateVis(s, t) {
-        console.log('ngrams', s,t)
         let vis = this;
         vis.srctoken = s;
         vis.tgttoken = t;
-        console.log(s,t )
         var direct_url = 't1%3B%2C';
         var content = '';
         var index = 0;
         var array = [vis.srctoken.toLowerCase(), vis.tgttoken.toLowerCase()]
-
-        console.log('ngrams_src_lang', vis.src_lang)
         for (const token of array) {
             // for ngram viewer
             if (index != 1) {

@@ -6,8 +6,6 @@ let translation_align;
 let myAlignmentBar;
 let myTimeline;
 let sent_order;
-let source_lemmas;
-let translation_lemmas;
 let barchart;
 let senthistogram;
 
@@ -23,8 +21,6 @@ let promises = [
     d3.json("nlp/jsondata/"+ src_lang +"/wordAlignment.json"),
     d3.json("nlp/jsondata/"+ src_lang +"/alignments.json"),
     d3.json("nlp/jsondata/"+ tgt_lang +"/"+ src_lang +"/alignments.json"),
-    d3.json("nlp/jsondata/"+ src_lang +"/lemmas.json"),
-    d3.json("nlp/jsondata/"+ tgt_lang +"/"+ src_lang +"/lemmas.json"),
 ];
 
 Promise.all(promises)
@@ -35,14 +31,11 @@ Promise.all(promises)
 
 // initMainPage
 function initMainPage(allDataArray, src_lang) {
-    console.log('initMainPage', src_lang)
     let sent_align = allDataArray[0];
     sent_order = allDataArray[1];
     let word_align = allDataArray[2];
     source_align = allDataArray[3];
     translation_align = allDataArray[4];
-    source_lemmas = allDataArray[5];
-    translation_lemmas = allDataArray[6];
 
     myText = new TextPanel(sent_order, word_align, src_lang);
     change_level("wordlevel")
@@ -52,18 +45,16 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
-function updateSidebar(cur_source_align, cur_translation_align, src_lang, source_lemma_idx, translation_lemma_idx){
-    let source_lemma = source_lemmas[cur_source_align.toLowerCase().trim()];
-    let translation_lemma = translation_lemmas[cur_translation_align.toLowerCase().trim()];
-    // let source_lemma = cur_source_align
-    // let translation_lemma = cur_translation_align
-    console.log('updateSidebar is working',source_lemma, translation_lemma)
+function updateSidebar(cur_source_align, cur_translation_align, src_lang, src_sent_idx, tgt_sent_idx, source_lemma, translation_lemma){
+    source_lemma = source_lemma.toLowerCase().trim();
+    translation_lemma = translation_lemma.toLowerCase().trim();
+
     document.getElementById("table_src_align").innerHTML =  cur_source_align;
     document.getElementById("table_src_lemma").innerHTML = source_lemma;
     document.getElementById("table_tgt_align").innerHTML =  cur_translation_align;
     document.getElementById("table_tgt_lemma").innerHTML = translation_lemma;
 
-    myAlignmentBar.updateVis(source_lemma, translation_lemma, source_lemma_idx, translation_lemma_idx);
+    myAlignmentBar.updateVis(source_lemma, translation_lemma, src_sent_idx, tgt_sent_idx);
     myTimeline.updateVis(source_lemma, translation_lemma);
     myNGrams.updateVis(source_lemma, translation_lemma, src_lang);
 }
@@ -71,12 +62,10 @@ function updateSidebar(cur_source_align, cur_translation_align, src_lang, source
 function createWordLevelSidebar(){
     myAlignmentBar = new AlignmentBar('alignmentBar', source_align, translation_align, sent_order);
     myTimeline = new Timeline('timeline', source_align, translation_align, sent_order);
-    console.log('creaetwordLevelsidebar',src_lang)
     myNGrams = new nGrams("En", "In", src_lang);
 }
 
 function createSentenceLevelSidebar(){
-    console.log('createSentenceLevelSidebar', src_lang)
     dataProcessing(sent_order, src_lang);
 }
 
@@ -100,9 +89,7 @@ function switchSidebar(bar_type){
         $( "#aPanel" ).load( "html/sentenceLevel.html" )
         let checkIfExists = setInterval(function() {
             var exists = document.getElementById("lex-richness");
-            console.log(exists)
             if (exists) {
-                console.log("loading")
                 clearInterval(checkIfExists);
                 createSentenceLevelSidebar();
             }
@@ -136,8 +123,6 @@ function change_language_selection(lang){
         d3.json("nlp/jsondata/"+ src_lang +"/wordAlignment.json"),
         d3.json("nlp/jsondata/"+ src_lang +"/alignments.json"),
         d3.json("nlp/jsondata/"+ tgt_lang +"/"+ src_lang +"/alignments.json"),
-        d3.json("nlp/jsondata/"+ src_lang +"/lemmas.json"),
-        d3.json("nlp/jsondata/"+ tgt_lang +"/"+ src_lang +"/lemmas.json"),
     ];
     Promise.all(promises)
         .then( function(data){ initMainPage(data, src_lang) })

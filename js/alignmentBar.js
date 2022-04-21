@@ -42,16 +42,9 @@ class AlignmentBar {
             .attr('class', "tooltip")
             .attr('id', 'alignmentTooltip')
 
-        vis.colors = ["lightgrey", "darkgrey","grey",];
+        vis.colors = ["rgb(31,121,211)", "#69b3a2", "rgb(209,38,38)"];
 
         vis.cur_sent_idx = -1;
-
-        // let button = document.createElement('button');
-        // button.textContent = "Next Example"
-        // button.id = "nextAlign";
-        // button.onclick = function(event){vis.showNextExample()}
-        // let cont = document.getElementById("nextButton")
-        // cont.append(button)
 
         vis.src_tkn_idx = 0;
         vis.trans_tkn_idk = 0;
@@ -70,23 +63,22 @@ class AlignmentBar {
         vis.src_tkn_idx = src_tkn_idx;
         vis.trans_tkn_idk = trans_tkn_idk;
 
-        console.log(src_tkn_idx, trans_tkn_idk)
-
         vis.wrangleData();
 
         let lengths = [];
         vis.data.forEach(function (d){lengths.push(vis.scale(d[1]))});
+
         const cumulativeSum = (sum => value => sum += value)(0);
         let pos = lengths.map(cumulativeSum);
         pos.unshift(0)
 
-        let align_rects = vis.svg.selectAll('.align_rects')
-            .data(vis.data )
+        vis.align_rects = vis.svg.selectAll('.align_rects')
+            .data(vis.data)
 
-        align_rects.enter()
+        vis.align_rects.enter()
             .append('rect')
             .attr("class", "align_rects")
-            .merge(align_rects)
+            .merge(vis.align_rects)
             .attr("width", function(d, i){return lengths[i]})
             .attr("height", 20)
             .attr("x", function(d, i){return pos[i]})
@@ -117,42 +109,66 @@ class AlignmentBar {
                     .html(``);
             })
             .on('click', function (event, d){
-                vis.showExamples(d)
+                vis.showExamples(d, this)
         });
         let d = vis.data[1];
-        vis.showExamples(d)
-        align_rects.exit().remove()
+        vis.showExamples(d, document.getElementsByClassName("align_rects")[1])
+        vis.align_rects.exit().remove()
 
     }
 
-    showExamples(d){
+    resetColors(){
+        let vis = this;
+        let elements = document.getElementsByClassName("align_rects");
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].style.fill = vis.colors[i];
+        }
+    }
+
+    showExamples(d, obj){
         let vis = this;
         let title_cont = document.getElementById("alignmentTitle")
         while(title_cont.firstChild){
             title_cont.removeChild(title_cont.firstChild);
         }
         let title = document.createElement('p');
-        title.setAttribute("style", "color:gray");
         title.textContent = d[0];
         title_cont.appendChild(title);
 
         vis.cur_sent_idx = -1;
         vis.getPairsToPrint(d);
         vis.showNextExample();
+        vis.resetColors();
+        d3.select(obj)
+            .style("fill", "aqua");
+
+        // let next_align = $("#nextAlign");
+        // console.log("next align exists ", typeof(next_align) != "undefined")
+        // if (vis.pairs_to_print.length <= 1 && typeof(next_align) != "undefined") {
+        //     next_align.style("visibility", "hidden")
+        // }
+        // else if (typeof(next_align) != "undefined") {
+        //     next_align.style("visibility", "visible")
+        // }
 
     }
     getPairsToPrint(d){
         let vis = this;
         vis.pairs_to_print = [];
+        // console.log("d" ,d)
         for (let i = 0; i < d[3].length; i++) {
-            vis.pairs_to_print.push( vis.getBrevExample("srcSentsInOrder", d, i, vis.src_tkn_idx) + '<br>' + vis.getBrevExample("tgtSentsInOrder", d, i, vis.trans_tkn_idk));
+            vis.pairs_to_print.push( vis.getBrevExample("srcSentsInOrder", d, i, d[3][i], d[5][i]) + '<br>' + vis.getBrevExample("tgtSentsInOrder", d, i, d[4][i], d[6][i]));
         }
     }
-    getBrevExample(col, d, i, idx){
+    getBrevExample(col, d, i, sentence_idx, wd_idx){
         let vis = this;
+        let sentence_tokens = vis.sent_order[col][sentence_idx]["tokens"]
+
         let test = [];
-        idx = parseInt(idx);
-        let min =idx - 4;
+
+        let idx = wd_idx;
+
+        let min = idx - 4;
         if(min < 0){
             min = 0;
         }
@@ -160,11 +176,11 @@ class AlignmentBar {
             test.push("...");
         }
         let max = idx + 4;
-        if(max > vis.sent_order[col][d[3][i]]["tokens"].length){
-            max = vis.sent_order[col][d[3][i]]["tokens"].length;
+        if(max > sentence_tokens.length){
+            max = sentence_tokens.length;
         }
-        vis.sent_order[col][d[3][i]]["tokens"].slice(min,max).forEach(function (d){test.push(d.text)})
-        if(max != vis.sent_order[col][d[3][i]]["tokens"].length){
+        sentence_tokens.slice(min,max).forEach(function (d){test.push(d.text)})
+        if(max != sentence_tokens.length){
             test.push("...")
         }
         return test.join(" ");
@@ -172,13 +188,24 @@ class AlignmentBar {
 
     wrangleData(){
         let vis = this;
-        let ab = vis.getOccurrence(vis.source_align[vis.cur_source_align][0], vis.cur_translation_align);
-        let anotb = vis.source_align[vis.cur_source_align][0].length - ab;
-        let bnota = vis.translation_align[vis.cur_translation_align][0].length - ab;
+        
+        let aligned_words_in_tgt = vis.source_align[vis.cur_source_align][0]
+        let aligned_words_in_src = vis.translation_align[vis.cur_translation_align][0]
 
-        let idx_ab = vis.getIndex(vis.source_align[vis.cur_source_align][0], vis.cur_translation_align);
-        let idx_anotb = vis.getNotIndex(vis.source_align[vis.cur_source_align][0], vis.cur_translation_align);
-        let idx_bnota = vis.getNotIndex(vis.translation_align[vis.cur_translation_align][0], vis.cur_source_align);
+        let ab = vis.getOccurrence(aligned_words_in_tgt, vis.cur_translation_align);
+        let anotb = aligned_words_in_tgt.length - ab;
+        let bnota = aligned_words_in_src.length - ab;
+
+        let idx_ab = vis.getIndex(aligned_words_in_tgt, vis.cur_translation_align);
+        let idx_anotb = vis.getNotIndex(aligned_words_in_tgt, vis.cur_translation_align);
+        let idx_bnota = vis.getNotIndex(aligned_words_in_src, vis.cur_source_align);
+
+        // console.log(typeof idx_ab)
+        // let idx_anotb_set = new Set(idx_anotb.filter(x => !idx_ab.includes(x)));
+        // let idx_bnota_set = new Set(idx_bnota.filter(x => !idx_ab.includes(x)));
+        //
+        // idx_anotb = Array.from(idx_anotb_set);
+        // idx_bnota = Array.from(idx_bnota_set);
 
         let str_ab = vis.cur_source_align + " translated as " + vis.cur_translation_align;
         let str_anotb= vis.cur_source_align + " not translated as " + vis.cur_translation_align;
@@ -190,24 +217,53 @@ class AlignmentBar {
             .range([0, vis.width]);
 
 
-        vis.data = [[str_anotb, anotb, idx_anotb, [], []], [str_ab, ab, idx_ab, [], []], [str_bnota, bnota, idx_bnota, [], []]];
+        vis.data = [[str_anotb, anotb, idx_anotb, [], [], [], []], [str_ab, ab, idx_ab, [], [], [], []], [str_bnota, bnota, idx_bnota, [], [], [], []]];
 
+        let aligned_src_indices = vis.source_align[vis.cur_source_align][1]
+        let aligned_tgt_indices = vis.source_align[vis.cur_source_align][2]
+
+        let aligned_src_wd_indices = vis.source_align[vis.cur_source_align][4]
+        let aligned_tgt_wd_indices = vis.source_align[vis.cur_source_align][5]
 
         idx_anotb.forEach(function (element) {
-            vis.data [0][3].push(vis.source_align[vis.cur_source_align][1][element]);
-            vis.data [0][4].push(vis.source_align[vis.cur_source_align][2][element]);
+            vis.data [0][3].push(aligned_src_indices[element]);
+            vis.data [0][4].push(aligned_tgt_indices[element]);
+        });
+
+        idx_anotb.forEach(function (element) {
+            vis.data [0][5].push(aligned_src_wd_indices[element]);
+            vis.data [0][6].push(aligned_tgt_wd_indices[element]);
         });
 
         idx_ab.forEach(function (element) {
-            vis.data [1][3].push(vis.source_align[vis.cur_source_align][1][element]);
-            vis.data [1][4].push(vis.source_align[vis.cur_source_align][2][element]);
+            vis.data [1][3].push(aligned_src_indices[element]);
+            vis.data [1][4].push(aligned_tgt_indices[element]);
 
+        });
+
+        idx_ab.forEach(function (element) {
+            vis.data [1][5].push(aligned_src_wd_indices[element]);
+            vis.data [1][6].push(aligned_tgt_wd_indices[element]);
+        });
+
+        aligned_src_indices = vis.translation_align[vis.cur_translation_align][1]
+        aligned_tgt_indices = vis.translation_align[vis.cur_translation_align][2]
+
+        aligned_src_wd_indices = vis.translation_align[vis.cur_translation_align][4]
+        aligned_tgt_wd_indices = vis.translation_align[vis.cur_translation_align][5]
+
+        idx_bnota.forEach(function (element) {
+            vis.data [2][3].push(aligned_src_indices[element]);
+            vis.data [2][4].push(aligned_tgt_indices[element]);
         });
 
         idx_bnota.forEach(function (element) {
-            vis.data [2][3].push(vis.translation_align[vis.cur_translation_align][1][element]);
-            vis.data [2][4].push(vis.translation_align[vis.cur_translation_align][2][element]);
+            vis.data [2][5].push(aligned_src_wd_indices[element]);
+            vis.data [2][6].push(aligned_tgt_wd_indices[element]);
         });
+
+
+
     }
 
     showNextExample(){
@@ -246,7 +302,9 @@ class AlignmentBar {
 
     getNotIndex(array, true_align){
         return array.reduce(function(arr, value, i) {
-            if (value != true_align) arr.push(i);
+            if (value != true_align){
+                arr.push(i);
+            }
             return arr;
         }, []);
     }
