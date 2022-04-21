@@ -13,30 +13,39 @@ function dataProcessing(data, src_lang) {
         let tf = {}
         let df = {}
         let tfidf = {}
-
+        var wordform;
         let totalTokens = 0
         sentTokenList.forEach(function (tokens) {
             if (tokens == undefined) {
             } else {
                 tokens.forEach(function (t) {
-                    totalTokens += 1
-                    if (!tf.hasOwnProperty(t.lemma)) {
-                        tf[t.lemma] = 1
-                        df[t.lemma] = 0
-                        tfidf[t.lemma] = 0
+                    if (src_lang == 'arabic') {
+                        wordform = t.text
                     } else {
-                        tf[t.lemma] += 1
+                        wordform = t.lemma
+                    }
+                    totalTokens += 1
+                    if (!tf.hasOwnProperty(wordform)) {
+                        tf[wordform] = 1
+                        df[wordform] = 0
+                        tfidf[wordform] = 0
+                    } else {
+                        tf[wordform] += 1
                     }
                 })
             }
         })
-
         sentTokenList.forEach(function (tokens) {
             let lemmasInSent = new Set()
             if (tokens == undefined) {
             } else {
                 tokens.forEach(function (t) {
-                    lemmasInSent.add(t.lemma)
+                    if (src_lang == 'arabic') {
+                        wordform = t.text
+                    } else {
+                        wordform = t.lemma
+                    }
+                    lemmasInSent.add(wordform)
                 })
                 lemmasInSent.forEach(function (l) {
                     df[l] += 1
@@ -51,6 +60,7 @@ function dataProcessing(data, src_lang) {
             }
         }
 
+ 
         let temp = Object.keys(tfidf).map(function(key) {
             return {
             'lemma' : key, 'tfidf' : tfidf[key], 'tf' : tf[key], 'df' : df[key]
