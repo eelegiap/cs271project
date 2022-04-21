@@ -57,6 +57,18 @@ class TextPanel {
         d3.select('#srcAuthor').text(authors[vis.src_lang]['src'])
         d3.select('#tgtAuthor').text(authors[vis.src_lang]['tgt'])
 
+        if (vis.src_lang == 'arabic') {
+            d3.select('#srctext').attr('dir','rtl').style('font-size','22px')
+            d3.select('#srcTitle').attr('dir','rtl')
+            d3.select('#srcAuthor').attr('dir','rtl')
+            d3.select('#ngraminfo').text('Unfortunately, Google N-Grams is not supported in Arabic.')
+        } else {
+            d3.select('#srctext').attr('dir','ltr')
+            d3.select('#srcTitle').attr('dir','ltr')
+            d3.select('#srcAuthor').attr('dir','ltr')
+            d3.select('#ngraminfo').text(``)
+        }
+
         let data = vis.sent_order;
         var srccharcount = 0;
         var tgtcharcount = 0;
@@ -69,18 +81,25 @@ class TextPanel {
             if (thistoken.linebreak) {
                 if (type_str == "src"){
                     src_linebreak += 1;
-                }
-                else{
+                } else {
                     tgt_linebreak += 1;
                 }
                 return thistoken.text + '<br><br>'
-
             }
             if (thistoken.pos == 'SUPERSCRIPT') {
                 return '<sup>1</sup>'
             }
             if (j < tokens.length-1) {
                 var nexttoken = tokens[j+1]
+                if (',.'.includes(thistoken.text) && "'".includes(nexttoken.text)) {
+                    return thistoken.text
+                }
+                if (["'",'"'].includes(thistoken.text) && nexttoken.text == 'Our') {
+                    return thistoken.text
+                }
+                if (thistoken.text == 'Master' && ["'",'"'].includes(nexttoken.text)) {
+                    return thistoken.text
+                }
                 if ('.,)?;»!”'.includes(nexttoken.text)) {
                     return thistoken.text
                 } 
@@ -176,6 +195,8 @@ class TextPanel {
         var src_space = srccharcount + src_linebreak*char_per_break_est;
         if (vis.src_lang == 'russian') {
             src_space = src_space * 1.1
+        } else if (vis.src_lang == 'arabic') {
+            src_space = src_space *1.32
         }
         var tgt_space = tgtcharcount + tgt_linebreak*char_per_break_est
 

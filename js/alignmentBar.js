@@ -148,8 +148,13 @@ class AlignmentBar {
         vis.getPairsToPrint(d);
         vis.showNextExample();
         vis.resetColors();
+        d3.selectAll('.align_rects').style('opacity',.3)
         d3.select(obj)
-            .style("fill", "aqua");
+            // .style("fill", "aqua")
+            // .style('stroke-width','4px')
+            // .style('stroke', 'black')
+            .style('opacity',1)
+
 
         // let next_align = $("#nextAlign");
         // console.log("next align exists ", typeof(next_align) != "undefined")
