@@ -139,6 +139,7 @@ ol, ul {
     width: fit-content;
     height: fit-content;
     padding: 2px;
+    padding-right: 15px;
     font: 12px sans-serif;
     background: #e5ffff;
     border: 1px solid gray;
