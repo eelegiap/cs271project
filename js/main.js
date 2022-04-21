@@ -41,10 +41,6 @@ function initMainPage(allDataArray, src_lang) {
     change_level("wordlevel")
 }
 
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-}
-
 function updateSidebar(cur_source_align, cur_translation_align, src_lang, src_sent_idx, tgt_sent_idx, source_lemma, translation_lemma){
     source_lemma = source_lemma.toLowerCase().trim();
     translation_lemma = translation_lemma.toLowerCase().trim();
@@ -133,6 +129,7 @@ function change_level(value){
     if (value == 'wordlevel') {
         d3.selectAll('.sentence').classed('chosen', false)
         d3.selectAll('.token').classed('chosen', true)
+        document.getElementById("level_select").selectedIndex = 1;
     } else {
         d3.selectAll('.sentence').classed('chosen', true)
         d3.selectAll('.token').classed('chosen', false)
