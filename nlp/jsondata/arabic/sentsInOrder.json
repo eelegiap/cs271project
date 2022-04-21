@@ -28113,7 +28113,7 @@
                 {
                     "tokenid": 1,
                     "pos": "",
-                    "text": "V.",
+                    "text": "V",
                     "lemma": "",
                     "features": {},
                     "linebreak": true
@@ -38099,8 +38099,8 @@
                 {
                     "tokenid": 1,
                     "pos": "PROPN",
-                    "text": "I.",
-                    "lemma": "I.",
+                    "text": "I",
+                    "lemma": "I",
                     "features": {
                         "Number": "Sing"
                     },
@@ -55513,16 +55513,6 @@
                         "Number": "Sing"
                     },
                     "linebreak": false
-                },
-                {
-                    "tokenid": 2,
-                    "pos": "PUNCT",
-                    "text": ".",
-                    "lemma": ".",
-                    "features": {
-                        "PunctType": "Peri"
-                    },
-                    "linebreak": true
                 }
             ]
         },
@@ -67583,16 +67573,6 @@
                         "Number": "Sing"
                     },
                     "linebreak": false
-                },
-                {
-                    "tokenid": 2,
-                    "pos": "PUNCT",
-                    "text": ".",
-                    "lemma": ".",
-                    "features": {
-                        "PunctType": "Peri"
-                    },
-                    "linebreak": true
                 }
             ]
         },
@@ -71038,16 +71018,6 @@
                         "Number": "Sing"
                     },
                     "linebreak": false
-                },
-                {
-                    "tokenid": 2,
-                    "pos": "PUNCT",
-                    "text": ".",
-                    "lemma": ".",
-                    "features": {
-                        "PunctType": "Peri"
-                    },
-                    "linebreak": true
                 }
             ]
         },
