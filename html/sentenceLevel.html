@@ -1,7 +1,7 @@
-<label for="lang">Text:</label>  
-<select name="lang" id="lang">  
-    <option value="source">Source</option>  
-    <option value="trans">Translation</option>  
+<label for="lang">Text:</label>
+<select name="lang" id="lang">
+    <option value="source">Source</option>
+    <option value="trans">Translation</option>
 </select>
 <div id='myCarousel' class='carousel slide' data-bs-interval="false">
     <div class='carousel-inner' role='listbox'>
@@ -10,8 +10,14 @@
                 <div class="row">
                     <div class="titleTooltip">
                         <h5 class='sentleveltitle'>Word Frequency</h5>
-    <!--                <div class='description'>This visualization displays the most frequently used words in each text. We’ve used the tf-idf algorithm instead of raw count to display data so as to provide information that is more useful for translation and literary analysis. Hovering over each bar will display information about how many times the word is used, along with the number of sentences the word has appeared in. The “Elements” selection box allows users to choose whether they would like to see 5, 10, or 15 elements displayed. The “Text” selection box allows users to choose whether they would like to see word frequencies for the source or translation document.-->
-                        <span class="tooltiptext">This visualization displays the distribution of sentences based on their lengths. Sentence length is measured on the x-axis and frequency is measured on the y-axis. Hovering over an individual bar will provide specific information on the sentence length corresponding to the selected bar and the frequency at which sentences of said length occur.
+                        <!--                <div class='description'>This visualization displays the most frequently used words in each text. We’ve used the tf-idf algorithm instead of raw count to display data so as to provide information that is more useful for translation and literary analysis. Hovering over each bar will display information about how many times the word is used, along with the number of sentences the word has appeared in. The “Elements” selection box allows users to choose whether they would like to see 5, 10, or 15 elements displayed. The “Text” selection box allows users to choose whether they would like to see word frequencies for the source or translation document.-->
+                        <span class="tooltiptext">
+                            This visualization displays frequently used words in each text. The displayed words were chosen using the
+                            TF-IDF algorithm in order to find the most semantically relevant words. Hovering over each bar will display
+                            information about how many times the word is used, along with the number of sentences the
+                            word has appeared in. <br>The “Elements” selection box allows users to choose whether they would
+                            like to see 5, 10, or 15 elements displayed. The “Text” selection box allows users to choose
+                            whether they would like to see word frequencies for the source or translation document.
                         </span>
                     </div>
                     <div style='float:left '> <label for='numb'>Elements:</label>
@@ -19,8 +25,8 @@
                             <option value=5>5</option>
                             <option value=10>10</option>
                             <option value=15 selected>15</option>
-                            </select>
-                        </div>
+                        </select>
+                    </div>
                     <div id='word-freq'></div>
                 </div>
             </div>
@@ -30,17 +36,33 @@
                 <div class="row">
                     <div class="titleTooltip">
                         <h5 class='sentleveltitle'>Sentence Length</h5>
-                        <span class="tooltiptext">This visualization displays the distribution of sentences based on their lengths. Sentence length is measured on the x-axis and frequency is measured on the y-axis. Hovering over an individual bar will provide specific information on the sentence length corresponding to the selected bar and the frequency at which sentences of said length occur.
-                    </span>
+                        <span class="tooltiptext">This visualization displays the distribution of sentences based on
+                            their lengths. Sentence length is measured on the x-axis and frequency is measured on the
+                            y-axis. <br>Hovering over an individual bar will provide specific information on the sentence
+                            length corresponding to the selected bar and the frequency at which sentences of said length
+                            occur.
+                        </span>
                     </div>
-    <!--            <div class='description'>This visualization displays the distribution of sentences based on their lengths. Sentence length is measured on the x-axis and frequency is measured on the y-axis. Hovering over an individual bar will provide specific information on the sentence length corresponding to the selected bar and the frequency at which sentences of said length occur.</div>-->
-                <div id='sent-length'></div>
+                    <!--            <div class='description'>This visualization displays the distribution of sentences based on their lengths. Sentence length is measured on the x-axis and frequency is measured on the y-axis. Hovering over an individual bar will provide specific information on the sentence length corresponding to the selected bar and the frequency at which sentences of said length occur.</div>-->
+                    <div id='sent-length'></div>
                 </div>
             </div>
         </div>
         <div class='carousel-item'>
-            <h5 class='sentleveltitle'>Lexical Richness</h5>
-            <div class='description'>What is lexical richness again?</div>
+            <h5 class='sentleveltitle'>About the project</h5>
+            <!-- <div class='description'></div> -->
+            <h6>How were the alignments created?</h6>
+            <p>The words and sentences in the original and translated texts were aligned computationally
+                with manual corrections. The machine sentence alignment uses <a
+                    href="https://github.com/rsennrich/Bleualign" target="_blank">Bleualign</a>, an algorithm for
+                aligning parallel texts that compares Bleu similarity scores between the machine-translated original and
+                the human-translated text. Once the sentences are aligned, we aligned words using <a
+                    href='https://github.com/cisnlp/simalign' target='_blank'>SimAlign</a>, an open-source tool that
+                aligns words in parallel sentences using pretrained language models. Our alignments are based on mBERT,
+                which is supported in 104 languages. We processed the texts into tokens using the popular Python library
+                <a href="https://spacy.io/usage/models/" target="_blank">Spacy</a>. Metrics seen in the graphs are based
+                on different counting methods from corpus linguistics.
+            </p>
             <div id='lex-richness'></div>
         </div>
     </div>

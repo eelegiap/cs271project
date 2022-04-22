@@ -65,6 +65,7 @@ div.tooltip {
 }
 #myCarousel {
     background: none;
+    padding-top: 25px
 }
 .carousel-control.left,
 .carousel-control.right {
